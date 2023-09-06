@@ -7,19 +7,57 @@
 
 import UIKit
 import FirebaseCore
+import Firebase
+import GoogleSignIn
 
     
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    public let signInConfig = GIDConfiguration(clientID: "547955988940-k7qo5pvcsoltfab82ujuj2h0v91ul30b.apps.googleusercontent.com")
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
         
         FirebaseApp.configure()
+        
+        
+        
+        
+        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+            if error != nil || user == nil {
+              // Show the app's signed-out state.
+            } else {
+              // Show the app's signed-in state.
+            }
+          }
+        
+        
+        
+//
+//        let gIdConfiguration = GIDConfiguration(clientID: "clientID", serverClientID: "serverClientID")
+//
+//        GIDSignIn.sharedInstance.configuration = gIdConfiguration
+//        FirebaseApp.app()?.options.clientID =  gIdConfiguration.clientID
+//
+//        FirebaseApp.app()?.options.clientID = GIDSignIn.sharedInstance.configuration?.clientID
+
+        
+        
+        
+        
         return true
+    }
+    
+    
+    
+    
+    
+    open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        return GIDSignIn.sharedInstance.handle(url)
     }
 
     // MARK: UISceneSession Lifecycle
@@ -36,6 +74,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    
+    
 
 }
 
