@@ -17,6 +17,10 @@ import FirebaseDatabase
 
 class SignInController: UIViewController {
     
+    //MARK: - Google SignIn Manager
+    private let googleSignInManager = GIDSignIn.sharedInstance
+    
+    
     var passwordSecure = true
     let signInConfig = GIDConfiguration(clientID: "547955988940-k7qo5pvcsoltfab82ujuj2h0v91ul30b.apps.googleusercontent.com")
     
@@ -32,7 +36,10 @@ class SignInController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//
+//        GIDSignIn.sharedInstance()?.presentingViewController = self
+//        GIDSignIn.sharedInstance().delegate = self
+//
         
         configureUI()
         
@@ -82,8 +89,11 @@ class SignInController: UIViewController {
     
     @IBAction func googleButtonTapped(_ sender: Any) {
         
-        GIDSignIn.sharedInstance.signIn(withPresenting: self) { user, error in
-           guard error == nil else { return }
+//        GIDSignIn.sharedInstance().signIn()
+        
+        
+//        GIDSignIn.sharedInstance.signIn(withPresenting: self) { user, error in
+//           guard error == nil else { return }
 
 //            guard let user = user else { return }
 //            let emailAdress = user.profile?.email
@@ -96,7 +106,15 @@ class SignInController: UIViewController {
 //            let profilePicUrl = user.profile?.imageURL(withDimension: 320)
 //
 //            print("full name \(fullName), emailAddress: \(emailAdress)")
-         }
+//         }
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -145,3 +163,9 @@ class SignInController: UIViewController {
     
     
 }
+
+
+//extension SignInController: GIDSignInDelegate {
+//    
+//    
+//}
