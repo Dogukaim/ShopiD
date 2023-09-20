@@ -23,6 +23,16 @@
 		9A330BDC2AAA130800697F47 /* MidCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A330BDB2AAA130800697F47 /* MidCollectionController.swift */; };
 		9A330BDF2AAA134400697F47 /* ProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A330BDE2AAA134400697F47 /* ProductController.swift */; };
 		9A330BE22AAA1A7800697F47 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A330BE12AAA1A7800697F47 /* OrderViewController.swift */; };
+		9A66C1D52AB4800C008358AF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A66C1D42AB4800C008358AF /* NetworkManager.swift */; };
+		9A66C1D72AB48017008358AF /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A66C1D62AB48017008358AF /* NetworkHelper.swift */; };
+		9A66C1DA2AB4804B008358AF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9A66C1D92AB4804B008358AF /* Alamofire */; };
+		9A66C1DD2AB48238008358AF /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A66C1DC2AB48238008358AF /* WebService.swift */; };
+		9A66C1DF2AB48243008358AF /* WebHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A66C1DE2AB48243008358AF /* WebHelper.swift */; };
+		9A66C1E22AB482A6008358AF /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A66C1E12AB482A6008358AF /* ProductsViewModel.swift */; };
+		9A66C1E42AB48B0C008358AF /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A66C1E32AB48B0C008358AF /* UIImageView+DownloadImage.swift */; };
+		9A66C1E62AB4956F008358AF /* Encodable+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A66C1E52AB4956F008358AF /* Encodable+Dictionary.swift */; };
+		9A66C1E82AB4AD8F008358AF /* HomeProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A66C1E72AB4AD8F008358AF /* HomeProfileViewModel.swift */; };
+		9A66C1EA2AB4ADC7008358AF /* NSDate+GetTimeDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A66C1E92AB4ADC7008358AF /* NSDate+GetTimeDateFormat.swift */; };
 		9A7615D12AB08B95000C075E /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7615CF2AB08B95000C075E /* FavoriteCell.swift */; };
 		9A7615D22AB08B95000C075E /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A7615D02AB08B95000C075E /* FavoriteCell.xib */; };
 		9A7F9B8C2AA608D70036FD89 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7F9B8B2AA608D70036FD89 /* SignUpController.swift */; };
@@ -70,6 +80,15 @@
 		9A330BDB2AAA130800697F47 /* MidCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidCollectionController.swift; sourceTree = "<group>"; };
 		9A330BDE2AAA134400697F47 /* ProductController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductController.swift; sourceTree = "<group>"; };
 		9A330BE12AAA1A7800697F47 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		9A66C1D42AB4800C008358AF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9A66C1D62AB48017008358AF /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		9A66C1DC2AB48238008358AF /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		9A66C1DE2AB48243008358AF /* WebHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebHelper.swift; sourceTree = "<group>"; };
+		9A66C1E12AB482A6008358AF /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
+		9A66C1E32AB48B0C008358AF /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
+		9A66C1E52AB4956F008358AF /* Encodable+Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Dictionary.swift"; sourceTree = "<group>"; };
+		9A66C1E72AB4AD8F008358AF /* HomeProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileViewModel.swift; sourceTree = "<group>"; };
+		9A66C1E92AB4ADC7008358AF /* NSDate+GetTimeDateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+GetTimeDateFormat.swift"; sourceTree = "<group>"; };
 		9A7615CF2AB08B95000C075E /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		9A7615D02AB08B95000C075E /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
 		9A7F9B8B2AA608D70036FD89 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -98,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A7F9BB42AA771240036FD89 /* GoogleSignIn in Frameworks */,
+				9A66C1DA2AB4804B008358AF /* Alamofire in Frameworks */,
 				9A7F9BAD2AA76FA60036FD89 /* FirebaseDatabase in Frameworks */,
 				9A7F9BB12AA76FA60036FD89 /* FirebaseStorage in Frameworks */,
 				9A7F9BB62AA771240036FD89 /* GoogleSignInSwift in Frameworks */,
@@ -129,6 +149,7 @@
 		9A2C0EFA2AA201AF0064FF77 /* ShopiD */ = {
 			isa = PBXGroup;
 			children = (
+				9A66C1D32AB47FF8008358AF /* Network */,
 				9AF469132AAB40EB006FE0B9 /* Model */,
 				9A2C0F1D2AA205E70064FF77 /* Extentions */,
 				9A2C0F102AA2021D0064FF77 /* Scene */,
@@ -217,6 +238,9 @@
 			children = (
 				9A7F9B982AA627050036FD89 /* UIView+Ext.swift */,
 				9A7F9BB72AA77E180036FD89 /* UITextField+RightViewButton.swift */,
+				9A66C1E32AB48B0C008358AF /* UIImageView+DownloadImage.swift */,
+				9A66C1E52AB4956F008358AF /* Encodable+Dictionary.swift */,
+				9A66C1E92AB4ADC7008358AF /* NSDate+GetTimeDateFormat.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -297,6 +321,25 @@
 			path = Orderr;
 			sourceTree = "<group>";
 		};
+		9A66C1D32AB47FF8008358AF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9A66C1DB2AB4822C008358AF /* Service */,
+				9A66C1D42AB4800C008358AF /* NetworkManager.swift */,
+				9A66C1D62AB48017008358AF /* NetworkHelper.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9A66C1DB2AB4822C008358AF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9A66C1DC2AB48238008358AF /* WebService.swift */,
+				9A66C1DE2AB48243008358AF /* WebHelper.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		9A7F9B8A2AA608C20036FD89 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +369,8 @@
 		9AF468DB2AAB3D19006FE0B9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9A66C1E72AB4AD8F008358AF /* HomeProfileViewModel.swift */,
+				9A66C1E12AB482A6008358AF /* ProductsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -617,6 +662,7 @@
 				9A7F9BB02AA76FA60036FD89 /* FirebaseStorage */,
 				9A7F9BB32AA771240036FD89 /* GoogleSignIn */,
 				9A7F9BB52AA771240036FD89 /* GoogleSignInSwift */,
+				9A66C1D92AB4804B008358AF /* Alamofire */,
 			);
 			productName = ShopiD;
 			productReference = 9A2C0EF82AA201AF0064FF77 /* ShopiD.app */;
@@ -649,6 +695,7 @@
 			packageReferences = (
 				9A7F9BA92AA76FA60036FD89 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				9A7F9BB22AA771230036FD89 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				9A66C1D82AB4804B008358AF /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 9A2C0EF92AA201AF0064FF77 /* Products */;
 			projectDirPath = "";
@@ -684,9 +731,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A66C1D72AB48017008358AF /* NetworkHelper.swift in Sources */,
+				9A66C1E62AB4956F008358AF /* Encodable+Dictionary.swift in Sources */,
+				9A66C1D52AB4800C008358AF /* NetworkManager.swift in Sources */,
 				9A7F9B992AA627050036FD89 /* UIView+Ext.swift in Sources */,
 				9A2C0F1F2AA21B510064FF77 /* OnboardingSlide.swift in Sources */,
 				9AFA51C92AA8C4F3004CAAE2 /* HomeController.swift in Sources */,
+				9A66C1EA2AB4ADC7008358AF /* NSDate+GetTimeDateFormat.swift in Sources */,
 				9A2C0F002AA201AF0064FF77 /* OnboardingController.swift in Sources */,
 				9A330BD92AAA0E0700697F47 /* CategoriesController.swift in Sources */,
 				9A7F9B8C2AA608D70036FD89 /* SignUpController.swift in Sources */,
@@ -694,19 +745,24 @@
 				9AFA51D22AA8C5D2004CAAE2 /* ProfileController.swift in Sources */,
 				9A330BD52AA9F89500697F47 /* DetailController.swift in Sources */,
 				9A2C0EFC2AA201AF0064FF77 /* AppDelegate.swift in Sources */,
+				9A66C1E22AB482A6008358AF /* ProductsViewModel.swift in Sources */,
 				9A330BE22AAA1A7800697F47 /* OrderViewController.swift in Sources */,
 				9AFA51CC2AA8C581004CAAE2 /* FavoriteController.swift in Sources */,
 				9A330BDC2AAA130800697F47 /* MidCollectionController.swift in Sources */,
 				9A7615D12AB08B95000C075E /* FavoriteCell.swift in Sources */,
 				9AF469012AAB3F03006FE0B9 /* TopCollectionCell.swift in Sources */,
 				9A7F9BB82AA77E180036FD89 /* UITextField+RightViewButton.swift in Sources */,
+				9A66C1DF2AB48243008358AF /* WebHelper.swift in Sources */,
 				9AF469152AAB4101006FE0B9 /* Product.swift in Sources */,
 				9AF469172AAB424B006FE0B9 /* Category.swift in Sources */,
 				9A330BDF2AAA134400697F47 /* ProductController.swift in Sources */,
 				9AF469112AAB4031006FE0B9 /* SeeAllCollectionCell.swift in Sources */,
 				9A2C0F222AA2207A0064FF77 /* SignInController.swift in Sources */,
+				9A66C1DD2AB48238008358AF /* WebService.swift in Sources */,
 				9AF4690C2AAB3FF3006FE0B9 /* ThirdCollectionCell.swift in Sources */,
 				9AF469062AAB3F4F006FE0B9 /* MidCollectionCell.swift in Sources */,
+				9A66C1E82AB4AD8F008358AF /* HomeProfileViewModel.swift in Sources */,
+				9A66C1E42AB48B0C008358AF /* UIImageView+DownloadImage.swift in Sources */,
 				9A2C0F1B2AA204990064FF77 /* CollectionViewCell.swift in Sources */,
 				9A330BD22AA9F72300697F47 /* CollectionController.swift in Sources */,
 				9A2C0EFE2AA201AF0064FF77 /* SceneDelegate.swift in Sources */,
@@ -929,6 +985,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9A66C1D82AB4804B008358AF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		9A7F9BA92AA76FA60036FD89 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -948,6 +1012,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9A66C1D92AB4804B008358AF /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A66C1D82AB4804B008358AF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		9A7F9BAA2AA76FA60036FD89 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9A7F9BA92AA76FA60036FD89 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

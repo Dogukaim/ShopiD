@@ -7,12 +7,30 @@
 
 import UIKit
 
+
+protocol TopProtocolViewCell {
+    var topimage: String { get }
+    var topname: String { get }
+    var topPrice: String { get }
+}
+
+
+
+
 class TopCollectionCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        
+    
+    @IBOutlet weak var imageTop: UIImageView!
+    @IBOutlet weak var nameTop: UILabel!
+    @IBOutlet weak var priceTop: UILabel!
+    
+    
+    
+    func configure(data: TopProtocolViewCell) {
+        imageTop.downloadSetImage(url: data.topimage)
+        nameTop.text = data.topname
+        priceTop.text = data.topPrice
     }
-
 }
+
+

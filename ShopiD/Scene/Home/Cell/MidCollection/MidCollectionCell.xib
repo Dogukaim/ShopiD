@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MidCollectionCell" customModule="ShopiD" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="MidCollectionCell" customModule="ShopiD" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="393" height="55"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -36,6 +36,9 @@
                 <constraint firstAttribute="bottom" secondItem="kfh-Fq-frC" secondAttribute="bottom" id="xUF-Na-H3T"/>
             </constraints>
             <size key="customSize" width="422" height="55"/>
+            <connections>
+                <outlet property="categorysLabel" destination="kfh-Fq-frC" id="jSw-pi-A8S"/>
+            </connections>
             <point key="canvasLocation" x="232.82442748091603" y="-35.563380281690144"/>
         </collectionViewCell>
     </objects>

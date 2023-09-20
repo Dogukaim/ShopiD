@@ -7,6 +7,15 @@
 
 import UIKit
 
+
+protocol SeeProtocolViewCell {
+    var proimage: String { get }
+    var proname: String { get }
+    var proprice: String { get }
+}
+
+
+
 class SeeAllCollectionCell: UICollectionViewCell {
 
     
@@ -16,10 +25,12 @@ class SeeAllCollectionCell: UICollectionViewCell {
     @IBOutlet weak var proPrice: UILabel!
     
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func configure(data: SeeProtocolViewCell) {
+        proImageView.downloadSetImage(url: data.proimage)
+        proTitle.text = data.proname
+        proPrice.text = data.proprice
     }
+    
     
     
 

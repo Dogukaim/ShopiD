@@ -11,7 +11,10 @@ import Foundation
 
 //MARK: Product
 
-struct Product: Codable {
+struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolViewCell {
+    
+    
+    
     
     let id: Int?
     let title: String?
@@ -27,6 +30,86 @@ struct Product: Codable {
         case category, image, rating
         
     }
+    
+    
+    //MARK: - TopProtocolViewCell
+    
+    var topimage: String {
+        if let image = image {
+            return image
+        }
+        return ""
+    }
+    
+    var topname: String {
+        if let title = title {
+            return title
+        }
+        return ""
+    }
+    
+    var topPrice: String {
+        if let price = price {
+            return "$\(price)"
+        }
+        return ""
+    }
+    
+    
+    
+    
+    //MARK: - ThirdProtocolViewCell
+    
+    var thirdimage: String {
+        if let image = image {
+            return image
+        }
+        return ""
+    }
+    
+    var thirdname: String {
+        if let title = title {
+            return title
+        }
+        return ""
+    }
+    
+    var thirdprice: String {
+        if let price = price {
+            return "$\(price)"
+        }
+        return ""
+    }
+    
+    
+    
+    
+    //MARK: - SeeProtocolViewCell
+    
+    
+    var proimage: String {
+        if let image = image {
+            return image
+        }
+        return ""
+    }
+    
+    var proname: String {
+        if let title = title {
+            return title
+        }
+        return ""
+    }
+    
+    var proprice: String {
+        if let price = price {
+            return "$\(price)"
+        }
+        return ""
+    }
+    
+
+    
     
 }
     

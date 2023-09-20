@@ -7,11 +7,18 @@
 
 import UIKit
 
+
+
 class MidCollectionCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    @IBOutlet weak var categorysLabel: UILabel!
+    
+    
+    
+    
+    func configure(data: Categories, indexPath: IndexPath) {
+        categorysLabel.text = data[indexPath.row].capitalized
     }
 
 }
