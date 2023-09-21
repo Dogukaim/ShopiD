@@ -26,7 +26,7 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         configureNavBar()
         collectionSetup()
-//        isSucced()
+        isSucced()
         
         getData()
         
@@ -35,15 +35,15 @@ class HomeController: UIViewController {
 
     
     
-//    func isSucced() {
-//        productsviewModel.didFetchAllProductsSuccessful = { [weak self] in
-//            self?.topCollection.reloadData()
-//            self?.catCollect.reloadData()
-//            self?.specialCollct.reloadData()
-//            self?.seeAllCollect.reloadData()
-//
-//        }
-//    }
+    func isSucced() {
+        productsviewModel.successCallback = { [weak self] in
+            self?.topCollection.reloadData()
+            self?.catCollect.reloadData()
+            self?.specialCollct.reloadData()
+            self?.seeAllCollect.reloadData()
+
+        }
+    }
 
     
     func getData() {
@@ -153,28 +153,48 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
     
     
     
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        if (topCollection != nil) {
+
+           return CGSize(width: (topCollection.frame.width / 3), height: (topCollection.frame.height))
+
+        } else if  (catCollect != nil) {
+
+            return CGSize(width: (catCollect.frame.width - 13) , height: (catCollect.frame.height) - 41)
+
+        }else {
+
+            return collectionView.contentSize
+        }
+
+
+    }
+    
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        if (topCollection != nil) {
-//
-//           return CGSize(width: (topCollection.frame.height), height: (topCollection.frame.width / 3) + 19)
-//
-//        } else if  (catCollect != nil) {
-//
-//            return CGSize(width: (catCollect.frame.width - 13) , height: (catCollect.frame.height) - 41)
-//
-//        }else {
-//
-//            return collectionView.contentSize
+//        switch collectionView {
+//        case topCollection:
+//            return CGSize(width: topCollection.frame.width / 3 , height: (topCollection.frame.height))
+////        case catCollect:
+////            return CGSize(width: homeView.productCollection.frame.width / 2 - 10, height: homeView.productCollection.frame.width / 2 )
+////        case specialCollct:
+////
+////        case seeAllCollect:
+//        default:
+//            return CGSize(width: 20, height: 20)
 //        }
 //
-//    }
+
+//}
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 20
-//    }
-//
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+
     
     
     
@@ -221,68 +241,68 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
 
 
 
-//MARK: - ProductsViewModelDelegate
-
-extension HomeController: ProductsViewModelDelegate {
-    func didFetchProductsByCategorySuccessful() {
-        
-    }
-    
-    func didFetchSingleProduct(_ product: Product) {
-        
-    }
-    
-    func didFetchCartCountSuccessful() {
-        
-    }
-    
- 
-
-//    func didFetchSingleProduct(_ product: Product) {
-//        let controller = ProductDetailController(product: product)
-//        navigationController?.pushViewController(controller, animated: true)
-//    }
-    
-    func didOccurError(_ error: Error) {
-        print(error.localizedDescription)
-    }
-    func didFetchSpecialProductsSuccessful() {
-       
-        specialCollct.reloadData()
-    }
-    
-    func didFetchAllProductsSuccessful() {
-        topCollection.reloadData()
-        seeAllCollect.reloadData()
-        
-
-    }
-    
-    func didFetchAllCategories() {
-        catCollect.reloadData()
-    }
-    
+////MARK: - ProductsViewModelDelegate
+//
+//extension HomeController: ProductsViewModelDelegate {
 //    func didFetchProductsByCategorySuccessful() {
-//        homeView.productCollection.reloadData()
+//        
 //    }
-    
-    func didUpdateWishListSuccessful() {
-    }
-   
+//    
+//    func didFetchSingleProduct(_ product: Product) {
+//        
+//    }
+//    
 //    func didFetchCartCountSuccessful() {
-//        if let cartCount = productsViewModel.cart?.count {
-//            if cartCount == 0 {
-//                tabBarController?.tabBar.items?[2].badgeValue = nil
-//            } else {
-//                tabBarController?.tabBar.items?[2].badgeValue = "\(cartCount)"
-//            }
-//        }
+//        
+//    }
+//    
+// 
+//
+////    func didFetchSingleProduct(_ product: Product) {
+////        let controller = ProductDetailController(product: product)
+////        navigationController?.pushViewController(controller, animated: true)
+////    }
+//    
+//    func didOccurError(_ error: Error) {
+//        print(error.localizedDescription)
+//    }
+//    func didFetchSpecialProductsSuccessful() {
+//       
+//        specialCollct.reloadData()
+//    }
+//    
+//    func didFetchAllProductsSuccessful() {
+//        topCollection.reloadData()
+//        seeAllCollect.reloadData()
+//        
 //
 //    }
-    
-    
-    
-}
+//    
+//    func didFetchAllCategories() {
+//        catCollect.reloadData()
+//    }
+//    
+////    func didFetchProductsByCategorySuccessful() {
+////        homeView.productCollection.reloadData()
+////    }
+//    
+//    func didUpdateWishListSuccessful() {
+//    }
+//   
+////    func didFetchCartCountSuccessful() {
+////        if let cartCount = productsViewModel.cart?.count {
+////            if cartCount == 0 {
+////                tabBarController?.tabBar.items?[2].badgeValue = nil
+////            } else {
+////                tabBarController?.tabBar.items?[2].badgeValue = "\(cartCount)"
+////            }
+////        }
+////
+////    }
+//    
+//    
+//    
+//}
 
 
 

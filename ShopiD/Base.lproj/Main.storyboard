@@ -591,14 +591,14 @@
                                                     <outlet property="delegate" destination="723-IY-Fwp" id="he6-AD-aNG"/>
                                                 </connections>
                                             </searchBar>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wzj-Dt-ZfD">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wzj-Dt-ZfD">
                                                 <rect key="frame" x="0.0" y="65" width="393" height="177"/>
-                                                <color key="backgroundColor" red="0.36470589040000001" green="0.37254902719999999" blue="0.90588235859999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <color key="tintColor" name="OrangeColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="177" id="Caz-gL-d1w"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LcB-Fz-INH">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LcB-Fz-INH">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -625,13 +625,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="F5x-Xb-jdP">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="F5x-Xb-jdP">
                                                 <rect key="frame" x="0.0" y="324" width="393" height="55"/>
-                                                <color key="backgroundColor" name="OrangeColor"/>
+                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="Efg-7N-aXs"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Pwc-JI-n8z">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Pwc-JI-n8z">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -643,13 +643,13 @@
                                                     <outlet property="delegate" destination="723-IY-Fwp" id="BAc-S5-msS"/>
                                                 </connections>
                                             </collectionView>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hsf-h5-gzq">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hsf-h5-gzq">
                                                 <rect key="frame" x="0.0" y="444" width="393" height="226"/>
-                                                <color key="backgroundColor" red="0.64705884459999996" green="0.20784312490000001" blue="0.58823531870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="226" id="kX7-TZ-2eu"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sEG-N6-gBN">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sEG-N6-gBN">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -678,8 +678,8 @@
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HEC-jb-GZh">
                                                 <rect key="frame" x="0.0" y="891" width="393" height="1084"/>
-                                                <color key="backgroundColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.29803922770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RgY-BP-wRM">
+                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RgY-BP-wRM">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -698,7 +698,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
                                             <constraint firstItem="oB3-71-8pK" firstAttribute="top" secondItem="190-nd-EhU" secondAttribute="bottom" constant="29" id="0h3-DB-T2U"/>
                                             <constraint firstAttribute="trailing" secondItem="Wzj-Dt-ZfD" secondAttribute="trailing" id="18r-EO-bf1"/>
@@ -725,7 +725,6 @@
                                             <constraint firstItem="2NC-8B-kPn" firstAttribute="leading" secondItem="gm8-0Z-ERP" secondAttribute="leading" constant="8" id="cPm-dD-dS3"/>
                                             <constraint firstItem="01W-bG-txG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gm8-0Z-ERP" secondAttribute="leading" constant="20" symbolic="YES" id="ePB-Wo-NeX"/>
                                             <constraint firstItem="F5x-Xb-jdP" firstAttribute="leading" secondItem="gm8-0Z-ERP" secondAttribute="leading" id="eQ2-ci-24e"/>
-                                            <constraint firstItem="Wzj-Dt-ZfD" firstAttribute="top" secondItem="01W-bG-txG" secondAttribute="bottom" constant="17" id="g9M-ab-DAQ"/>
                                             <constraint firstItem="HEC-jb-GZh" firstAttribute="leading" secondItem="gm8-0Z-ERP" secondAttribute="leading" id="hOT-YC-sVw"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cdF-eS-W2n" secondAttribute="trailing" constant="20" symbolic="YES" id="hyi-Er-YJK"/>
                                             <constraint firstItem="F5x-Xb-jdP" firstAttribute="top" secondItem="cdF-eS-W2n" secondAttribute="bottom" constant="13" id="kz1-jl-eB6"/>
@@ -746,7 +745,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e5w-gV-ZoU"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="kWh-1o-6qx" firstAttribute="trailing" secondItem="e5w-gV-ZoU" secondAttribute="trailing" id="2Pb-Yd-WiT"/>
                             <constraint firstItem="kWh-1o-6qx" firstAttribute="top" secondItem="e5w-gV-ZoU" secondAttribute="top" id="DI1-VM-Vib"/>
@@ -1362,6 +1361,9 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

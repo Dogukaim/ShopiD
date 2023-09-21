@@ -15,10 +15,19 @@ class MidCollectionCell: UICollectionViewCell {
     @IBOutlet weak var categorysLabel: UILabel!
     
     
-    
+
     
     func configure(data: Categories, indexPath: IndexPath) {
         categorysLabel.text = data[indexPath.row].capitalized
+        
+        
     }
-
+    
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        categorysLabel.layer.cornerRadius = 25
+        categorysLabel.sizeToFit()
+    }
+    
 }

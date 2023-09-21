@@ -31,4 +31,11 @@ class ThirdCollectionCell: UICollectionViewCell {
     }
     
     
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        thirdImage.layer.cornerRadius = 20
+        
+    }
+    
 }

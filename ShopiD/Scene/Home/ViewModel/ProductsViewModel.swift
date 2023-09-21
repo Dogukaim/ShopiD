@@ -46,9 +46,10 @@ final class ProductsViewModel {
     func fetchAllProducts() {
         manager.fetchProducts(type: .fetchAllProducts){ products in
             if let products = products {
-                self.productsByCategory = products
+                self.seeAllProducts = products
                 self.allProductsToFirestore(products: products)
                 self.delegate?.didFetchAllProductsSuccessful()
+                self.successCallback?()
             }
         } onError: { error in
             self.delegate?.didOccurError(error)
@@ -62,6 +63,7 @@ final class ProductsViewModel {
                 self.specialProducts = products.shuffled()
             
                 self.delegate?.didFetchSpecialProductsSuccessful()
+                self.successCallback?()
             }
         } onError: { error in
             self.delegate?.didOccurError(error)
@@ -73,7 +75,8 @@ final class ProductsViewModel {
         manager.fetchSingleProduct(type: .fetchSingleProducts(id: id)) { product in
             if let product = product {
                 self.singleProduct = product
-                self.delegate?.didFetchSingleProduct(product)
+//                self.delegate?.didFetchSingleProduct(product)
+                self.successCallback?()
             }
         } onError: { error in
             self.delegate?.didOccurError(error)
@@ -87,7 +90,8 @@ final class ProductsViewModel {
             if let categories = categories {
                 self.allCategories = categories
                 self.allCategories.insert("All", at:0)
-                self.delegate?.didFetchAllCategories()
+//                self.delegate?.didFetchAllCategories()
+                self.successCallback?()
             }
 
         } onError: { error in

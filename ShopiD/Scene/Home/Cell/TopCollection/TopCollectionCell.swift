@@ -31,6 +31,15 @@ class TopCollectionCell: UICollectionViewCell {
         nameTop.text = data.topname
         priceTop.text = data.topPrice
     }
+    
+    
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        imageTop.layer.cornerRadius = 10
+        
+    }
+    
 }
 
 
