@@ -134,7 +134,7 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
         case catCollect:
             guard let cell = catCollect.dequeueReusableCell(withReuseIdentifier: "\(MidCollectionCell.self)", for: indexPath) as? MidCollectionCell else { return UICollectionViewCell() }
             cell.configure(data: productsviewModel.allCategories, indexPath: indexPath)
-
+            
             return cell
         case specialCollct:
             guard let cell = specialCollct.dequeueReusableCell(withReuseIdentifier: "\(ThirdCollectionCell.self)", for: indexPath) as? ThirdCollectionCell else { return UICollectionViewCell() }
@@ -155,22 +155,32 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
     
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
 
-        if (topCollection != nil) {
+        
+        if (topCollection  == collectionView) {
+            
+            return CGSize(width: (topCollection.frame.width / 3), height: (topCollection.frame.height))
+            
+        }
+        else if  (seeAllCollect == collectionView )  {
 
-           return CGSize(width: (topCollection.frame.width / 3), height: (topCollection.frame.height))
+            return CGSize(width: ((seeAllCollect.frame.width / 2.5) + 26), height: (seeAllCollect.frame.height / 4))
 
-        } else if  (catCollect != nil) {
+        }
+        else if  (specialCollct == collectionView) {
+            
+            return CGSize(width: (specialCollct.frame.width / 3), height: (specialCollct.frame.height))
 
-            return CGSize(width: (catCollect.frame.width - 13) , height: (catCollect.frame.height) - 41)
-
-        }else {
-
+        }
+        
+        else {
+            
             return collectionView.contentSize
         }
-
-
     }
+
+    
     
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -190,13 +200,13 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
 //}
     
     
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-
-    
-    
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 10
+//    }
+//
+//    
+//    
     
     
     

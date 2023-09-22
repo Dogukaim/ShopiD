@@ -9,29 +9,22 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" id="y14-73-GrQ" customClass="MidCollectionCell" customModule="ShopiD" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="y14-73-GrQ" customClass="MidCollectionCell" customModule="ShopiD" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="42" height="29"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NWY-te-TFu">
                 <rect key="frame" x="0.0" y="0.0" width="42" height="29"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5b-Au-B6y">
-                        <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="29"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="29" id="TBU-7F-OMN"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="U5b-Au-B6y">
+                        <rect key="frame" x="0.33333333333333215" y="4.3333333333333339" width="41.333333333333343" height="20.333333333333329"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                <constraints>
-                    <constraint firstItem="U5b-Au-B6y" firstAttribute="top" secondItem="NWY-te-TFu" secondAttribute="top" id="c3D-Xc-jmV"/>
-                    <constraint firstAttribute="bottom" secondItem="U5b-Au-B6y" secondAttribute="bottom" id="hdf-q1-AEg"/>
-                    <constraint firstItem="U5b-Au-B6y" firstAttribute="leading" secondItem="NWY-te-TFu" secondAttribute="leading" id="kJV-K3-502"/>
-                </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="41" height="50"/>
             <connections>

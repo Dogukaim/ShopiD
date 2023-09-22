@@ -36,7 +36,7 @@ class TopCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         
         super.awakeFromNib()
-        imageTop.layer.cornerRadius = 10
+        layer.cornerRadius = 10
         
     }
     

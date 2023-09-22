@@ -25,44 +25,45 @@
                             <constraint firstAttribute="height" constant="140" id="u5V-Cy-HMt"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRv-m6-SDp">
-                        <rect key="frame" x="108" y="148" width="38" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" name="OrangeColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xd-TE-hWf">
-                        <rect key="frame" x="5" y="143" width="104" height="34"/>
+                        <rect key="frame" x="5" y="143" width="105" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="8Vp-OB-sGu"/>
+                            <constraint firstAttribute="width" constant="105" id="k9B-eb-lq7"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wS-1w-U2Q">
-                        <rect key="frame" x="116" y="8" width="30" height="27"/>
+                        <rect key="frame" x="122" y="0.0" width="24" height="34.333333333333336"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34.329999999999998" id="7Jn-we-p7X"/>
+                        </constraints>
                         <color key="tintColor" name="OrangeColor"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRv-m6-SDp">
+                        <rect key="frame" x="118" y="148" width="33" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="OrangeColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="TRv-m6-SDp" firstAttribute="leading" secondItem="cdl-Ld-8Dd" secondAttribute="leading" constant="108" id="1qL-9Z-VUd"/>
                     <constraint firstAttribute="bottom" secondItem="TRv-m6-SDp" secondAttribute="bottom" constant="5" id="2dz-hM-zuu"/>
+                    <constraint firstItem="4wS-1w-U2Q" firstAttribute="top" secondItem="cdl-Ld-8Dd" secondAttribute="top" id="Alk-bE-jbq"/>
                     <constraint firstAttribute="trailing" secondItem="4wS-1w-U2Q" secondAttribute="trailing" constant="4" id="DbX-1u-ZBy"/>
                     <constraint firstItem="4Bj-Gm-aT7" firstAttribute="top" secondItem="cdl-Ld-8Dd" secondAttribute="top" id="Kux-lq-NxK"/>
-                    <constraint firstItem="TRv-m6-SDp" firstAttribute="top" secondItem="4wS-1w-U2Q" secondAttribute="bottom" constant="113" id="OWY-ti-ltC"/>
                     <constraint firstItem="4Bj-Gm-aT7" firstAttribute="leading" secondItem="cdl-Ld-8Dd" secondAttribute="leading" id="TPi-8b-fiB"/>
-                    <constraint firstItem="4wS-1w-U2Q" firstAttribute="leading" secondItem="cdl-Ld-8Dd" secondAttribute="leading" constant="116" id="UL7-XF-XBs"/>
+                    <constraint firstItem="4wS-1w-U2Q" firstAttribute="leading" secondItem="cdl-Ld-8Dd" secondAttribute="leading" constant="122" id="UL7-XF-XBs"/>
                     <constraint firstItem="0Xd-TE-hWf" firstAttribute="top" secondItem="4Bj-Gm-aT7" secondAttribute="bottom" constant="3" id="aQZ-2B-3o6"/>
                     <constraint firstAttribute="bottom" secondItem="0Xd-TE-hWf" secondAttribute="bottom" id="dZc-Ce-vH9"/>
-                    <constraint firstAttribute="trailing" secondItem="TRv-m6-SDp" secondAttribute="trailing" constant="4" id="jWf-IV-Z2Y"/>
                     <constraint firstItem="TRv-m6-SDp" firstAttribute="top" secondItem="4Bj-Gm-aT7" secondAttribute="bottom" constant="8" id="jql-yv-bee"/>
+                    <constraint firstItem="TRv-m6-SDp" firstAttribute="leading" secondItem="0Xd-TE-hWf" secondAttribute="trailing" constant="8" id="mqk-h2-vPi"/>
                     <constraint firstAttribute="trailing" secondItem="4Bj-Gm-aT7" secondAttribute="trailing" id="q7r-M5-mQ8"/>
                     <constraint firstItem="0Xd-TE-hWf" firstAttribute="leading" secondItem="cdl-Ld-8Dd" secondAttribute="leading" constant="5" id="szM-Ad-RXf"/>
-                    <constraint firstAttribute="trailing" secondItem="0Xd-TE-hWf" secondAttribute="trailing" constant="41" id="xIS-aZ-dA1"/>
-                    <constraint firstItem="4wS-1w-U2Q" firstAttribute="top" secondItem="cdl-Ld-8Dd" secondAttribute="top" constant="8" id="zee-rS-QNu"/>
                 </constraints>
             </collectionViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,7 +73,7 @@
                 <outlet property="proPrice" destination="TRv-m6-SDp" id="6DJ-KE-MVt"/>
                 <outlet property="proTitle" destination="0Xd-TE-hWf" id="WbB-ty-hFW"/>
             </connections>
-            <point key="canvasLocation" x="-93" y="-107"/>
+            <point key="canvasLocation" x="-93.129770992366403" y="-107.3943661971831"/>
         </collectionViewCell>
     </objects>
     <resources>

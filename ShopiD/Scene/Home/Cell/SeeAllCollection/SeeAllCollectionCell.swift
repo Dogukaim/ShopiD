@@ -34,8 +34,9 @@ class SeeAllCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         
         super.awakeFromNib()
-        proImageView.layer.cornerRadius = 20
-//        bgview.addShadow(color: .white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 5)
+        layer.cornerRadius = 12
+
+        
     }
     
 
