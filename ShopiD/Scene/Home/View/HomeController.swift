@@ -18,6 +18,7 @@ class HomeController: UIViewController {
     @IBOutlet weak var specialCollct: UICollectionView!
     @IBOutlet weak var seeAllCollect: UICollectionView!
     
+    @IBOutlet weak var searchs: UISearchBar!
     
     private let homeProfileViewModel = HomeProfileViewModel()
     private let productsviewModel = ProductsViewModel()
@@ -27,7 +28,7 @@ class HomeController: UIViewController {
         configureNavBar()
         collectionSetup()
         isSucced()
-        
+//        navigationController?.hidesBarsOnSwipe = true
         getData()
         
     }
@@ -46,7 +47,7 @@ class HomeController: UIViewController {
     }
 
     
-    func getData() {
+    private func getData() {
         productsviewModel.fetchAllProducts()
         productsviewModel.fetchOnlyCategory()
         productsviewModel.fetchSpecialProducts()
@@ -76,32 +77,36 @@ class HomeController: UIViewController {
     }
     
     
-    
+    private func searchDelegate() {
+        
+        searchs.delegate = self
+    }
     
     
 }
 
 
-//MARK: - SerchBar Methods
+    //MARK: - SerchBar Methods
 
-//extension HomeController: UISearchBarDelegate {
-//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        let searchVC = SearchController()
-//        navigationController?.pushViewController(searchVC, animated: true)
-//        
-//    }
-//    
-//}
+   extension HomeController: UISearchBarDelegate {
+       func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+           let controller = self.storyboard?.instantiateViewController(withIdentifier: "CategoriesController") as!  CategoriesController
+           self.navigationController?.pushViewController(controller, animated: true)
+   
+       }
+   
+   }
+
+//MARK: Scrool Navigation
 
 
 
 
-
-extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 20
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,  minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    //        return 20
+    //    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
@@ -174,6 +179,7 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
 
         }
         
+        
         else {
             
             return collectionView.contentSize
@@ -183,59 +189,28 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
     
     
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        switch collectionView {
-//        case topCollection:
-//            return CGSize(width: topCollection.frame.width / 3 , height: (topCollection.frame.height))
-////        case catCollect:
-////            return CGSize(width: homeView.productCollection.frame.width / 2 - 10, height: homeView.productCollection.frame.width / 2 )
-////        case specialCollct:
-////
-////        case seeAllCollect:
-//        default:
-//            return CGSize(width: 20, height: 20)
-//        }
-//
-
-//}
-    
-    
-//    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 10
-//    }
-//
-//    
-//    
-    
-    
     
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
+            
+        case topCollection:
+            
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "ProductController") as!  ProductController
+            self.navigationController?.pushViewController(controller, animated: true)
+                    
+            
+        case catCollect:
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "CategoriesController") as!  CategoriesController
+            self.navigationController?.pushViewController(controller, animated: true)
 
-//        case topCollection:
-//            guard let productId = productsviewModel.seeAllProducts[indexPath.row].id else { return }
-//
-//
-//        case catCollect:
-//            let category = productsviewModel.allCategories[indexPath.row]
-//            if category == "All" {
-//                productsviewModel.fetchAllProducts()
-//            } else {
-////                productsviewModel.fetchProductByCategory(category)
-//                productsviewModel.fetchAllProducts()
-//            }
-//
-//
-//
-//        case specialCollct:
-//            guard let productId = productsviewModel.specialProducts[indexPath.row].id else { return }
-////            productsviewModel.fetchSingleProduct(productId: productId)
-//
-//        case seeAllCollect:
-//            guard let productId = productsviewModel.seeAllProducts[indexPath.row].id else { return }
-//
+        case specialCollct:
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "ProductController") as!  ProductController
+            self.navigationController?.pushViewController(controller, animated: true)
+
+        case seeAllCollect:
+            guard productsviewModel.seeAllProducts[indexPath.row].id != nil else { return }
+
 
 
         default:

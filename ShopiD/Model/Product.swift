@@ -11,9 +11,10 @@ import Foundation
 
 //MARK: Product
 
-struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolViewCell {
+struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolViewCell,ProductsProtocolCell,CategorysProtocolCell {
     
     
+  
     
     
     let id: Int?
@@ -109,6 +110,82 @@ struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolVie
     }
     
 
+    
+    //MARK: ProductsProtocolCell
+    
+    var produimage: String {
+        if let image = image {
+            return image
+        }
+        return ""
+    }
+    
+    var produname: String {
+        if let title = title {
+            return title
+        }
+        return ""
+    }
+    
+    var produprice: String {
+        if let price = price {
+            return "$\(price)"
+        }
+        return ""
+    }
+    
+    var produsold: String {
+        if let sold = rating?.count {
+            return "\(sold) sold"
+        }
+        return ""
+    }
+    
+    var produrati: String {
+        if let rate = rating?.rate {
+            return "\(rate)"
+        }
+        return ""
+    }
+    
+    
+    
+    //MARK: -CategorysProtocolCell
+    
+    var catproimage: String {
+        if let image = image {
+            return image
+        }
+        return ""
+    }
+    
+    var catproduname: String {
+        if let title = title {
+            return title
+        }
+        return ""
+    }
+    
+    var catproduprice: String {
+        if let price = price {
+            return "$\(price)"
+        }
+        return ""
+    }
+    
+    var catprodusold: String {
+        if let sold = rating?.count {
+            return "\(sold) sold"
+        }
+        return ""
+    }
+    
+    var catprodurati: String {
+        if let rate = rating?.rate {
+            return "\(rate)"
+        }
+        return ""
+    }
     
     
 }

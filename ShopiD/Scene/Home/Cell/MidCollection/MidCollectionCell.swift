@@ -19,8 +19,8 @@ class MidCollectionCell: UICollectionViewCell {
     
     func configure(data: Categories, indexPath: IndexPath) {
         categorysLabel.text = data[indexPath.row].capitalized
-        categorysLabel.layer.cornerRadius = 25
-//        categorysLabel.sizeToFit()
+        
+        
         
     }
 
@@ -32,7 +32,7 @@ class MidCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         
         super.awakeFromNib()
-        layer.cornerRadius = 25
+        layer.cornerRadius = 1
         layer.borderWidth = 1
         categorysLabel.sizeToFit()
     
