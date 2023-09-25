@@ -10,6 +10,8 @@ import UIKit
 
 
 
+
+
 class HomeController: UIViewController {
     
     
@@ -28,12 +30,18 @@ class HomeController: UIViewController {
         configureNavBar()
         collectionSetup()
         isSucced()
-//        navigationController?.hidesBarsOnSwipe = true
+
         getData()
         
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        homeProfileViewModel.fetchUser()
+        homeProfileViewModel.fetchProfilePhoto()
+        homeProfileViewModel.getTime()
+        productsviewModel.fetchCart()
+    }
     
     
     func isSucced() {
@@ -80,6 +88,7 @@ class HomeController: UIViewController {
     private func searchDelegate() {
         
         searchs.delegate = self
+        
     }
     
     
@@ -104,9 +113,7 @@ class HomeController: UIViewController {
 
     extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,  minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    //        return 20
-    //    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
@@ -209,10 +216,18 @@ class HomeController: UIViewController {
             self.navigationController?.pushViewController(controller, animated: true)
 
         case seeAllCollect:
-            guard productsviewModel.seeAllProducts[indexPath.row].id != nil else { return }
-
-
-
+//            let controller = DetailController()
+//            let bundle = Bundle(for: type(of: controller))
+//            bundle.loadNibNamed("DetailController", owner: controller,options: nil)
+//            self.navigationController?.show(controller, sender: nil)
+//            controller.getDataForFireBase(data: [indexPath.row])
+//
+//
+            guard let productId = productsviewModel.singleProduct?.id else { return }
+                productsviewModel.fetchSingleProduct(productId: productId)
+                let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailController") as!  DetailController
+                self.navigationController?.pushViewController(controller, animated: true)
+                
         default:
             return print("Did not show next VC")
         }

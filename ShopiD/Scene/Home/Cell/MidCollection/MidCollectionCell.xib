@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +25,7 @@
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="U5b-Au-B6y">
                         <rect key="frame" x="0.0" y="0.0" width="123" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" name="OrangeColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -44,11 +45,15 @@
             <size key="customSize" width="122" height="50"/>
             <connections>
                 <outlet property="categorysLabel" destination="U5b-Au-B6y" id="dLw-oD-a31"/>
+                <outlet property="imageLabl" destination="ZXi-d6-lP4" id="NV1-jl-Rnf"/>
             </connections>
             <point key="canvasLocation" x="51.145038167938928" y="2.4647887323943665"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <namedColor name="OrangeColor">
+            <color red="1" green="0.41100001335144043" blue="0.19499999284744263" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

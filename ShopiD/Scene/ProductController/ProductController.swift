@@ -60,7 +60,7 @@ extension ProductController: UICollectionViewDelegate,UICollectionViewDataSource
     }
         
         
-        
+    
         
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -94,6 +94,9 @@ extension ProductController: UICollectionViewDelegate,UICollectionViewDataSource
     }
     
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailController") as!  DetailController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
 }

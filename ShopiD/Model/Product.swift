@@ -11,7 +11,8 @@ import Foundation
 
 //MARK: Product
 
-struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolViewCell,ProductsProtocolCell,CategorysProtocolCell {
+struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolViewCell,ProductsProtocolCell,CategorysProtocolCell,DetailProtocol {
+    
     
     
   
@@ -186,6 +187,55 @@ struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolVie
         }
         return ""
     }
+    
+    
+    //MARK: DetailController
+    
+    var detailImagee: String {
+        if let image = image {
+            return image
+        }
+        return ""
+    }
+    
+    var detailName: String {
+        if let title = title {
+            return title
+        }
+        return ""
+    }
+    
+    var detailRati: String {
+        if let rate = rating?.rate {
+            return "\(rate)"
+        }
+        return ""
+    }
+    
+    var detailSold: String {
+        if let sold = rating?.count {
+            return "\(sold) sold"
+        }
+        return ""
+    }
+    
+    var detailDescription: String {
+        if productDescription != nil {
+            return productDescription ?? ""
+        }
+        return ""
+    }
+    
+    var detailPrice: String {
+        if let price = price {
+            return "$\(price)"
+        }
+        return ""
+    }
+    
+    
+    
+    
     
     
 }
