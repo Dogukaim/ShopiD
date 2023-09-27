@@ -76,7 +76,7 @@ final class ProductsViewModel {
             if let product = product {
                 self.singleProduct = product
                 self.delegate?.didFetchSingleProduct(product)
-                self.successCallback?()
+                
             }
         } onError: { error in
             self.delegate?.didOccurError(error)

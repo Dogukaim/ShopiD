@@ -15,6 +15,8 @@ import UIKit
 class HomeController: UIViewController {
     
     
+
+    
     @IBOutlet weak var topCollection: UICollectionView!
     @IBOutlet weak var catCollect: UICollectionView!
     @IBOutlet weak var specialCollct: UICollectionView!
@@ -24,6 +26,9 @@ class HomeController: UIViewController {
     
     private let homeProfileViewModel = HomeProfileViewModel()
     private let productsviewModel = ProductsViewModel()
+    private let productDetailViewModel = ProductDetailViewModel()
+    
+//    private let productDetailViewModel = ProductDetailViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -216,17 +221,14 @@ class HomeController: UIViewController {
             self.navigationController?.pushViewController(controller, animated: true)
 
         case seeAllCollect:
-//            let controller = DetailController()
-//            let bundle = Bundle(for: type(of: controller))
-//            bundle.loadNibNamed("DetailController", owner: controller,options: nil)
-//            self.navigationController?.show(controller, sender: nil)
-//            controller.getDataForFireBase(data: [indexPath.row])
-//
-//
-            guard let productId = productsviewModel.singleProduct?.id else { return }
-                productsviewModel.fetchSingleProduct(productId: productId)
-                let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailController") as!  DetailController
-                self.navigationController?.pushViewController(controller, animated: true)
+
+            guard let productId = productsviewModel.seeAllProducts[indexPath.row].id else { return }
+            productsviewModel.fetchSingleProduct(productId: productId)
+            
+            
+            
+            
+
                 
         default:
             return print("Did not show next VC")
@@ -245,63 +247,63 @@ class HomeController: UIViewController {
 //
 //extension HomeController: ProductsViewModelDelegate {
 //    func didFetchProductsByCategorySuccessful() {
-//        
-//    }
-//    
-//    func didFetchSingleProduct(_ product: Product) {
-//        
-//    }
-//    
-//    func didFetchCartCountSuccessful() {
-//        
-//    }
-//    
-// 
 //
-////    func didFetchSingleProduct(_ product: Product) {
-////        let controller = ProductDetailController(product: product)
-////        navigationController?.pushViewController(controller, animated: true)
-////    }
-//    
+//    }
+//
+//    func didFetchSingleProduct(_ product: Product) {
+//
+//    }
+//
+//    func didFetchCartCountSuccessful() {
+//
+//    }
+//
+//
+//
+//    func didFetchSingleProduct(_ product: Product) {
+//        let controller = ProductDetailController(product: product)
+//        navigationController?.pushViewController(controller, animated: true)
+//    }
+//
 //    func didOccurError(_ error: Error) {
 //        print(error.localizedDescription)
 //    }
 //    func didFetchSpecialProductsSuccessful() {
-//       
+//
 //        specialCollct.reloadData()
 //    }
-//    
+//
 //    func didFetchAllProductsSuccessful() {
 //        topCollection.reloadData()
 //        seeAllCollect.reloadData()
-//        
+//
 //
 //    }
-//    
+//
 //    func didFetchAllCategories() {
 //        catCollect.reloadData()
 //    }
-//    
-////    func didFetchProductsByCategorySuccessful() {
-////        homeView.productCollection.reloadData()
-////    }
-//    
+//
+//    func didFetchProductsByCategorySuccessful() {
+//        homeView.productCollection.reloadData()
+//    }
+//
 //    func didUpdateWishListSuccessful() {
 //    }
-//   
-////    func didFetchCartCountSuccessful() {
-////        if let cartCount = productsViewModel.cart?.count {
-////            if cartCount == 0 {
-////                tabBarController?.tabBar.items?[2].badgeValue = nil
-////            } else {
-////                tabBarController?.tabBar.items?[2].badgeValue = "\(cartCount)"
-////            }
-////        }
-////
-////    }
-//    
-//    
-//    
+//
+//    func didFetchCartCountSuccessful() {
+//        if let cartCount = productsViewModel.cart?.count {
+//            if cartCount == 0 {
+//                tabBarController?.tabBar.items?[2].badgeValue = nil
+//            } else {
+//                tabBarController?.tabBar.items?[2].badgeValue = "\(cartCount)"
+//            }
+//        }
+//
+//    }
+//
+//
+//
 //}
 
 
