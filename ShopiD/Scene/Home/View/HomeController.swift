@@ -12,7 +12,7 @@ import UIKit
 
 
 
-class HomeController: UIViewController {
+final class HomeController: UIViewController {
     
     
 
@@ -224,8 +224,7 @@ class HomeController: UIViewController {
 
             guard let productId = productsviewModel.seeAllProducts[indexPath.row].id else { return }
             productsviewModel.fetchSingleProduct(productId: productId)
-            
-            
+
             
             
 

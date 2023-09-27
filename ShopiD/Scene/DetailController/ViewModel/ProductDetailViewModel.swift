@@ -36,13 +36,20 @@ final class ProductDetailViewModel {
     
     //MARK: - Products
     
-    var products: [Product] = []
-    var singleProduct: Product?
+    var detailProducts: [Product] = []
+    
+    private let  proDetail: Product
+    
+    init(proDetail: Product) {
+        self.proDetail = proDetail
+    }
+    
+    var singleeProduct: Product?
     
     func fetchSingleProduct(productId id: Int) {
         manager.fetchSingleProduct(type: .fetchSingleProducts(id: id)) { product in
             if let product = product {
-                self.singleProduct = product
+                self.singleeProduct = product
                 self.delegate?.didFetchSingleProduct(product)
             }
         } onError: { error in
