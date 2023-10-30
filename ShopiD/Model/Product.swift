@@ -14,10 +14,6 @@ import Foundation
 struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolViewCell,ProductsProtocolCell,CategorysProtocolCell,DetailProtocol {
     
     
-    
-  
-    
-    
     let id: Int?
     let title: String?
     let price: Double?

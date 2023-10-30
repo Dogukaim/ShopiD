@@ -36,8 +36,19 @@ protocol DetailProtocol {
 
     //MARK: - Properties
     private let productsViewModel = ProductsViewModel()
-      var item: Product?
-    
+    var product: Product
+      
+    static let detailSegue = "detailSegue"
+    //MARK: - Init methods
+    init(product: Product) {
+        self.product = product
+        super.init(nibName: nil, bundle: nil)
+    }
+      
+      required init?(coder: NSCoder) {
+          fatalError("init(coder:) has not been implemented")
+      }
+      
     @IBOutlet weak var detaImage: UIImageView!
     @IBOutlet weak var detaName: UILabel!
     @IBOutlet weak var detaRating: UILabel!
@@ -61,30 +72,22 @@ protocol DetailProtocol {
         super.viewDidLoad()
 
         toggleAddToWishListButton()
-        
-//        setupDelegates()
+        toggleStepperElements()
     }
      
 
+     //MARK: Setup Delegate
+      
+      
+      override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(animated)
+          self.navigationController?.isNavigationBarHidden = false
+          if let productId = product.id {
+              productsViewModel.fetchSingleProduct(productId: productId)
+          }
+      }
+     
 
-     
-     
-     
-//    //MARK: Swifty
-//    
-//    var quantity = 1 {
-////        didSet {
-////
-////            if quantity <= 0 {
-////                toggleStepperElements()
-////                quantity = 0
-////            }else if quantity > 10 {
-////                quantity = 10
-////            }
-////            stepperLabel.text = String(quantity)
-////        }
-//    }
-//    
     
     private func toggleStepperElements() {
         stepperStackView.isHidden = !stepperStackView.isHidden
@@ -99,39 +102,24 @@ protocol DetailProtocol {
         favButDeta.setImage(imageFilled, for: .selected)
     }
     
-      func getDataFor(data: Product) {
-          item = data
-      }
+
       
      @IBAction func addToCartButTapp(_ sender: Any) {
-//         if quantity <= 0 {
-//             quantity = 1
-//             stepperStackView.isHidden = false
-//             quantityLabl.isHidden = false
-//         }
-//         stepperStackView.isHidden = false
-//         quantityLabl.isHidden = false
-//         self.interface?.productDetailView(self, quantity: quantity)
+
      }
      
      @IBAction func stepperPlusButTap(_ sender: Any) {
-//         quantity = quantity + 1
-//         interface?.productDetailView(self, stepperValueChanged: quantity)
+
      }
      
      
      @IBAction func stepperMinusButTap(_ sender: Any) {
-//         quantity = quantity - 1
-//         interface?.productDetailView(self, stepperValueChanged: quantity)
+
+         
      }
      
      @IBAction func addToFavButTap(_ sender: Any) {
-//         if favButDeta.isSelected == false {
-//             interface?.productDetailView(self, quantity: 1)
-//         } else {
-//             interface?.productDetailView(self, quantity: 0)
-//         }
-//         favButDeta.isSelected.toggle()
+
      }
      
      
@@ -146,87 +134,7 @@ protocol DetailProtocol {
         detaPrice.layer.cornerRadius = 15
     }
      
-//     //MARK: - Setup Delegates
-//
-//     private func setupDelegates() {
-//
-//         productDetailViewModel.delegate = self
-//     }
      
 
 }
 
-
-////MARK: - ProductDetailModelDelegate
-//
-//extension DetailController: ProductDetailViewModelDelegate {
-//
-//    func didOccurError(_ error: Error) {
-//        print(error.localizedDescription)
-//    }
-//
-//    func didUpdateCartSuccessful(quantity: Int) {
-//        if let productId = product.id {
-//            productDetailViewModel.fetchCart(productId: productId)
-//        }
-//
-//    }
-//
-//    func didFetchCartCountSuccessful() {
-//        if let cartCount = productDetailViewModel.cart?.count {
-//            if cartCount == 0 {
-//                tabBarController?.tabBar.items?[2].badgeValue = nil
-//            } else {
-//                tabBarController?.tabBar.items?[2].badgeValue = "\(cartCount)"
-//            }
-//        }
-//    }
-//
-//    func didFetchCartCostSuccessful(productId: Int, quantity: Int) {
-//        if let cost = productDetailViewModel.cartCost {
-//            detaPrice.text = "$\(cost)"
-//            stepperStackView.isHidden = false
-//            quantityLabl.isHidden = false
-//
-//        } else {
-//            stepperStackView.isHidden = true
-//            quantityLabl.isHidden = true
-//        }
-//
-//    }
-//
-//    func didFetchWishListSuccessful(productId: Int) {
-//        if productId == product.id {
-//            favButDeta.isSelected = true
-//        } else {
-//            favButDeta.isSelected = false
-//
-//        }
-//    }
-//
-//
-//}
-
-
-
-////MARK: - ProductDetailInterface
-//
-//extension DetailController: ProductDetailViewInterface {
-//    func productDetailView(_ view: DetailController, quantity: Int) {
-//        guard let id = product.id else { return }
-//        productsViewModel.updateWishList(productId: id, quantity: quantity)
-//    }
-//
-//    func productDetailView(_ view: DetailController, stepperValueChanged quantity: Int) {
-//        guard let id = product.id else { return }
-//        productDetailViewModel.updateCart(productId: id, quantity: quantity)
-//    }
-//
-//    func productDetailView(_ view: DetailController, quantity: Int, addToWishListButtonTapped button: UIButton) {
-//        guard let id = product.id else { return }
-//        productDetailViewModel.updateCart(productId: id, quantity: quantity)
-//    }
-//
-//
-//
-//}

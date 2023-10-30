@@ -27,8 +27,7 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
         isSucced()
         
         getData()
-        
-//        navigationController?.hidesBarsOnSwipe = true
+
     }
     
     func isSucced() {
@@ -117,13 +116,4 @@ extension CategoriesController: UICollectionViewDelegate,UICollectionViewDataSou
 }
 
 
-//extension CategoriesController: UIScrollViewDelegate{
-//    
-//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        self.navigationController!.setNavigationBarHidden(true, animated: true)
-//    }
-//    
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        self.navigationController!.setNavigationBarHidden(false, animated: true)
-//    }
-//}
+

@@ -8,10 +8,6 @@
 import UIKit
 
 
-
-
-
-
 final class HomeController: UIViewController {
     
     
@@ -26,10 +22,11 @@ final class HomeController: UIViewController {
     
     private let homeProfileViewModel = HomeProfileViewModel()
     private let productsviewModel = ProductsViewModel()
-    private let productDetailViewModel = ProductDetailViewModel()
-    
-//    private let productDetailViewModel = ProductDetailViewModel()
 
+    var products = [Product]()
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
@@ -45,7 +42,7 @@ final class HomeController: UIViewController {
         homeProfileViewModel.fetchUser()
         homeProfileViewModel.fetchProfilePhoto()
         homeProfileViewModel.getTime()
-        productsviewModel.fetchCart()
+
     }
     
     
@@ -224,10 +221,12 @@ final class HomeController: UIViewController {
 
             guard let productId = productsviewModel.seeAllProducts[indexPath.row].id else { return }
             productsviewModel.fetchSingleProduct(productId: productId)
-
             
+            let prodcut = products[indexPath.row]
             
-
+            performSegue(withIdentifier: DetailController.detailSegue, sender: prodcut)
+            collectionView.deselectItem(at: indexPath, animated: true)
+            
                 
         default:
             return print("Did not show next VC")
@@ -242,68 +241,55 @@ final class HomeController: UIViewController {
 
 
 
-////MARK: - ProductsViewModelDelegate
-//
-//extension HomeController: ProductsViewModelDelegate {
-//    func didFetchProductsByCategorySuccessful() {
-//
-//    }
-//
-//    func didFetchSingleProduct(_ product: Product) {
-//
-//    }
-//
-//    func didFetchCartCountSuccessful() {
-//
-//    }
-//
-//
-//
-//    func didFetchSingleProduct(_ product: Product) {
-//        let controller = ProductDetailController(product: product)
-//        navigationController?.pushViewController(controller, animated: true)
-//    }
-//
-//    func didOccurError(_ error: Error) {
-//        print(error.localizedDescription)
-//    }
-//    func didFetchSpecialProductsSuccessful() {
-//
-//        specialCollct.reloadData()
-//    }
-//
-//    func didFetchAllProductsSuccessful() {
-//        topCollection.reloadData()
-//        seeAllCollect.reloadData()
-//
-//
-//    }
-//
-//    func didFetchAllCategories() {
-//        catCollect.reloadData()
-//    }
-//
-//    func didFetchProductsByCategorySuccessful() {
-//        homeView.productCollection.reloadData()
-//    }
-//
-//    func didUpdateWishListSuccessful() {
-//    }
-//
-//    func didFetchCartCountSuccessful() {
-//        if let cartCount = productsViewModel.cart?.count {
-//            if cartCount == 0 {
-//                tabBarController?.tabBar.items?[2].badgeValue = nil
-//            } else {
-//                tabBarController?.tabBar.items?[2].badgeValue = "\(cartCount)"
-//            }
-//        }
-//
-//    }
-//
-//
-//
-//}
+//MARK: - ProductsViewModelDelegate
+
+extension HomeController: ProductsViewModelDelegate {
+    func didOccurError(_ error: Error) {
+        
+    }
+    
+    func didFetchSpecialProductsSuccessful() {
+        
+    }
+    
+    func didFetchAllProductsSuccessful() {
+        
+    }
+    
+    func didFetchAllCategories() {
+        
+    }
+    
+    func didFetchProductsByCategorySuccessful() {
+        
+    }
+    
+    func didFetchSingleProduct(_ product: Product) {
+        let controller = DetailController(product: product)
+        navigationController?.pushViewController(controller, animated: true)
+
+        
+        
+        
+    }
+    
+    func didFetchCartCountSuccessful() {
+        
+    }
+    
+    func didUpdateWishListSuccessful() {
+        
+    }
+    
+    
+
+   
+
+    
+
+
+
+}
 
 
 
