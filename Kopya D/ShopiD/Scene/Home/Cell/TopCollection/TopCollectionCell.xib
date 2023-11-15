@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qHd-sZ-S1E" customClass="TopCollectionCell" customModule="ShopiD" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="178"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="xKB-Pj-kyt">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="178"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7lE-Yk-S9z">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="143"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="143" id="7VJ-gn-qcc"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYC-J0-KLR">
+                        <rect key="frame" x="3" y="148" width="100" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="AZV-Bt-WKC"/>
+                            <constraint firstAttribute="width" constant="100" id="IVy-g2-wXz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNS-UG-IIZ">
+                        <rect key="frame" x="103" y="152" width="30.666666666666657" height="15.666666666666657"/>
+                        <color key="tintColor" name="OrangeColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" name="OrangeColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <viewLayoutGuide key="safeArea" id="LGz-rX-zeo"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="AYC-J0-KLR" secondAttribute="bottom" constant="6" id="9Hj-QH-8Cc"/>
+                    <constraint firstItem="7lE-Yk-S9z" firstAttribute="leading" secondItem="xKB-Pj-kyt" secondAttribute="leading" id="DO2-KP-xYO"/>
+                    <constraint firstItem="AYC-J0-KLR" firstAttribute="leading" secondItem="xKB-Pj-kyt" secondAttribute="leading" constant="3" id="Fwj-Qd-v3t"/>
+                    <constraint firstItem="AYC-J0-KLR" firstAttribute="leading" secondItem="xKB-Pj-kyt" secondAttribute="leading" constant="3" id="IfS-Bi-2zL"/>
+                    <constraint firstItem="TNS-UG-IIZ" firstAttribute="top" secondItem="7lE-Yk-S9z" secondAttribute="bottom" constant="9" id="IgO-GS-Jsm"/>
+                    <constraint firstItem="7lE-Yk-S9z" firstAttribute="top" secondItem="xKB-Pj-kyt" secondAttribute="top" id="JbF-7m-2bA"/>
+                    <constraint firstAttribute="trailing" secondItem="7lE-Yk-S9z" secondAttribute="trailing" id="KlX-ky-uyl"/>
+                    <constraint firstAttribute="bottom" secondItem="AYC-J0-KLR" secondAttribute="bottom" constant="2" id="TJg-Nd-Khi"/>
+                    <constraint firstItem="TNS-UG-IIZ" firstAttribute="leading" secondItem="AYC-J0-KLR" secondAttribute="trailing" id="VFx-xO-cAh"/>
+                    <constraint firstItem="AYC-J0-KLR" firstAttribute="top" secondItem="7lE-Yk-S9z" secondAttribute="bottom" constant="5" id="lD8-7p-POQ"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="75" height="42"/>
+            <connections>
+                <outlet property="imageTop" destination="7lE-Yk-S9z" id="cKu-CT-iKb"/>
+                <outlet property="nameTop" destination="AYC-J0-KLR" id="Voo-HS-mqe"/>
+                <outlet property="priceTop" destination="TNS-UG-IIZ" id="KAd-Tp-C0f"/>
+            </connections>
+            <point key="canvasLocation" x="35.877862595419849" y="-50.70422535211268"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="OrangeColor">
+            <color red="1" green="0.41100001335144043" blue="0.19499999284744263" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>

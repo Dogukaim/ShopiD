@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="QjV-zB-Tis" customClass="SeeAllCollectionCell" customModule="ShopiD" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="177"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cdl-Ld-8Dd">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="177"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Bj-Gm-aT7" userLabel="pro Image View">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="140"/>
+                        <color key="tintColor" name="ColorPurple"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="fsV-iK-yQs"/>
+                            <constraint firstAttribute="height" constant="140" id="u5V-Cy-HMt"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xd-TE-hWf">
+                        <rect key="frame" x="5" y="143" width="105" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="8Vp-OB-sGu"/>
+                            <constraint firstAttribute="width" constant="105" id="k9B-eb-lq7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wS-1w-U2Q">
+                        <rect key="frame" x="122" y="0.0" width="24" height="34.333333333333336"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34.329999999999998" id="7Jn-we-p7X"/>
+                        </constraints>
+                        <color key="tintColor" name="OrangeColor"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRv-m6-SDp">
+                        <rect key="frame" x="118" y="148" width="33" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="OrangeColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="TRv-m6-SDp" secondAttribute="bottom" constant="5" id="2dz-hM-zuu"/>
+                    <constraint firstItem="4wS-1w-U2Q" firstAttribute="top" secondItem="cdl-Ld-8Dd" secondAttribute="top" id="Alk-bE-jbq"/>
+                    <constraint firstAttribute="trailing" secondItem="4wS-1w-U2Q" secondAttribute="trailing" constant="4" id="DbX-1u-ZBy"/>
+                    <constraint firstItem="4Bj-Gm-aT7" firstAttribute="top" secondItem="cdl-Ld-8Dd" secondAttribute="top" id="Kux-lq-NxK"/>
+                    <constraint firstItem="4Bj-Gm-aT7" firstAttribute="leading" secondItem="cdl-Ld-8Dd" secondAttribute="leading" id="TPi-8b-fiB"/>
+                    <constraint firstItem="4wS-1w-U2Q" firstAttribute="leading" secondItem="cdl-Ld-8Dd" secondAttribute="leading" constant="122" id="UL7-XF-XBs"/>
+                    <constraint firstItem="0Xd-TE-hWf" firstAttribute="top" secondItem="4Bj-Gm-aT7" secondAttribute="bottom" constant="3" id="aQZ-2B-3o6"/>
+                    <constraint firstAttribute="bottom" secondItem="0Xd-TE-hWf" secondAttribute="bottom" id="dZc-Ce-vH9"/>
+                    <constraint firstItem="TRv-m6-SDp" firstAttribute="top" secondItem="4Bj-Gm-aT7" secondAttribute="bottom" constant="8" id="jql-yv-bee"/>
+                    <constraint firstItem="TRv-m6-SDp" firstAttribute="leading" secondItem="0Xd-TE-hWf" secondAttribute="trailing" constant="8" id="mqk-h2-vPi"/>
+                    <constraint firstAttribute="trailing" secondItem="4Bj-Gm-aT7" secondAttribute="trailing" id="q7r-M5-mQ8"/>
+                    <constraint firstItem="0Xd-TE-hWf" firstAttribute="leading" secondItem="cdl-Ld-8Dd" secondAttribute="leading" constant="5" id="szM-Ad-RXf"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <size key="customSize" width="244" height="159"/>
+            <connections>
+                <outlet property="proImageView" destination="4Bj-Gm-aT7" id="AEV-yW-lZc"/>
+                <outlet property="proPrice" destination="TRv-m6-SDp" id="6DJ-KE-MVt"/>
+                <outlet property="proTitle" destination="0Xd-TE-hWf" id="WbB-ty-hFW"/>
+            </connections>
+            <point key="canvasLocation" x="-93.129770992366403" y="-107.3943661971831"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <namedColor name="ColorPurple">
+            <color red="0.3449999988079071" green="0.33700001239776611" blue="0.83899998664855957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="OrangeColor">
+            <color red="1" green="0.41100001335144043" blue="0.19499999284744263" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>
