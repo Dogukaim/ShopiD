@@ -19,7 +19,6 @@ import Firebase
 
 //MARK: - ProductDetailProtocol
 protocol DetailProtocol {
-
     var detailImagee: String { get }
     var detailName: String { get }
     var detailRati: String { get }
@@ -28,8 +27,10 @@ protocol DetailProtocol {
     var detailPrice: String { get }
 }
 
-
-    
+protocol DetailViewInterface: AnyObject {
+    func configure(with product: DetailProtocol)
+    func didOccurError(errorMsg: String)
+}
    
 
 
@@ -38,7 +39,8 @@ final class DetailController: UIViewController  {
 
     
 
-
+    @IBOutlet weak var detaDescr: UILabel!
+    
 
       
     
@@ -54,7 +56,7 @@ final class DetailController: UIViewController  {
     @IBOutlet weak var detaName: UILabel!
     @IBOutlet weak var detaRating: UILabel!
     @IBOutlet weak var detaSold: UILabel!
-    @IBOutlet weak var detaDescr: UILabel!
+    
     @IBOutlet weak var detaPrice: UILabel!
     @IBOutlet weak var quantityLabl: UILabel!
     @IBOutlet weak var stepperPlusBut: UIButton!
@@ -65,34 +67,21 @@ final class DetailController: UIViewController  {
      
 
     
+
+    private let viewModel = DetailViewModel()
+    
+    var productID: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        viewModel.view = self
+        if let productID {
+            viewModel.fetchSingleProduct(productId: productID)
+        }
+        
+        
     }
 
-      
-    
-      
-     //MARK: Setup Delegate
-      
-      private func configureContro() {
-          
-//          
-//          guard let detail = deta else { return }
-//          detaImage.downloadSetImage(url: detail.image ?? "" )
-//          detaName.text = detail.title
-////          detaRating.text = productt
-//          detaRating.text = detail.detailRati
-//          detaDescr.text = detail.productDescription
-//          detaPrice.text = String(describing: detail.price)
-//
-          
-          
-      }
-   
-
-    
     private func toggleStepperElements() {
         stepperStackView.isHidden = !stepperStackView.isHidden
         quantityLabl.isHidden = !quantityLabl.isHidden
@@ -125,30 +114,25 @@ final class DetailController: UIViewController  {
      @IBAction func addToFavButTap(_ sender: Any) {
 
      }
-     
-//
-     func configure(data: DetailProtocol) {
 
-        detaImage.downloadSetImage(url: data.detailImagee)
-        detaName.text = data.detailName
-        detaRating.text = data.detailRati
-        detaSold.text = "\(data.detailSold)"
-        detaDescr.text = data.detailDescription
-        detaPrice.text = data.detailPrice
+}
+
+//MARK: - DetailViewInterface
+extension DetailController: DetailViewInterface {
+    func didOccurError(errorMsg: String) {
+        
     }
+    
+    
+    func configure(with data: DetailProtocol) {
+       detaImage.downloadSetImage(url: data.detailImagee)
+       detaName.text = data.detailName
+       detaRating.text = data.detailRati
+       detaSold.text = "\(data.detailSold)"
+       detaDescr.text = data.detailDescription
+       detaPrice.text = data.detailPrice
+   }
 
-     
-      
-//      private func setData() {
-//          detaImage.downloadSetImage(url: viewModel.imageD )
-//          detaName.text = viewModel.nameD
-//          detaRating.text = viewModel.detaRatig
-//          detaDescr.text = viewModel.detaDes
-//          detaPrice.text = viewModel.detaPr
-//          
-//      }
-//      
- 
     
     
 }

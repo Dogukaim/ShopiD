@@ -36,7 +36,6 @@
 		9A66C1EA2AB4ADC7008358AF /* NSDate+GetTimeDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A66C1E92AB4ADC7008358AF /* NSDate+GetTimeDateFormat.swift */; };
 		9A679B6C2AC191D6004EF8CB /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A679B6B2AC191D6004EF8CB /* ProductDetailViewModel.swift */; };
 		9A679B6E2AC19385004EF8CB /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A679B6D2AC19385004EF8CB /* Double+Rounded.swift */; };
-		9A71033E2B03A34900DE757A /* DetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A71033D2B03A34900DE757A /* DetailManager.swift */; };
 		9A7615D12AB08B95000C075E /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7615CF2AB08B95000C075E /* FavoriteCell.swift */; };
 		9A7615D22AB08B95000C075E /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A7615D02AB08B95000C075E /* FavoriteCell.xib */; };
 		9A7F9B8C2AA608D70036FD89 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7F9B8B2AA608D70036FD89 /* SignUpController.swift */; };
@@ -49,6 +48,7 @@
 		9A7F9BB42AA771240036FD89 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 9A7F9BB32AA771240036FD89 /* GoogleSignIn */; };
 		9A7F9BB62AA771240036FD89 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9A7F9BB52AA771240036FD89 /* GoogleSignInSwift */; };
 		9A7F9BB82AA77E180036FD89 /* UITextField+RightViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7F9BB72AA77E180036FD89 /* UITextField+RightViewButton.swift */; };
+		9AB234EE2B063AED00DDCB59 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB234ED2B063AED00DDCB59 /* SearchViewModel.swift */; };
 		9AF469012AAB3F03006FE0B9 /* TopCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF468FF2AAB3F03006FE0B9 /* TopCollectionCell.swift */; };
 		9AF469022AAB3F03006FE0B9 /* TopCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF469002AAB3F03006FE0B9 /* TopCollectionCell.xib */; };
 		9AF469062AAB3F4F006FE0B9 /* MidCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF469042AAB3F4F006FE0B9 /* MidCollectionCell.swift */; };
@@ -96,13 +96,13 @@
 		9A66C1E92AB4ADC7008358AF /* NSDate+GetTimeDateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+GetTimeDateFormat.swift"; sourceTree = "<group>"; };
 		9A679B6B2AC191D6004EF8CB /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		9A679B6D2AC19385004EF8CB /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
-		9A71033D2B03A34900DE757A /* DetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailManager.swift; sourceTree = "<group>"; };
 		9A7615CF2AB08B95000C075E /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		9A7615D02AB08B95000C075E /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
 		9A7F9B8B2AA608D70036FD89 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		9A7F9B8D2AA618AF0036FD89 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9A7F9B982AA627050036FD89 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		9A7F9BB72AA77E180036FD89 /* UITextField+RightViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+RightViewButton.swift"; sourceTree = "<group>"; };
+		9AB234ED2B063AED00DDCB59 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		9AF468FF2AAB3F03006FE0B9 /* TopCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionCell.swift; sourceTree = "<group>"; };
 		9AF469002AAB3F03006FE0B9 /* TopCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopCollectionCell.xib; sourceTree = "<group>"; };
 		9AF469042AAB3F4F006FE0B9 /* MidCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidCollectionCell.swift; sourceTree = "<group>"; };
@@ -332,7 +332,6 @@
 			children = (
 				9A66C1DC2AB48238008358AF /* WebService.swift */,
 				9A66C1DE2AB48243008358AF /* WebHelper.swift */,
-				9A71033D2B03A34900DE757A /* DetailManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -486,6 +485,7 @@
 		9AF468F32AAB3E01006FE0B9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9AB234ED2B063AED00DDCB59 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -716,6 +716,7 @@
 				9A66C1E62AB4956F008358AF /* Encodable+Dictionary.swift in Sources */,
 				9A66C1D52AB4800C008358AF /* NetworkManager.swift in Sources */,
 				9A7F9B992AA627050036FD89 /* UIView+Ext.swift in Sources */,
+				9AB234EE2B063AED00DDCB59 /* SearchViewModel.swift in Sources */,
 				9A2C0F1F2AA21B510064FF77 /* OnboardingSlide.swift in Sources */,
 				9AFA51C92AA8C4F3004CAAE2 /* HomeController.swift in Sources */,
 				9A66C1EA2AB4ADC7008358AF /* NSDate+GetTimeDateFormat.swift in Sources */,
@@ -726,7 +727,6 @@
 				9AFA51C62AA894C8004CAAE2 /* SignInViewModel.swift in Sources */,
 				9AFA51D22AA8C5D2004CAAE2 /* ProfileController.swift in Sources */,
 				9A330BD52AA9F89500697F47 /* DetailController.swift in Sources */,
-				9A71033E2B03A34900DE757A /* DetailManager.swift in Sources */,
 				9A2C0EFC2AA201AF0064FF77 /* AppDelegate.swift in Sources */,
 				9A330BE22AAA1A7800697F47 /* OrderViewController.swift in Sources */,
 				9A679B6E2AC19385004EF8CB /* Double+Rounded.swift in Sources */,

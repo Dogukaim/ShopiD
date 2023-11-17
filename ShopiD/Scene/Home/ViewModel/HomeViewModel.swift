@@ -19,14 +19,7 @@ protocol HomeVMDelegate: AnyObject {
 }
 
 
-
-    
-
-
-
 final class HomeViewModel {
-    
-    
     
     let manager = Service.shared
     weak var delegate: HomeVMDelegate?
@@ -39,11 +32,18 @@ final class HomeViewModel {
     var specialProducts: [Product] = []
     
     var allProduct = [Product]()
+    var productsByCategory = [Product]()
+    var searchCategory = [Categories]()
+    
     
     
     var productID: Int?
     
+//    var products: [Product] = []
+    
     static let shared = HomeViewModel()
+    
+    
     
     
     func fetchAllProducts() {
@@ -113,7 +113,24 @@ final class HomeViewModel {
     }
     
     
+
+    
+    
+    
+    
+    func fetchProductByCategory(_ category: String) {
+        manager.fetchProductByCategory(type: .fetchProdudctByCategory(category: category)) { products in
+            if let products = products {
+                self.productsByCategory = products
+//                self.delegate?.didFetchProductsByCategorySuccessful()
+                self.successCallback?()
+            }
+        } onError: { error in
+            self.delegate?.didOccurError(error)
+        }
+        
+    }
+    
     
      
 }
-

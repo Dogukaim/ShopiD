@@ -11,43 +11,43 @@ import FirebaseFirestore
 
 
 
+import Foundation
+import Firebase
+import FirebaseFirestore
 
-protocol DetailDelegate: AnyObject {
-    func didGetProductDetail(isDone: Bool)
+protocol DetailViewModelInterface {
+    var view: DetailViewInterface? { get set }
+
+    func fetchSingleProduct(productId id: Int)
 }
 
-
-
-class DetailViewModel {
-
-    
+final class DetailViewModel {
     
     let manager = Service.shared
     
-    //MARK: - SearchViewModelDelegate
+    //MARK: - References
+    weak var view: DetailViewInterface?
     
-    //MARK: - Products
-    var productId: Int
+}
+
+extension DetailViewModel: DetailViewModelInterface {
     
-    init(id: Int) {
-        self.productId = id
-    }
-    
-    private func fetchSingleProduct(productId id: Int) {
-            manager.fetchSingleProduct(type: .fetchSingleProducts(id: id)) { [weak self] product in
-                guard let self else { return }
-                
-                if let product = product {
-                    view?.didFecthProductDetail()
-                    view?.configure(data: product)
-                }
-                
-            } onError: { [weak self] error in
-                guard let self else { return }
-                
-                view?.didOccurError(error.localizedDescription)
+    func fetchSingleProduct(productId id: Int) {
+        // add loading
+        
+        manager.fetchSingleProduct(type: .fetchSingleProducts(id: id)) { [weak self] product in
+            guard let self else { return }
+            
+            if let product = product {
+                // remove loading
+                view?.configure(with: product)
             }
             
+        } onError: { [weak self] error in
+            guard let self else { return }
+            // show error
+            view?.didOccurError(errorMsg: error.localizedDescription)
         }
-    
+        
+    }
 }

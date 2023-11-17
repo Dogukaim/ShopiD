@@ -42,6 +42,12 @@ enum ProductsSpecificCategoryWebEndPoint {
     
 }
 
+
+
+
+
+
+
 enum ProductCategory {
     case electronics
     case jewelery

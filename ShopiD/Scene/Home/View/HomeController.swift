@@ -20,38 +20,28 @@ final class HomeController: UIViewController {
     
     @IBOutlet weak var searchs: UISearchBar!
     
-//    private let homeProfileViewModel = HomeProfileViewModel()
+    //    private let homeProfileViewModel = HomeProfileViewModel()
     private let productsviewModel = HomeViewModel()
     
-
     private var products = [Product]()
     var details: [Product] = []
     
     var productt: Product?
-    var productID: Int
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
         collectionSetup()
         isSucced()
-
-        getData()
         
+        getData()
     }
-    
-    
-  
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-
         
-
     }
     
     
@@ -61,18 +51,18 @@ final class HomeController: UIViewController {
             self?.catCollect.reloadData()
             self?.specialCollct.reloadData()
             self?.seeAllCollect.reloadData()
-
+            
         }
     }
-
+    
     
     private func getData() {
         productsviewModel.fetchAllProducts()
         productsviewModel.fetchOnlyCategory()
         productsviewModel.fetchSpecialProducts()
-//        productsviewModel.delegate = self
-        productsviewModel.fetchSingleProduct(productId: productID )
-
+        //        productsviewModel.delegate = self
+        
+        
     }
     
     
@@ -106,23 +96,20 @@ final class HomeController: UIViewController {
 }
 
 
-    //MARK: - SerchBar Methods
+//MARK: - SerchBar Methods
 
-   extension HomeController: UISearchBarDelegate {
-       func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-           let controller = self.storyboard?.instantiateViewController(withIdentifier: "CategoriesController") as!  CategoriesController
-           self.navigationController?.pushViewController(controller, animated: true)
-   
-       }
-   
-   }
+extension HomeController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "CategoriesController") as!  CategoriesController
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+    }
+    
+}
 
 //MARK: Scrool Navigation
 
-
-
-
-    extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     
     
@@ -136,7 +123,7 @@ final class HomeController: UIViewController {
             
         case specialCollct:
             return productsviewModel.specialProducts.count
-        
+            
         case seeAllCollect:
             return productsviewModel.seeAllProducts.count
             
@@ -163,23 +150,24 @@ final class HomeController: UIViewController {
             guard let cell = specialCollct.dequeueReusableCell(withReuseIdentifier: "\(ThirdCollectionCell.self)", for: indexPath) as? ThirdCollectionCell else { return UICollectionViewCell() }
             cell.configure(data: productsviewModel.specialProducts[indexPath.row])
             return cell
-        
+            
         case seeAllCollect:
             guard let cell = seeAllCollect.dequeueReusableCell(withReuseIdentifier: "\(SeeAllCollectionCell.self)", for: indexPath) as? SeeAllCollectionCell else { return UICollectionViewCell() }
             cell.configure(data: productsviewModel.seeAllProducts[indexPath.row])
+            
             return cell
         default:
             return UICollectionViewCell()
         }
     }
     
-        
     
     
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-
+        
         
         if (topCollection  == collectionView) {
             
@@ -187,14 +175,14 @@ final class HomeController: UIViewController {
             
         }
         else if  (seeAllCollect == collectionView )  {
-
+            
             return CGSize(width: ((seeAllCollect.frame.width / 2.5) + 26), height: (seeAllCollect.frame.height / 4))
-
+            
         }
         else if  (specialCollct == collectionView) {
             
             return CGSize(width: (specialCollct.frame.width / 3), height: (specialCollct.frame.height))
-
+            
         }
         
         
@@ -203,45 +191,38 @@ final class HomeController: UIViewController {
             return collectionView.contentSize
         }
     }
-
     
     
     
     
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
             
         case topCollection:
-            
             let controller = self.storyboard?.instantiateViewController(withIdentifier: "ProductController") as!  ProductController
             self.navigationController?.pushViewController(controller, animated: true)
-                    
             
         case catCollect:
             let controller = self.storyboard?.instantiateViewController(withIdentifier: "CategoriesController") as!  CategoriesController
             self.navigationController?.pushViewController(controller, animated: true)
-
+            
         case specialCollct:
             let controller = self.storyboard?.instantiateViewController(withIdentifier: "ProductController") as!  ProductController
             self.navigationController?.pushViewController(controller, animated: true)
-
-        case seeAllCollect:
             
-            let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailController") as!  DetailController
+        case seeAllCollect:
+            let selectedProductID = productsviewModel.seeAllProducts[indexPath.item].id
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailController") as! DetailController
+            controller.productID = selectedProductID
             
             self.navigationController?.pushViewController(controller, animated: true)
-
             
         default:
             return print("Did not show next VC")
         }
     }
-        
-
-        
-
-    
     
 }
 
