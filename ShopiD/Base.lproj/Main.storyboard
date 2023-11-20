@@ -573,16 +573,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search Product Name" translatesAutoresizingMaskIntoConstraints="NO" id="dV2-Cw-D2i">
-                                <rect key="frame" x="0.0" y="103" width="393" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="qag-dY-mqf"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lOw-CO-quu">
-                                <rect key="frame" x="0.0" y="153" width="393" height="665"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iYk-2b-1MF">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -597,15 +590,12 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pq2-db-v3J"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
-                            <constraint firstItem="lOw-CO-quu" firstAttribute="top" secondItem="dV2-Cw-D2i" secondAttribute="bottom" constant="10" id="0l0-zV-aox"/>
                             <constraint firstItem="lOw-CO-quu" firstAttribute="trailing" secondItem="pq2-db-v3J" secondAttribute="trailing" id="3EM-A7-WKh"/>
+                            <constraint firstItem="lOw-CO-quu" firstAttribute="top" secondItem="pq2-db-v3J" secondAttribute="top" id="3KI-dA-aLC"/>
                             <constraint firstItem="pq2-db-v3J" firstAttribute="bottom" secondItem="lOw-CO-quu" secondAttribute="bottom" id="8fY-Kw-ZaY"/>
                             <constraint firstItem="lOw-CO-quu" firstAttribute="leading" secondItem="pq2-db-v3J" secondAttribute="leading" id="ET7-id-R6M"/>
-                            <constraint firstItem="dV2-Cw-D2i" firstAttribute="leading" secondItem="pq2-db-v3J" secondAttribute="leading" id="Uos-8C-Nfu"/>
-                            <constraint firstItem="dV2-Cw-D2i" firstAttribute="top" secondItem="pq2-db-v3J" secondAttribute="top" id="n4g-gz-QmI"/>
-                            <constraint firstItem="dV2-Cw-D2i" firstAttribute="trailing" secondItem="pq2-db-v3J" secondAttribute="trailing" id="uT8-P8-Qh9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="u5d-ie-Z2U">
@@ -615,7 +605,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="catCollectionn" destination="lOw-CO-quu" id="axr-Nu-ER8"/>
-                        <outlet property="searchbarCate" destination="dV2-Cw-D2i" id="pRz-0x-mbF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fhr-je-aAG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

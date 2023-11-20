@@ -14,12 +14,28 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var catCollectionn: UICollectionView!
     
-    @IBOutlet weak var searchbarCate: UISearchBar!
+    
+    private let searchController = UISearchController(searchResultsController: nil)
     
     private let productsviewModel = HomeViewModel()
     private let searchVM = SearchViewModel()
     
     private let cellSpacing: CGFloat = 10
+    
+    
+    var searching = false
+    var searchedData: [Product] = []
+    
+    
+    private weak var searchBar: UISearchBar? {
+        return searchController.searchBar
+    }
+    
+    var isSearchBarEmpty: Bool {
+        return searchBar?.text?.isEmpty ?? true
+    }
+    var filteredProducts: [Product] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +58,9 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
     
     
     private func getData() {
-        productsviewModel.fetchAllProducts()
-        searchVM.filterContentForSearchText(nil)
-//        catCollectionn.reloadData()
+        searchVM.fetchAllProducts()
+        
+
     }
     
     
@@ -52,28 +68,71 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
         
         catCollectionn.register(UINib(nibName: "\(CategoryCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(CategoryCell.self)")
         
-        
+        catCollectionn.register(UINib(nibName: "\(placeHolderCollectionCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(placeHolderCollectionCell.self)")
         
     }
     
     private func searchDelegate() {
         
-        searchbarCate.delegate = self
+        searchController.loadViewIfNeeded()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.enablesReturnKeyAutomatically = false
+        searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        self.navigationItem.searchController = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+        searchController.searchBar.placeholder = "Search for Products"
+        searchController.searchBar.searchTextField.textColor = .lightGray
+        searchController.searchBar.searchTextField.leftView?.tintColor = .darkGray
+        searchController.searchBar.searchTextField.layer.borderWidth = 0.7
+        searchController.searchBar.searchTextField.layer.borderColor = CGColor.init(gray: 0.7, alpha: 0.3)
+        searchController.searchBar.searchTextField.layer.cornerRadius = 6
+
+        
+        
+        searchVM.delegate = self
+        searchBar?.delegate = self
     }
     
-    
+    private func filteredForSearchText(_ searchText: String) {
+        if isSearchBarEmpty {
+            
+        } else {
+            filteredProducts = searchVM.allProducts.filter({ Product in
+                Product.title!.lowercased().contains(searchText.lowercased())
+            })
+        }
+        catCollectionn.reloadData()
+    }
+     
 }
+
+
+extension CategoriesController:UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchBar?.text else { return }
+        filteredForSearchText(searchText)
+    }
+}
+
+
+
 
 
 
 extension CategoriesController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch collectionView {
-        case catCollectionn:
-            return productsviewModel.seeAllProducts.count
+
+        
+        if isSearchBarEmpty {
             
-        default:
-            return 0
+            return searchVM.allProducts.count
+        }else {
+//            return filteredProducts.count
+            
+            return filteredProducts.isEmpty ? 1 : filteredProducts.count
         }
         
     }
@@ -81,16 +140,33 @@ extension CategoriesController: UICollectionViewDelegate,UICollectionViewDataSou
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+     
+//        guard let cell = catCollectionn.dequeueReusableCell(withReuseIdentifier: "\(CategoryCell.self)", for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
+
+
         
-    switch collectionView {
-        case catCollectionn:
-        guard let cell = catCollectionn.dequeueReusableCell(withReuseIdentifier: "\(CategoryCell.self)", for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
-        cell.configure(data: productsviewModel.seeAllProducts[indexPath.row])
-        
-        return cell
-    default:
-        return UICollectionViewCell()
+        if isSearchBarEmpty {
+            guard let cell = catCollectionn.dequeueReusableCell(withReuseIdentifier: "\(CategoryCell.self)", for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
+            cell.configure(data: searchVM.allProducts[indexPath.item])
+            return cell
+        } else {
+            
+//            cell.configure(data: filteredProducts[indexPath.row])
+            
+            if filteredProducts.isEmpty {
+                guard let placeholderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(placeHolderCollectionCell.self)", for: indexPath) as? placeHolderCollectionCell else { return  UICollectionViewCell() }
+                           return placeholderCell
+            }else {
+                guard let cell = catCollectionn.dequeueReusableCell(withReuseIdentifier: "\(CategoryCell.self)", for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
+                let data = filteredProducts[indexPath.item]
+//                cell.configure(data: filteredProducts[indexPath.item])
+                cell.configure(data: data)
+                return cell
+            }
+            
         }
+        
+        
     }
     
     
@@ -100,7 +176,7 @@ extension CategoriesController: UICollectionViewDelegate,UICollectionViewDataSou
         
         if  (catCollectionn == collectionView )  {
 
-//            return CGSize(width: ((catCollectionn.frame.width / 2)), height: (catCollectionn.frame.height / 2))
+
             
             
             let collectionViewWidth = collectionView.frame.width
@@ -130,34 +206,13 @@ extension CategoriesController: UICollectionViewDelegate,UICollectionViewDataSou
         
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-           // Arama butonuna basıldığında klavyeyi kapat
-        searchBar.resignFirstResponder()
-       }
-    
-    // Ekranın başka bir yerine tıklandığında klavyeyi kapat
-        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            if let touch = touches.first {
-                let touchPoint = touch.location(in: view)
 
-                // Eğer dokunulan nokta, searchBarCate'ın dışında ise klavyeyi kapat
-                if !searchbarCate.frame.contains(touchPoint) {
-                    searchbarCate.resignFirstResponder()
-                }
-            }
-        }
     
-    
-    
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            // ViewModel'de arama işlemini gerçekleştir
-            searchVM.filterContentForSearchText(searchText)
-
-            // UICollectionView'ı güncelle
-            catCollectionn.reloadData()
-        }
-    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        searchedData.removeAll()
+        catCollectionn.reloadData()
+    }
     
     
     
@@ -165,6 +220,20 @@ extension CategoriesController: UICollectionViewDelegate,UICollectionViewDataSou
 }
 
 
+extension CategoriesController: SearchViewModelDelegate {
+    func didFetchSearchProductsSucc() {
+        catCollectionn.reloadData()
+    }
+    
+    func didOccurError(_ error: Error) {
+        print(error.localizedDescription)
+    }
+    
 
+    
+        
+    
 
+    
+}
 

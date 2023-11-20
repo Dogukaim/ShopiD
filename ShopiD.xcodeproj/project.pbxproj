@@ -48,6 +48,8 @@
 		9A7F9BB42AA771240036FD89 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 9A7F9BB32AA771240036FD89 /* GoogleSignIn */; };
 		9A7F9BB62AA771240036FD89 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9A7F9BB52AA771240036FD89 /* GoogleSignInSwift */; };
 		9A7F9BB82AA77E180036FD89 /* UITextField+RightViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7F9BB72AA77E180036FD89 /* UITextField+RightViewButton.swift */; };
+		9A8BED972B0BA7C10010B1E8 /* placeHolderCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BED952B0BA7C10010B1E8 /* placeHolderCollectionCell.swift */; };
+		9A8BED982B0BA7C10010B1E8 /* placeHolderCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8BED962B0BA7C10010B1E8 /* placeHolderCollectionCell.xib */; };
 		9AB234EE2B063AED00DDCB59 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB234ED2B063AED00DDCB59 /* SearchViewModel.swift */; };
 		9AF469012AAB3F03006FE0B9 /* TopCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF468FF2AAB3F03006FE0B9 /* TopCollectionCell.swift */; };
 		9AF469022AAB3F03006FE0B9 /* TopCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF469002AAB3F03006FE0B9 /* TopCollectionCell.xib */; };
@@ -102,6 +104,8 @@
 		9A7F9B8D2AA618AF0036FD89 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9A7F9B982AA627050036FD89 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		9A7F9BB72AA77E180036FD89 /* UITextField+RightViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+RightViewButton.swift"; sourceTree = "<group>"; };
+		9A8BED952B0BA7C10010B1E8 /* placeHolderCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeHolderCollectionCell.swift; sourceTree = "<group>"; };
+		9A8BED962B0BA7C10010B1E8 /* placeHolderCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = placeHolderCollectionCell.xib; sourceTree = "<group>"; };
 		9AB234ED2B063AED00DDCB59 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		9AF468FF2AAB3F03006FE0B9 /* TopCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionCell.swift; sourceTree = "<group>"; };
 		9AF469002AAB3F03006FE0B9 /* TopCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopCollectionCell.xib; sourceTree = "<group>"; };
@@ -478,6 +482,8 @@
 			children = (
 				9A0E33772AC08041002AACD2 /* CategoryCell.swift */,
 				9A0E33782AC08041002AACD2 /* CategoryCell.xib */,
+				9A8BED952B0BA7C10010B1E8 /* placeHolderCollectionCell.swift */,
+				9A8BED962B0BA7C10010B1E8 /* placeHolderCollectionCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -700,6 +706,7 @@
 				9A0E337A2AC08041002AACD2 /* CategoryCell.xib in Resources */,
 				9A2C0F032AA201AF0064FF77 /* Main.storyboard in Resources */,
 				9AF4690D2AAB3FF3006FE0B9 /* ThirdCollectionCell.xib in Resources */,
+				9A8BED982B0BA7C10010B1E8 /* placeHolderCollectionCell.xib in Resources */,
 				9AF469122AAB4031006FE0B9 /* SeeAllCollectionCell.xib in Resources */,
 				9A7615D22AB08B95000C075E /* FavoriteCell.xib in Resources */,
 			);
@@ -728,6 +735,7 @@
 				9AFA51D22AA8C5D2004CAAE2 /* ProfileController.swift in Sources */,
 				9A330BD52AA9F89500697F47 /* DetailController.swift in Sources */,
 				9A2C0EFC2AA201AF0064FF77 /* AppDelegate.swift in Sources */,
+				9A8BED972B0BA7C10010B1E8 /* placeHolderCollectionCell.swift in Sources */,
 				9A330BE22AAA1A7800697F47 /* OrderViewController.swift in Sources */,
 				9A679B6E2AC19385004EF8CB /* Double+Rounded.swift in Sources */,
 				9AFA51CC2AA8C581004CAAE2 /* FavoriteController.swift in Sources */,
