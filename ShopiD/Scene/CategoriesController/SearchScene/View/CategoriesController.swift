@@ -10,7 +10,7 @@ import UIKit
 class CategoriesController: UIViewController, UISearchBarDelegate {
     
     
-
+    
     
     @IBOutlet weak var catCollectionn: UICollectionView!
     
@@ -39,19 +39,19 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         collectionSetup()
         isSucced()
         searchDelegate()
         getData()
-
+        
     }
     
     func isSucced() {
         productsviewModel.successCallback = { [weak self] in
             self?.catCollectionn.reloadData()
             
-
+            
         }
     }
     
@@ -60,7 +60,7 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
     private func getData() {
         searchVM.fetchAllProducts()
         
-
+        
     }
     
     
@@ -89,7 +89,7 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
         searchController.searchBar.searchTextField.layer.borderWidth = 0.7
         searchController.searchBar.searchTextField.layer.borderColor = CGColor.init(gray: 0.7, alpha: 0.3)
         searchController.searchBar.searchTextField.layer.cornerRadius = 6
-
+        
         
         
         searchVM.delegate = self
@@ -106,7 +106,18 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
         }
         catCollectionn.reloadData()
     }
-     
+    
+    
+    @IBAction func filterButtonTap(_ sender: Any) {
+        
+//                let filterController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "filterCategory")
+//                navigationController?.pushViewController(filterController, animated: true)
+                
+        let controller = storyboard?.instantiateViewController(withIdentifier: "filterCategory") as! filterCategory
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    
 }
 
 
@@ -124,14 +135,13 @@ extension CategoriesController:UISearchResultsUpdating {
 
 extension CategoriesController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
+        
         
         if isSearchBarEmpty {
             
             return searchVM.allProducts.count
         }else {
-//            return filteredProducts.count
-            
+                        
             return filteredProducts.isEmpty ? 1 : filteredProducts.count
         }
         
@@ -140,10 +150,7 @@ extension CategoriesController: UICollectionViewDelegate,UICollectionViewDataSou
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-     
-//        guard let cell = catCollectionn.dequeueReusableCell(withReuseIdentifier: "\(CategoryCell.self)", for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
-
-
+        
         
         if isSearchBarEmpty {
             guard let cell = catCollectionn.dequeueReusableCell(withReuseIdentifier: "\(CategoryCell.self)", for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
@@ -151,68 +158,64 @@ extension CategoriesController: UICollectionViewDelegate,UICollectionViewDataSou
             return cell
         } else {
             
-//            cell.configure(data: filteredProducts[indexPath.row])
+            
             
             if filteredProducts.isEmpty {
                 guard let placeholderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(placeHolderCollectionCell.self)", for: indexPath) as? placeHolderCollectionCell else { return  UICollectionViewCell() }
-                           return placeholderCell
+                return placeholderCell
             }else {
                 guard let cell = catCollectionn.dequeueReusableCell(withReuseIdentifier: "\(CategoryCell.self)", for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
                 let data = filteredProducts[indexPath.item]
-//                cell.configure(data: filteredProducts[indexPath.item])
+                
                 cell.configure(data: data)
                 return cell
             }
             
         }
+    
         
         
     }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        
-        if  (catCollectionn == collectionView )  {
+                
 
-
+        let cellHeight: CGFloat = 250
+        let cellWidth: CGFloat
+        if isSearchBarEmpty {
             
-            
-            let collectionViewWidth = collectionView.frame.width
-            let itemWidth = (collectionViewWidth - 3 * cellSpacing) / 2
-            
-            return CGSize(width: itemWidth, height: itemWidth)
-
+            cellWidth = collectionView.bounds.width / 2 - 10
+        } else {
+            // Arama yapıldığında
+            cellWidth = collectionView.bounds.width - 40
         }
-        
-        else {
-            
-            return collectionView.contentSize
-        }
-        
+
+        return CGSize(width: cellWidth, height: cellHeight)
     }
-    
+//    
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var selectedPro = searchVM.allProducts[indexPath.item]
         
-        let selectedPro = productsviewModel.seeAllProducts[indexPath.item].id
+        if isSearchBarEmpty {
+            selectedPro = searchVM.allProducts[indexPath.item]
+        } else {
+            if filteredProducts.isEmpty {
+                
+                return
+            } else {
+                selectedPro = filteredProducts[indexPath.item]
+            }
+        }
+        
         let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailController") as! DetailController
-        controller.productID = selectedPro
-        
+        controller.productID = selectedPro.id
         self.navigationController?.pushViewController(controller, animated: true)
-        
-        
     }
     
-
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searching = false
-        searchedData.removeAll()
-        catCollectionn.reloadData()
-    }
+    
     
     
     
@@ -229,11 +232,6 @@ extension CategoriesController: SearchViewModelDelegate {
         print(error.localizedDescription)
     }
     
-
-    
-        
-    
-
     
 }
 

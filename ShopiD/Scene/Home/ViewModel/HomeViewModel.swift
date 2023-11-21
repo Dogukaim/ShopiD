@@ -39,7 +39,7 @@ final class HomeViewModel {
     
     var productID: Int?
     
-//    var products: [Product] = []
+
     
     static let shared = HomeViewModel()
     
@@ -111,10 +111,6 @@ final class HomeViewModel {
         }
 
     }
-    
-    
-
-    
     
     
     

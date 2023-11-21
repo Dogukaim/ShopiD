@@ -33,25 +33,10 @@ protocol DetailViewInterface: AnyObject {
 }
    
 
-
 final class DetailController: UIViewController  {
     
 
-    
-
     @IBOutlet weak var detaDescr: UILabel!
-    
-
-      
-    
-      
-   
-      
-      
-      
-
- 
-      
     @IBOutlet weak var detaImage: UIImageView!
     @IBOutlet weak var detaName: UILabel!
     @IBOutlet weak var detaRating: UILabel!

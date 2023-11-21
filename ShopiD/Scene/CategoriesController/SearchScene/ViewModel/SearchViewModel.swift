@@ -14,6 +14,11 @@ protocol SearchViewModelDelegate: AnyObject {
 }
 
 
+
+
+
+
+
 class SearchViewModel {
         
     
@@ -25,9 +30,9 @@ class SearchViewModel {
 
         var searchProduct : [Product] = []
     
-  
     
-        
+    
+   
     
     func fetchAllProducts() {
         
@@ -44,6 +49,9 @@ class SearchViewModel {
             self.delegate?.didOccurError(error)
         }
     }
-
+    
+     
+    
 }
+
 

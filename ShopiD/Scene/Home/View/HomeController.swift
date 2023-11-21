@@ -20,7 +20,7 @@ final class HomeController: UIViewController {
     
     @IBOutlet weak var searchs: UISearchBar!
     
-    //    private let homeProfileViewModel = HomeProfileViewModel()
+    
     private let productsviewModel = HomeViewModel()
     
     private var products = [Product]()
@@ -60,7 +60,7 @@ final class HomeController: UIViewController {
         productsviewModel.fetchAllProducts()
         productsviewModel.fetchOnlyCategory()
         productsviewModel.fetchSpecialProducts()
-        //        productsviewModel.delegate = self
+        
         
         
     }
@@ -92,7 +92,7 @@ final class HomeController: UIViewController {
         
     }
     
-    
+
 }
 
 

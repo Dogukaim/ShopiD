@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22146" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,7 +28,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="IA2-u6-tgc"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -116,14 +115,13 @@
                     <constraint firstItem="ODO-LE-vjl" firstAttribute="leading" secondItem="keS-m1-k3x" secondAttribute="trailing" constant="3.3300000000000001" id="cMG-2Y-lTB"/>
                     <constraint firstItem="ODO-LE-vjl" firstAttribute="top" secondItem="6Gp-7A-uF2" secondAttribute="bottom" id="cYf-z6-fNE"/>
                     <constraint firstItem="soD-ab-cG2" firstAttribute="top" secondItem="6Gp-7A-uF2" secondAttribute="bottom" constant="3" id="dYk-AV-cZ2"/>
-                    <constraint firstItem="mP9-AV-1mr" firstAttribute="leading" secondItem="ODO-LE-vjl" secondAttribute="trailing" constant="16" id="dfI-Um-nAh"/>
                     <constraint firstAttribute="bottom" secondItem="LIW-4c-VQO" secondAttribute="bottom" constant="4" id="eBQ-lZ-fuh"/>
                     <constraint firstItem="6Gp-7A-uF2" firstAttribute="leading" secondItem="otX-kK-UNR" secondAttribute="leading" constant="7" id="g3X-Q8-67k"/>
                     <constraint firstItem="6Gp-7A-uF2" firstAttribute="top" secondItem="FD1-Jx-skb" secondAttribute="bottom" constant="174" id="lOu-T4-3Ry"/>
                     <constraint firstAttribute="trailing" secondItem="FD1-Jx-skb" secondAttribute="trailing" constant="8" id="oZN-Li-2v0"/>
                     <constraint firstItem="6Gp-7A-uF2" firstAttribute="top" secondItem="awR-Az-jIK" secondAttribute="bottom" constant="1" id="q8Z-Iz-u9p"/>
                     <constraint firstItem="8io-II-yj3" firstAttribute="leading" secondItem="soD-ab-cG2" secondAttribute="trailing" constant="10" id="sgd-vk-j4L"/>
-                    <constraint firstItem="FD1-Jx-skb" firstAttribute="leading" secondItem="otX-kK-UNR" secondAttribute="leading" constant="155" id="uVK-pj-hUF"/>
+                    <constraint firstAttribute="trailing" secondItem="mP9-AV-1mr" secondAttribute="trailing" constant="16.670000000000002" id="tp2-Js-R2B"/>
                     <constraint firstAttribute="bottom" secondItem="ODO-LE-vjl" secondAttribute="bottom" constant="6.6699999999999999" id="vSk-FL-iYn"/>
                 </constraints>
             </collectionViewCellContentView>
