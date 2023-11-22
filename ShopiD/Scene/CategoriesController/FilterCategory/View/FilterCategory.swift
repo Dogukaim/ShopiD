@@ -9,31 +9,56 @@
 import UIKit
 
 
+protocol FilterCategoryDelegate: AnyObject {
+    func filterCategoryDidDismiss()
+    func filterCategoryDidDismiss(selectedCategory: String?)
+    func didSelectCategory(_ category: String)
+    func didSelectAllCategories()
+}
+
+
+
+
+
 
 class filterCategory: UIViewController {
     
     @IBOutlet weak var filterCollection: UICollectionView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var backgroundTap: UIView!
+    
     
     
     private let categorVM = HomeViewModel()
     
+    private let searchhVM = SearchViewModel()
+    
+    weak var delegate: FilterCategoryDelegate?
+    
+    var selectedCategory: String?
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
         collectionSetup()
         isSucced()
+        
+        
+        
+    }
+    
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        
     }
     
     
     
-        
-    @IBAction func closeButton(_ sender: Any) {
-        
-    }
+    
     
     
     private func collectionSetup() {
@@ -42,9 +67,28 @@ class filterCategory: UIViewController {
         filterCollection.register(nib, forCellWithReuseIdentifier: "MidCollectionCell")
         
         containerView.layer.cornerRadius = 30
+        
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
+        backgroundTap.addGestureRecognizer(tapGestureRecognizer)
     }
-
     
+    
+    
+    @objc func backgroundTapped() {
+        dismiss(animated: true) {
+            self.delegate?.filterCategoryDidDismiss()
+            self.delegate?.filterCategoryDidDismiss(selectedCategory: self.selectedCategory)
+        }
+        
+        
+    }
+    
+    
+    
+    func didSeletCategory(_ category: String) {
+        selectedCategory = category
+    }
     
     
     
@@ -85,7 +129,30 @@ extension filterCategory: UICollectionViewDelegate,UICollectionViewDataSource,UI
         }
     }
     
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCategory = categorVM.allCategories[indexPath.item]
         
+        
+        delegate?.didSelectCategory(selectedCategory)
+        
+        
+        didSeletCategory(selectedCategory)
+        
+        
+        if selectedCategory == "All" {
+            delegate?.didSelectAllCategories()
+        } else {
+            
+            searchhVM.fetchProductByCategory(selectedCategory)
+        }
+        
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     
 }

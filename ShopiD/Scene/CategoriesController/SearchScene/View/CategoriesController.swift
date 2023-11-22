@@ -7,13 +7,14 @@
 
 import UIKit
 
+
 class CategoriesController: UIViewController, UISearchBarDelegate {
-    
     
     
     
     @IBOutlet weak var catCollectionn: UICollectionView!
     
+    @IBOutlet weak var baritemT: UIBarButtonItem!
     
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -37,6 +38,12 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
     var filteredProducts: [Product] = []
     
     
+    
+    weak var delegate: SearchViewModelDelegate?
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,6 +62,19 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+    }
+    
+    
     
     
     private func getData() {
@@ -62,6 +82,8 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
         
         
     }
+    
+    
     
     
     private func collectionSetup() {
@@ -110,11 +132,19 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
     
     @IBAction func filterButtonTap(_ sender: Any) {
         
-//                let filterController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "filterCategory")
-//                navigationController?.pushViewController(filterController, animated: true)
-                
+        
         let controller = storyboard?.instantiateViewController(withIdentifier: "filterCategory") as! filterCategory
-        navigationController?.pushViewController(controller, animated: true)
+        controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle = .crossDissolve
+        present(controller, animated: true, completion: nil)
+        print("FilterCategory Pop")
+        controller.delegate = self
+        
+        let newImage = UIImage(systemName: "line.3.horizontal.decrease.circle.fill")
+        navigationItem.rightBarButtonItem?.image = newImage
+        
+        
+        
     }
     
     
@@ -141,7 +171,7 @@ extension CategoriesController: UICollectionViewDelegate,UICollectionViewDataSou
             
             return searchVM.allProducts.count
         }else {
-                        
+            
             return filteredProducts.isEmpty ? 1 : filteredProducts.count
         }
         
@@ -172,27 +202,27 @@ extension CategoriesController: UICollectionViewDelegate,UICollectionViewDataSou
             }
             
         }
-    
+        
         
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-                
-
+        
+        
         let cellHeight: CGFloat = 250
         let cellWidth: CGFloat
         if isSearchBarEmpty {
             
             cellWidth = collectionView.bounds.width / 2 - 10
         } else {
-            // Arama yapıldığında
+            
             cellWidth = collectionView.bounds.width - 40
         }
-
+        
         return CGSize(width: cellWidth, height: cellHeight)
     }
-//    
+    
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -212,6 +242,8 @@ extension CategoriesController: UICollectionViewDelegate,UICollectionViewDataSou
         let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailController") as! DetailController
         controller.productID = selectedPro.id
         self.navigationController?.pushViewController(controller, animated: true)
+        
+        
     }
     
     
@@ -224,6 +256,12 @@ extension CategoriesController: UICollectionViewDelegate,UICollectionViewDataSou
 
 
 extension CategoriesController: SearchViewModelDelegate {
+    func didSelectAllCategoriess() {
+        searchVM.fetchAllProducts()
+    }
+    
+    
+    
     func didFetchSearchProductsSucc() {
         catCollectionn.reloadData()
     }
@@ -232,6 +270,71 @@ extension CategoriesController: SearchViewModelDelegate {
         print(error.localizedDescription)
     }
     
+    func didFetchProductsByCategorySuc() {
+        catCollectionn.reloadData()
+    }
+    
+    
     
 }
 
+
+extension CategoriesController: FilterCategoryDelegate {
+    
+    
+    
+    
+    
+    
+    func filterCategoryDidDismiss() {
+        let originalImage = UIImage(systemName: "line.3.horizontal.decrease.circle")
+        self.setBarButtonImage(originalImage)
+    }
+    
+    
+    
+    
+    func setBarButtonImage(_ image: UIImage?) {
+        
+        baritemT.image = image
+    }
+    
+    func filterCategoryDidDismiss(selectedCategory: String?) {
+        
+        
+        guard let category = selectedCategory, category != "All" else {
+            
+            searchVM.fetchAllProducts()
+            return
+        }
+        
+        
+        filterProductsByCategory(category)
+        
+        
+        
+    }
+    
+    
+    
+    func filterProductsByCategory(_ category: String) {
+        searchVM.fetchProductByCategory(category)
+    }
+    
+    
+    func didSelectCategory(_ category: String) {
+        filterProductsByCategory(category)
+        
+        print("Selected category: \(category)")
+    }
+    
+    
+    
+    func didSelectAllCategories() {
+        searchVM.fetchAllProducts()
+
+    }
+    
+    
+    
+}
