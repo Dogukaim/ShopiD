@@ -977,6 +977,10 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="X5F-Kw-k8s" id="1Mu-Rp-gu6"/>
+                                    <outlet property="delegate" destination="X5F-Kw-k8s" id="9Ff-cR-cWJ"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qhZ-d7-uzh"/>
@@ -988,6 +992,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="bolt.heart" catalog="system" selectedImage="bolt.heart.fill" id="MAW-d0-P7R"/>
+                    <connections>
+                        <outlet property="favoriteCollection" destination="Pto-oh-ZVj" id="k4Q-s6-OjY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HSm-pt-zwd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

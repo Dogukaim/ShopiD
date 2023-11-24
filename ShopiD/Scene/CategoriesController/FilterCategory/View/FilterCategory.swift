@@ -14,6 +14,7 @@ protocol FilterCategoryDelegate: AnyObject {
     func filterCategoryDidDismiss(selectedCategory: String?)
     func didSelectCategory(_ category: String)
     func didSelectAllCategories()
+    func updateBarButtonIcon()
 }
 
 
@@ -57,8 +58,7 @@ class filterCategory: UIViewController {
     }
     
     
-    
-    
+ 
     
     
     private func collectionSetup() {
@@ -77,8 +77,10 @@ class filterCategory: UIViewController {
     
     @objc func backgroundTapped() {
         dismiss(animated: true) {
+            print("Dismiss completion")
             self.delegate?.filterCategoryDidDismiss()
             self.delegate?.filterCategoryDidDismiss(selectedCategory: self.selectedCategory)
+            self.delegate?.updateBarButtonIcon()
         }
         
         
@@ -88,6 +90,7 @@ class filterCategory: UIViewController {
     
     func didSeletCategory(_ category: String) {
         selectedCategory = category
+        delegate?.didSelectCategory(category)
     }
     
     
@@ -150,7 +153,12 @@ extension filterCategory: UICollectionViewDelegate,UICollectionViewDataSource,UI
         }
         
         
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
+        
+        dismiss(animated: true) {
+            // 6. Sağ üst köşedeki UIBarButton'ın ikonunu güncelliyoruz
+            self.delegate?.updateBarButtonIcon()
+        }
     }
     
     

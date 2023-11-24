@@ -12,7 +12,11 @@ import Foundation
 
 //MARK: Product
 
-struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolViewCell,ProductsProtocolCell,CategorysProtocolCell,DetailProtocol {
+struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolViewCell,ProductsProtocolCell,CategorysProtocolCell,DetailProtocol,FavProtocolViewCell {
+    
+    
+    
+    
     
     
     let id: Int?
@@ -108,6 +112,13 @@ struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolVie
     }
     
     
+    
+    var proId: Int {
+        if let id = id {
+            return id
+        }
+        return 0
+    }
     
     //MARK: ProductsProtocolCell
     
@@ -232,6 +243,30 @@ struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolVie
     
     
     
+    
+    //MARK: FavProtocolViewCell
+    
+    
+    var favProİmage: String {
+        if let image = image {
+            return image
+        }
+        return ""
+    }
+    
+    var favProName: String {
+        if let title = title {
+            return title
+        }
+        return ""
+    }
+    
+    var favProPrice: String {
+        if let price = price {
+            return "$\(price)"
+        }
+        return ""
+    }
     
     
     

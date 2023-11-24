@@ -64,14 +64,14 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
+
     }
     
     
@@ -79,7 +79,8 @@ class CategoriesController: UIViewController, UISearchBarDelegate {
     
     private func getData() {
         searchVM.fetchAllProducts()
-        
+        let newImage = UIImage(systemName: "line.3.horizontal.decrease.circle")
+        navigationItem.rightBarButtonItem?.image = newImage
         
     }
     
@@ -280,6 +281,7 @@ extension CategoriesController: SearchViewModelDelegate {
 
 
 extension CategoriesController: FilterCategoryDelegate {
+   
     
     
     
@@ -296,8 +298,14 @@ extension CategoriesController: FilterCategoryDelegate {
     
     func setBarButtonImage(_ image: UIImage?) {
         
-        baritemT.image = image
+        DispatchQueue.main.async {
+                   self.baritemT.image = image
+               }
     }
+    
+    
+    
+    
     
     func filterCategoryDidDismiss(selectedCategory: String?) {
         
@@ -311,7 +319,8 @@ extension CategoriesController: FilterCategoryDelegate {
         
         filterProductsByCategory(category)
         
-        
+        let originalImage = UIImage(systemName: "line.3.horizontal.decrease.circle")
+        setBarButtonImage(originalImage)
         
     }
     
@@ -336,5 +345,9 @@ extension CategoriesController: FilterCategoryDelegate {
     }
     
     
+    func updateBarButtonIcon() {
+        let originalImage = UIImage(systemName: "line.3.horizontal.decrease.circle")
+        setBarButtonImage(originalImage)
+    }
     
 }
