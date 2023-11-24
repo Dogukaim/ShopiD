@@ -8,6 +8,12 @@
 import UIKit
 
 
+protocol HomeControllerDelegate: AnyObject {
+    func didUpdateFavoriteCollection(products: [Product])
+}
+
+
+
 final class HomeController: UIViewController {
     
     
@@ -23,10 +29,23 @@ final class HomeController: UIViewController {
     
     private let productsviewModel = HomeViewModel()
     
+    private let searchVM = SearchViewModel()
+    
+    
+    
+    
     private var products = [Product]()
     var details: [Product] = []
     
     var productt: Product?
+    
+    var favoriteController = FavoriteController()
+    
+    weak var homeControllerDelegate: HomeControllerDelegate?
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +108,7 @@ final class HomeController: UIViewController {
     private func searchDelegate() {
         
         searchs.delegate = self
+//        searchVM.delegate = self
         
     }
     
@@ -228,3 +248,12 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
 
 
 
+extension HomeController : SeeAllCollectionCellInterface {
+    func seeAllCollectionCell(_ view: SeeAllCollectionCell, productId: Int, quantity: Int, favButtonTapp button: UIButton) {
+        productsviewModel.updateFavoriList(productId: productId, quantity: quantity)
+        productsviewModel.fetchFavList()
+        favoriteController.favoriteDelegate?.didUpdateFavoriteCollection()
+    }
+    
+    
+}

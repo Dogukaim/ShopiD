@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 
 
@@ -16,6 +19,7 @@ protocol HomeVMDelegate: AnyObject {
     func didFetchSingleProduct(_ product: Product)
     func didFetchAllCategories()
     func didFetchSpecialProductsSuccessful()
+    func didUpdateFavListSuccessful()
 }
 
 
@@ -35,13 +39,14 @@ final class HomeViewModel {
     var productsByCategory = [Product]()
     var searchCategory = [Categories]()
     
-    
-    
     var productID: Int?
     
-
-    
     static let shared = HomeViewModel()
+    
+    private let database = Firestore.firestore()
+    private let currentUser = Auth.auth().currentUser
+    
+    var favList: [String: Int]? = [:]
     
     
     
@@ -128,5 +133,30 @@ final class HomeViewModel {
     }
     
     
-     
+    func updateFavoriList(productId: Int,quantity: Int) {
+        guard let currentUser = currentUser else { return }
+        let userRef = database.collection("Users").document(currentUser.uid)
+        
+        if quantity > 0 {
+            userRef.updateData(["favList.\(productId)" : quantity]) { error in
+                if let error = error {
+                    self.delegate?.didOccurError(error)
+                }else {
+                    self.delegate?.didUpdateFavListSuccessful()
+                }
+            }
+        }
+    }
+    
+    
+    func fetchFavList() {
+        guard let currentUser = currentUser else { return }
+        
+        let favListRef = database.collection("Users").document(currentUser.uid)
+        favListRef.getDocument(source: .default) { documentData, error in
+            if let documentData = documentData {
+                self.favList = documentData.get("favList") as? [String: Int]
+            }
+        }
+    }
 }

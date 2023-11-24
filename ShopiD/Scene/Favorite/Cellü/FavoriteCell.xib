@@ -27,7 +27,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple Macbook Proafasfasfasdfsadfsadfadsfasdfsadfsadfsadfasdfsadfdsafasfasfas" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ER-0h-jwM">
-                                <rect key="frame" x="178" y="15" width="202" height="76.666666666666671"/>
+                                <rect key="frame" x="178" y="15" width="195" height="76.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -54,18 +54,33 @@
                                     <constraint firstAttribute="width" constant="30" id="lg9-hI-XFp"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXj-BI-Sca">
+                                <rect key="frame" x="353" y="0.0" width="40" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="YAc-kP-TgR"/>
+                                </constraints>
+                                <color key="tintColor" name="OrangeColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                                <connections>
+                                    <action selector="addToFavoriteButTapp:" destination="gTV-IL-0wX" eventType="touchUpInside" id="kVw-ur-ed8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="underPageBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="2ER-0h-jwM" secondAttribute="trailing" constant="13" id="2Tt-LX-aYe"/>
+                            <constraint firstAttribute="trailing" secondItem="2ER-0h-jwM" secondAttribute="trailing" constant="20" id="2Tt-LX-aYe"/>
                             <constraint firstItem="2ER-0h-jwM" firstAttribute="leading" secondItem="70z-xg-Grv" secondAttribute="trailing" constant="8" id="4DI-WJ-J45"/>
                             <constraint firstAttribute="bottom" secondItem="OLm-sO-mxh" secondAttribute="bottom" constant="8.6699999999999999" id="6xH-Nz-L2C"/>
                             <constraint firstAttribute="bottom" secondItem="QyG-9X-YfQ" secondAttribute="bottom" constant="7" id="A4B-2a-UJE"/>
+                            <constraint firstItem="AXj-BI-Sca" firstAttribute="top" secondItem="QYV-UQ-8rM" secondAttribute="top" id="Lnk-Fs-cxC"/>
+                            <constraint firstAttribute="trailing" secondItem="AXj-BI-Sca" secondAttribute="trailing" id="NMo-NS-fcr"/>
                             <constraint firstItem="QyG-9X-YfQ" firstAttribute="top" secondItem="2ER-0h-jwM" secondAttribute="bottom" constant="24.329999999999998" id="UNA-s2-kLl"/>
                             <constraint firstAttribute="trailing" secondItem="bE0-0C-bSV" secondAttribute="trailing" constant="13" id="a73-KW-mIu"/>
                             <constraint firstItem="2ER-0h-jwM" firstAttribute="top" secondItem="QYV-UQ-8rM" secondAttribute="top" constant="15" id="cFE-61-VFk"/>
                             <constraint firstItem="QyG-9X-YfQ" firstAttribute="leading" secondItem="70z-xg-Grv" secondAttribute="trailing" constant="3" id="cGv-sb-RP0"/>
                             <constraint firstItem="OLm-sO-mxh" firstAttribute="leading" secondItem="QyG-9X-YfQ" secondAttribute="trailing" constant="41" id="dGq-rY-yXj"/>
+                            <constraint firstItem="bE0-0C-bSV" firstAttribute="top" secondItem="AXj-BI-Sca" secondAttribute="bottom" constant="86" id="ejc-DQ-tyY"/>
                             <constraint firstAttribute="bottom" secondItem="bE0-0C-bSV" secondAttribute="bottom" constant="7" id="fRp-C1-D7p"/>
                             <constraint firstItem="bE0-0C-bSV" firstAttribute="top" secondItem="2ER-0h-jwM" secondAttribute="bottom" constant="29.329999999999998" id="w3a-cN-X59"/>
                             <constraint firstItem="OLm-sO-mxh" firstAttribute="top" secondItem="2ER-0h-jwM" secondAttribute="bottom" constant="27.329999999999998" id="yXn-dg-Nkc"/>
@@ -84,15 +99,17 @@
             <size key="customSize" width="393" height="149"/>
             <connections>
                 <outlet property="containerFavView" destination="QYV-UQ-8rM" id="7kL-CY-gMk"/>
+                <outlet property="favButtton" destination="AXj-BI-Sca" id="Frm-Pb-L4G"/>
                 <outlet property="favProductName" destination="2ER-0h-jwM" id="r0W-3m-gcI"/>
                 <outlet property="productFavImage" destination="70z-xg-Grv" id="J0C-N7-k5K"/>
                 <outlet property="productFavPrice" destination="bE0-0C-bSV" id="o5r-Mr-QRP"/>
             </connections>
-            <point key="canvasLocation" x="132.06106870229007" y="-190.49295774647888"/>
+            <point key="canvasLocation" x="101.5267175572519" y="-190.49295774647888"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="SignUP" width="256" height="256"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="star.leadinghalf.filled" catalog="system" width="128" height="116"/>
         <namedColor name="OrangeColor">
             <color red="1" green="0.41100001335144043" blue="0.19499999284744263" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

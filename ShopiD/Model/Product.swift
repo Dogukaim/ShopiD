@@ -268,7 +268,12 @@ struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolVie
         return ""
     }
     
-    
+    var productId: Int {
+        if let id = id {
+            return id
+        }
+        return 0
+    }
     
 }
     

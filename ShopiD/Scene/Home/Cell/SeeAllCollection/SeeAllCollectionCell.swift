@@ -16,10 +16,6 @@ protocol SeeProtocolViewCell {
 }
 
 
-
-
-
-
 protocol SeeAllCollectionCellInterface: AnyObject {
     func seeAllCollectionCell(_ view: SeeAllCollectionCell,productId: Int,quantity: Int, favButtonTapp button: UIButton)
 }
@@ -68,14 +64,19 @@ class SeeAllCollectionCell: UICollectionViewCell {
     }
     @IBAction func favButtonTapp(_ button: UIButton) {
         
-        guard let productId = productId else { return }
-        if addFavButton.isSelected == false {
-            interface?.seeAllCollectionCell(self, productId: productId, quantity: 1, favButtonTapp: button)
-        } else {
-            interface?.seeAllCollectionCell(self, productId: productId, quantity: 0, favButtonTapp: button)
-        }
+//        guard let productId = productId else { return }
+//        if addFavButton.isSelected == false {
+//            interface?.seeAllCollectionCell(self, productId: productId, quantity: 1, favButtonTapp: button)
+//        } else {
+//            interface?.seeAllCollectionCell(self, productId: productId, quantity: 0, favButtonTapp: button)
+//        }
+//        
+//        addFavButton.isSelected.toggle()
         
-        addFavButton.isSelected.toggle()
+        guard let productId = productId else { return }
+               let quantity = addFavButton.isSelected ? 0 : 1
+               interface?.seeAllCollectionCell(self, productId: productId, quantity: quantity, favButtonTapp: button)
+               addFavButton.isSelected.toggle()
     }
     
     
