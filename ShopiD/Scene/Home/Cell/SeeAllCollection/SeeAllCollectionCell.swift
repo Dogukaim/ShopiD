@@ -54,7 +54,7 @@ class SeeAllCollectionCell: UICollectionViewCell {
         proPrice.text = data.proprice
         productId = data.proId
         
-        toggleAddButton()
+        
     }
     
     override func awakeFromNib() {
@@ -72,10 +72,19 @@ class SeeAllCollectionCell: UICollectionViewCell {
         
 
         
+//        guard let productId = productId else { return }
+//            let quantity = addFavButton.isSelected ? 0 : 1
+//            interface?.seeAllCollectionCell(self, productId: productId, quantity: quantity, favButtonTapp: button)
+//            addFavButton.isSelected.toggle()
+        
+        
         guard let productId = productId else { return }
-            let quantity = addFavButton.isSelected ? 0 : 1
-            interface?.seeAllCollectionCell(self, productId: productId, quantity: quantity, favButtonTapp: button)
-            addFavButton.isSelected.toggle()
+        if addFavButton.isSelected == false {
+            interface?.seeAllCollectionCell(self, productId: productId, quantity: 1, favButtonTapp: button)
+        } else {
+            interface?.seeAllCollectionCell(self, productId: productId, quantity: 0, favButtonTapp: button)
+        }
+        addFavButton.isSelected.toggle()
     }
     
     

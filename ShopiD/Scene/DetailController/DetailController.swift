@@ -12,11 +12,6 @@ import Firebase
 
 
 
-
-
-
-
-
 //MARK: - ProductDetailProtocol
 protocol DetailProtocol {
     var detailImagee: String { get }
@@ -30,7 +25,10 @@ protocol DetailProtocol {
 protocol DetailViewInterface: AnyObject {
     func configure(with product: DetailProtocol)
     func didOccurError(errorMsg: String)
+    
 }
+
+
    
 
 final class DetailController: UIViewController  {
@@ -55,7 +53,26 @@ final class DetailController: UIViewController  {
 
     private let viewModel = DetailViewModel()
     
+    
+    
     var productID: Int?
+    
+    
+    
+    
+    var quantity = 1 {
+        didSet {
+            if quantity <= 0 {
+                toggleStepperElements()
+                quantity = 0
+            } else if quantity > 10 {
+                quantity = 10
+            }
+            stepperLabel.text = String(quantity)
+        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +83,9 @@ final class DetailController: UIViewController  {
         
         
     }
-
+    
+    
+    
     private func toggleStepperElements() {
         stepperStackView.isHidden = !stepperStackView.isHidden
         quantityLabl.isHidden = !quantityLabl.isHidden
@@ -83,7 +102,14 @@ final class DetailController: UIViewController  {
 
       
      @IBAction func addToCartButTapp(_ sender: Any) {
-
+         
+         if quantity <= 0 {
+             quantity = 1
+             stepperStackView.isHidden = false
+             
+         }
+         stepperStackView.isHidden = false
+         
      }
      
      @IBAction func stepperPlusButTap(_ sender: Any) {
@@ -96,6 +122,9 @@ final class DetailController: UIViewController  {
          
      }
      
+    
+    
+    
      @IBAction func addToFavButTap(_ sender: Any) {
 
      }

@@ -11,15 +11,13 @@ import FirebaseFirestore
 
 
 
-import Foundation
-import Firebase
-import FirebaseFirestore
-
-protocol DetailViewModelInterface {
+protocol DetailViewModelInterface: AnyObject {
     var view: DetailViewInterface? { get set }
 
     func fetchSingleProduct(productId id: Int)
+    
 }
+
 
 final class DetailViewModel {
     
@@ -27,6 +25,27 @@ final class DetailViewModel {
     
     //MARK: - References
     weak var view: DetailViewInterface?
+    
+    private let database = Firestore.firestore()
+    private let currentUser = Auth.auth().currentUser
+    
+    var cart: [String: Int]? = [:]
+    
+
+    
+//    func fetchCart(productId: Int) {
+//        guard let currentUser = currentUser else { return }
+//            let cartRef = database.collection("Users").document(currentUser.uid)
+//        cartRef.getDocument(source: .default) { documentData, error in
+//            if let documentData = documentData {
+//                self.cart = documentData.get("cart") as? [String: Int]
+//                self.view.didFetchCartCountSuccessful()
+//            }
+//        }
+//    }
+    
+    
+    
     
 }
 
@@ -50,4 +69,10 @@ extension DetailViewModel: DetailViewModelInterface {
         }
         
     }
+    
+    
+    
+    
+    
+    
 }

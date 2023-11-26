@@ -38,6 +38,7 @@ class FavoriteController: UIViewController {
         collectionSetup()
         getData()
         setupDelegate()
+        
     }
     
     private func collectionSetup() {
@@ -66,11 +67,7 @@ class FavoriteController: UIViewController {
            }
        }
     
-//    func didUpdateFavoriteCollection() {
-//         favoriteVM.fetchFavList()
-//         favoriteCollection.reloadData()
-//     }
-    
+
 }
 
 
@@ -82,9 +79,10 @@ extension FavoriteController: UICollectionViewDelegate,UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = favoriteCollection.dequeueReusableCell(withReuseIdentifier: "\(SeeAllCollectionCell.self)", for: indexPath) as? SeeAllCollectionCell else { return UICollectionViewCell() }
+        cell.interface = self
         cell.addFavButton.isSelected = true
         cell.configure(data: favoriteVM.favListProducts[indexPath.item])
-        cell.interface = self
+        
         return cell
 
         
@@ -108,6 +106,8 @@ extension FavoriteController: FavoriteVMDelegate {
     
     func didUpdatedFavlisSuccessful() {
         updateFavoriteCollection(products: favoriteVM.favListProducts)
+        
+        favoriteVM.fetchFavList()
     }
     
     func didFetchQuantity() {

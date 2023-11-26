@@ -300,11 +300,10 @@ extension HomeController: HomeVMDelegate {
     
     func didFetchSpecialProductsSuccessful() {
         specialCollct.reloadData()
-//        seeAllCollect.reloadData()
     }
     
     func didUpdateFavListSuccessful() {
-        seeAllCollect.reloadData()
+        favoriteController.favoriteCollection.reloadData()
     }
     
     
