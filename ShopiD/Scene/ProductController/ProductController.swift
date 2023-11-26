@@ -71,7 +71,7 @@ extension ProductController: UICollectionViewDelegate,UICollectionViewDataSource
     switch collectionView {
         case productsColl:
         guard let cell = productsColl.dequeueReusableCell(withReuseIdentifier: "\(ProductsCollectionCell.self)", for: indexPath) as? ProductsCollectionCell else { return UICollectionViewCell() }
-        cell.configure(data: productsviewModel.seeAllProducts[indexPath.row])
+        cell.configure(data: productsviewModel.seeAllProducts[indexPath.item])
         return cell
     default:
         return UICollectionViewCell()

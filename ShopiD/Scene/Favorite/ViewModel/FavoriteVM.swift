@@ -56,7 +56,7 @@ final class FavoriteVM {
     
     //MARK: - Update Favlisr in FireStore
     
-    func updateFavList(productId: Int,quantity: Int) {
+    func updateFavList(productId: Int, quantity: Int) {
         guard let currentUser = currentUser else { return }
         let userRef = database.collection("Users").document(currentUser.uid)
         
@@ -64,21 +64,21 @@ final class FavoriteVM {
             userRef.updateData(["favList.\(productId)" : quantity]) { error in
                 if let error = error {
                     self.delegate?.didOccurError(error)
-                }else {
+                } else {
                     self.delegate?.didUpdatedFavlisSuccessful()
                 }
             }
-        }else {
-            userRef.updateData(["favlist.\(productId)" : FieldValue.delete()]) { error in
+        } else {
+            userRef.updateData(["favList.\(productId)" : FieldValue.delete()]) { error in
                 if let error = error {
                     self.delegate?.didOccurError(error)
-                }else {
+                } else {
                     self.delegate?.didUpdatedFavlisSuccessful()
                 }
             }
         }
-        
     }
+
     
     
     
@@ -163,7 +163,7 @@ final class FavoriteVM {
             product.id == productId
         }
         if let index = index {
-            return IndexPath(row: index, section: 0)
+            return IndexPath(item: index, section: 0)
         }
         return IndexPath()
     }

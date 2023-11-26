@@ -39,12 +39,17 @@ final class HomeController: UIViewController {
     
     var productt: Product?
     
-    var favoriteController = FavoriteController()
+
     
     weak var homeControllerDelegate: HomeControllerDelegate?
     
-    
-    
+
+    lazy var favoriteController: FavoriteController = {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "FavoriteController") as! FavoriteController
+        controller.favoriteDelegate = self
+        return controller
+    }()
     
     
     override func viewDidLoad() {
@@ -54,6 +59,7 @@ final class HomeController: UIViewController {
         isSucced()
         
         getData()
+        
     }
     
     
@@ -62,6 +68,13 @@ final class HomeController: UIViewController {
         
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       
+          
+    }
+
     
     
     func isSucced() {
@@ -108,8 +121,8 @@ final class HomeController: UIViewController {
     private func searchDelegate() {
         
         searchs.delegate = self
-//        searchVM.delegate = self
         
+        productsviewModel.delegate = self
     }
     
 
@@ -158,7 +171,7 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
         switch collectionView {
         case topCollection:
             guard let cell = topCollection.dequeueReusableCell(withReuseIdentifier: "\(TopCollectionCell.self)", for: indexPath) as? TopCollectionCell else { return UICollectionViewCell() }
-            cell.configure(data: productsviewModel.seeAllProducts[indexPath.row])
+            cell.configure(data: productsviewModel.seeAllProducts[indexPath.item])
             
             return cell
         case catCollect:
@@ -168,13 +181,13 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
             return cell
         case specialCollct:
             guard let cell = specialCollct.dequeueReusableCell(withReuseIdentifier: "\(ThirdCollectionCell.self)", for: indexPath) as? ThirdCollectionCell else { return UICollectionViewCell() }
-            cell.configure(data: productsviewModel.specialProducts[indexPath.row])
+            cell.configure(data: productsviewModel.specialProducts[indexPath.item])
             return cell
             
         case seeAllCollect:
             guard let cell = seeAllCollect.dequeueReusableCell(withReuseIdentifier: "\(SeeAllCollectionCell.self)", for: indexPath) as? SeeAllCollectionCell else { return UICollectionViewCell() }
-            cell.configure(data: productsviewModel.seeAllProducts[indexPath.row])
-            
+            cell.configure(data: productsviewModel.seeAllProducts[indexPath.item])
+            cell.interface = self
             return cell
         default:
             return UICollectionViewCell()
@@ -251,9 +264,53 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
 extension HomeController : SeeAllCollectionCellInterface {
     func seeAllCollectionCell(_ view: SeeAllCollectionCell, productId: Int, quantity: Int, favButtonTapp button: UIButton) {
         productsviewModel.updateFavoriList(productId: productId, quantity: quantity)
-        productsviewModel.fetchFavList()
-        favoriteController.favoriteDelegate?.didUpdateFavoriteCollection()
+//        favoriteController.favoriteDelegate?.didUpdateFavoriteCollection()
     }
     
     
 }
+
+
+extension HomeController: FavoriteCollectionDelegate {
+    func didUpdateFavoriteCollection() {
+        getData()
+    
+    }
+    
+    
+}
+
+
+extension HomeController: HomeVMDelegate {
+    func didFetchAllProductsSucc() {
+        
+    }
+    
+    func didOccurError(_ error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    func didFetchSingleProduct(_ product: Product) {
+        
+    }
+    
+    func didFetchAllCategories() {
+            
+    }
+    
+    func didFetchSpecialProductsSuccessful() {
+        specialCollct.reloadData()
+//        seeAllCollect.reloadData()
+    }
+    
+    func didUpdateFavListSuccessful() {
+        seeAllCollect.reloadData()
+    }
+    
+    
+    
+    
+    
+}
+
+

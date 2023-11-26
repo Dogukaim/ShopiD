@@ -28,6 +28,7 @@ class FavoriteController: UIViewController {
     
     private let productsVM = HomeViewModel()
     
+    
     var favoriteDelegate: FavoriteCollectionDelegate?
     
     
@@ -40,7 +41,7 @@ class FavoriteController: UIViewController {
     }
     
     private func collectionSetup() {
-        favoriteCollection.register(UINib(nibName: "\(FavoriteCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(FavoriteCell.self)")
+        favoriteCollection.register(UINib(nibName: "\(SeeAllCollectionCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(SeeAllCollectionCell.self)")
     }
     
     
@@ -59,9 +60,16 @@ class FavoriteController: UIViewController {
     
     
     func updateFavoriteCollection(products: [Product]) {
-           favoriteVM.favListProducts = products
-           favoriteCollection.reloadData()
+        if !products.isEmpty {
+               favoriteVM.favListProducts = products
+               favoriteCollection.reloadData()
+           }
        }
+    
+//    func didUpdateFavoriteCollection() {
+//         favoriteVM.fetchFavList()
+//         favoriteCollection.reloadData()
+//     }
     
 }
 
@@ -73,16 +81,13 @@ extension FavoriteController: UICollectionViewDelegate,UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = favoriteCollection.dequeueReusableCell(withReuseIdentifier: "\(FavoriteCell.self)", for: indexPath) as? FavoriteCell else { return UICollectionViewCell() }
-//        cell.
-//        cell.configure(data: favoriteVM.favListProducts[indexPath.item])
-        
-        guard let cell = favoriteCollection.dequeueReusableCell(withReuseIdentifier: "\(FavoriteCell.self)", for: indexPath) as? FavoriteCell else { return UICollectionViewCell() }
-        cell.interface = self
-        cell.favButtton.isSelected = true
+        guard let cell = favoriteCollection.dequeueReusableCell(withReuseIdentifier: "\(SeeAllCollectionCell.self)", for: indexPath) as? SeeAllCollectionCell else { return UICollectionViewCell() }
+        cell.addFavButton.isSelected = true
         cell.configure(data: favoriteVM.favListProducts[indexPath.item])
-        
+        cell.interface = self
         return cell
+
+        
         
         
     }
@@ -94,29 +99,6 @@ extension FavoriteController: UICollectionViewDelegate,UICollectionViewDataSourc
     
 }
 
-extension FavoriteController: SeeAllCollectionCellInterface {
-    func seeAllCollectionCell(_ view: SeeAllCollectionCell, productId: Int, quantity: Int, favButtonTapp button: UIButton) {
-        let indexPath = favoriteVM.getProductIndexPath(productId: productId)
-        favoriteVM.removeProduct(index: indexPath.item)
-        favoriteCollection.deleteItems(at: [indexPath])
-        favoriteVM.updateFavList(productId: productId, quantity: 0)
-    }
-    
-    
-}
-
-
-
-extension FavoriteController: FavoriteProductCollectionCellInterface {
-    func favoriteCell(_ view: FavoriteCell, productId: Int, quantity: Int, favButtonTapped button: UIButton) {
-        let indexPath = favoriteVM.getProductIndexPath(productId: productId)
-        favoriteVM.removeProduct(index: indexPath.item)
-        favoriteCollection.deleteItems(at: [indexPath])
-        favoriteVM.updateFavList(productId: productId, quantity: 0)
-    }
-    
-    
-}
 
 
 extension FavoriteController: FavoriteVMDelegate {
@@ -125,7 +107,7 @@ extension FavoriteController: FavoriteVMDelegate {
     }
     
     func didUpdatedFavlisSuccessful() {
-        favoriteVM.fetchFavList()
+        updateFavoriteCollection(products: favoriteVM.favListProducts)
     }
     
     func didFetchQuantity() {
@@ -133,10 +115,10 @@ extension FavoriteController: FavoriteVMDelegate {
     }
     
     func didFetchProductsFromFavListSuccessful() {
-        DispatchQueue.main.async {
+//        DispatchQueue.main.async {
                   self.favoriteCollection.reloadData()
-            self.favoriteDelegate?.didUpdateFavoriteCollection()
-              }
+//            self.favoriteDelegate?.didUpdateFavoriteCollection()
+//              }
     }
     
     func didFetchSingleProduct(_ product: Product) {
@@ -145,3 +127,17 @@ extension FavoriteController: FavoriteVMDelegate {
     
     
 }
+
+
+
+
+extension FavoriteController: SeeAllCollectionCellInterface {
+    func seeAllCollectionCell(_ view: SeeAllCollectionCell, productId: Int, quantity: Int, favButtonTapp button: UIButton) {
+    
+        let indexPath = favoriteVM.getProductIndexPath(productId: productId)
+        favoriteVM.removeProduct(index: indexPath.item)
+        favoriteCollection.deleteItems(at: [indexPath])
+        favoriteVM.updateFavList(productId: productId, quantity: 0)
+    }
+}
+

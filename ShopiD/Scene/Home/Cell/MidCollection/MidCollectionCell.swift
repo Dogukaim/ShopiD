@@ -19,7 +19,7 @@ class MidCollectionCell: UICollectionViewCell {
     
     
     func configure(data: Categories, indexPath: IndexPath) {
-        categorysLabel.text = data[indexPath.row].capitalized
+        categorysLabel.text = data[indexPath.item].capitalized
         
         
         

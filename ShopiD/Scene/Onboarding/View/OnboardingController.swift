@@ -122,7 +122,7 @@ extension OnboardingController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCell", for: indexPath) as! OnboardingViewCell
-        cell.configure(data: slides[indexPath.row])
+        cell.configure(data: slides[indexPath.item])
         
         return cell
     }
