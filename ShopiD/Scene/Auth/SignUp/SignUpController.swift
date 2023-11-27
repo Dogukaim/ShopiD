@@ -52,6 +52,8 @@ class SignUpController: UIViewController {
 
     @IBAction func loginSignButTap(_ sender: Any) {
         let controller = self.storyboard?.instantiateViewController(withIdentifier: "SignInController") as! SignInController
+        controller.modalPresentationStyle = .fullScreen
+        controller.modalTransitionStyle = .flipHorizontal
         self.present(controller,animated: true)
     }
     

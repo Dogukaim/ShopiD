@@ -65,9 +65,19 @@ class ProfileController: UIViewController {
 
     
     
-    @IBAction func signOutButTap(_ sender: UIButton) {
-        profileViewModel.signOut()
+    @IBAction func signOutButTap(_ sender: Any) {
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+           let signInController = storyboard.instantiateViewController(withIdentifier: "SignInController") as! SignInController
+            signInController.modalPresentationStyle = .fullScreen
+        
+         signInController.modalTransitionStyle = .flipHorizontal
+           self.present(signInController, animated: true, completion: nil)
+        
+        
+
+           profileViewModel.signOut()
+
     }
     
     
@@ -87,9 +97,9 @@ extension ProfileController: ProfileVMDelegate {
     }
     
     func didSignOutSuccessful() {
-        let signInVC = SignInController()
-        signInVC.modalPresentationStyle = .fullScreen
-        present(signInVC, animated: true)
+        let controller = SignInController()
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true)
         
     }
     

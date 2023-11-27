@@ -28,9 +28,27 @@ class OnboardingController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var pageControler: UIPageControl!
     @IBOutlet weak var continueButton: UIButton!
+    
+    
+    
     @IBOutlet weak var skipBut: UIButton!
     
-    
+    var currentPage = 0 {
+        didSet {
+            pageControler.currentPage = currentPage
+
+              if  currentPage == slides.count - 1  {
+               
+
+                  continueButton.setTitle("Get Started", for: .normal)
+            }else {
+
+                
+                continueButton.setTitle("Next", for: .normal)
+                }
+            }
+        }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,25 +63,6 @@ class OnboardingController: UIViewController {
  
     
 
-    var currentPage = 0 {
-        didSet {
-            pageControler.currentPage = currentPage
-
-              if  currentPage == slides.count - 2  {
-               
-                let controler = storyboard?.instantiateViewController(identifier: "SignInController") as! SignInController
-                controler.modalPresentationStyle = .fullScreen
-                controler.modalTransitionStyle = .flipHorizontal
-                present(controler,animated: true,completion: nil)
-                
-            }else {
-
-                collection.isPagingEnabled = false
-                        self.skipBut.isHidden = false
-                        self.continueButton.setTitle("Continue", for: .normal)
-                }
-            }
-        }
 
     
     @IBAction func skipButtonTap(_ sender: UIButton) {
@@ -75,21 +74,24 @@ class OnboardingController: UIViewController {
     
     
     @IBAction func continueButtonTap(_ sender: UIButton)  {
-        
-        if currentPage == slides.count - 2 {
-            continueButton.setTitle("Get Started", for: .normal)
-            skipBut.isHidden = true
-            
-            
-        }
-        
-        else {
-            collection.isPagingEnabled = true
-            currentPage += 1
-            let indexPath = IndexPath(item: currentPage, section: 0)
-            collection.scrollToItem(at: indexPath, at: .right, animated: true)
-            skipBut.isHidden = false
-        }
+        if currentpage == slides.count - 1 {
+               let controler = storyboard?.instantiateViewController(identifier: "SignInController") as! SignInController
+               controler.modalPresentationStyle = .fullScreen
+               controler.modalTransitionStyle = .flipHorizontal
+               present(controler,animated: true,completion: nil)
+           } else {
+               currentpage += 1
+               let indexpath = IndexPath(item: currentpage, section: 0)
+               collection.scrollToItem(at: indexpath, at: .centeredHorizontally, animated: true)
+
+ 
+               let visibleIndexPaths = collection.indexPathsForVisibleItems
+               if let firstVisibleIndexPath = visibleIndexPaths.first {
+                   let nextCell = collection.cellForItem(at: firstVisibleIndexPath) as? OnboardingViewCell
+                   nextCell?.configure(data: slides[currentpage])
+                   pageControler.currentPage = currentpage
+               }
+           }
         
     }
     
@@ -147,5 +149,17 @@ extension OnboardingController {
     }
 }
 
+// MARK: - UILabel Extension
+extension UILabel {
     
+    func colorString(text: String?, coloredText: String?, color: UIColor? = .red) {
+        
+        let attributedString = NSMutableAttributedString(string: text!)
+        let range = (text! as NSString).range(of: coloredText!)
+        attributedString.setAttributes([NSAttributedString.Key.foregroundColor: color!],
+                                       range: range)
+        self.attributedText = attributedString
+    }
+}
+
   
