@@ -14,14 +14,14 @@ import FirebaseDatabase
 
 
 
-class SignInController: UIViewController {
+class SignInController: UIViewController{
     
  
     //MARK: - Google SignIn Manager
     private let googleSignInManager = GIDSignIn.sharedInstance
     
     var passwordSecure = true
-    let signInConfig = GIDConfiguration(clientID: "547955988940-k7qo5pvcsoltfab82ujuj2h0v91ul30b.apps.googleusercontent.com")
+    static let signInConfig = GIDConfiguration(clientID: "547955988940-k7qo5pvcsoltfab82ujuj2h0v91ul30b.apps.googleusercontent.com")
     
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordTextt: UITextField!
@@ -32,8 +32,7 @@ class SignInController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        googleSignInManager.presentingViewController = self
-        GIDSignIn.sharedInstance.delegate = self
+        
         
        
         
@@ -66,17 +65,21 @@ class SignInController: UIViewController {
     
     @IBAction func googleButtonTapped(_ sender: Any) {
         
-        let signInViewModel = SignInViewModel()
-             signInViewModel.credentialHandler = { [weak self] credential, error in
-                 if let error = error {
-                     print("Failed to sign in with Google: \(error.localizedDescription)")
-                     // Handle the error
-                 } else if let credential = credential {
-                     // Kullanıcı başarıyla Google ile giriş yaptı
-                     self?.signInWithCredential(credential)
-                 }
-             }
-             signInViewModel.getGoogleCredential(self)
+//        let signInViewModel = SignInViewModel()
+//             signInViewModel.credentialHandler = { [weak self] credential, error in
+//                 if let error = error {
+//                     print("Failed to sign in with Google: \(error.localizedDescription)")
+//                     // Handle the error
+//                 } else if let credential = credential {
+//                     // Kullanıcı başarıyla Google ile giriş yaptı
+//                     self?.signInWithCredential(credential)
+//                 }
+//             }
+//             signInViewModel.getGoogleCredential(self)
+        
+     
+    
+        
     }
     
     private func signInWithCredential(_ credential: AuthCredential) {
