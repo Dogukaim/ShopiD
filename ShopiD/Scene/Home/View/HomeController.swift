@@ -85,7 +85,7 @@ final class HomeController: UIViewController {
             self?.seeAllCollect.reloadData()
             
         }
-    }
+     }   
     
     
     private func getData() {
@@ -98,7 +98,7 @@ final class HomeController: UIViewController {
     }
     
     
-    
+       
     private func configureNavBar() {
         navigationController?.isNavigationBarHidden = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

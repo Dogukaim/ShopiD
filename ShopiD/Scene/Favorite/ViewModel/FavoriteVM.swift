@@ -86,6 +86,8 @@ final class FavoriteVM {
     //MARK: - Get FavList from FireStore
     
     func fetchFavList() {
+        
+        print(currentUser)
         guard let currentUser = currentUser else { return }
         
         let favlistRef = database.collection("Users").document(currentUser.uid)

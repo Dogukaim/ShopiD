@@ -14,26 +14,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
        func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
            guard let windowScene = (scene as? UIWindowScene) else { return }
-           let window = UIWindow(windowScene: windowScene)
-           let rootViewController: UIViewController
-
-           if let currentUser = Auth.auth().currentUser {
-               if currentUser.isEmailVerified {
-                   rootViewController = HomeController()
-               } else {
-                   // Kullanıcı email doğrulanmamışsa SignInController'ı kullanabilirsiniz.
-                   let signInController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInController") as! SignInController
-                   rootViewController = UINavigationController(rootViewController: signInController)
-               }
-           } else {
-               // Hiçbir kullanıcı oturumu açmamışsa OnboardingController'ı kullanabilirsiniz.
-               let onboardingController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnboardingController") as! OnboardingController
-               rootViewController = UINavigationController(rootViewController: onboardingController)
-           }
-
-           window.rootViewController = rootViewController
-           window.makeKeyAndVisible()
-           self.window = window
+//           let window = UIWindow(windowScene: windowScene)
+//           let rootViewController: UIViewController
+//
+//           if let currentUser = Auth.auth().currentUser {
+//               if currentUser.isEmailVerified {
+//                   rootViewController = HomeController()
+//               } else {
+//                   // Kullanıcı email doğrulanmamışsa SignInController'ı kullanabilirsiniz.
+//                   let signInController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInController") as! SignInController
+//                   rootViewController = UINavigationController(rootViewController: signInController)
+//               }
+//           } else {
+//               // Hiçbir kullanıcı oturumu açmamışsa OnboardingController'ı kullanabilirsiniz.
+//               let onboardingController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnboardingController") as! OnboardingController
+//               rootViewController = UINavigationController(rootViewController: onboardingController)
+//           }
+//
+//           window.rootViewController = rootViewController
+//           window.makeKeyAndVisible()
+//           self.window = window
        }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {

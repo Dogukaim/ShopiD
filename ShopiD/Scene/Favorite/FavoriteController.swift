@@ -36,9 +36,9 @@ class FavoriteController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionSetup()
-        getData()
-        setupDelegate()
         
+        setupDelegate()
+        getData()
     }
     
     private func collectionSetup() {

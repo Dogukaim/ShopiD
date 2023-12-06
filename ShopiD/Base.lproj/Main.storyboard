@@ -381,7 +381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEk-vG-9oi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2046.564885496183" y="-219.01408450704227"/>
+            <point key="canvasLocation" x="1384" y="-219"/>
         </scene>
         <!--Sign Up Controller-->
         <scene sceneID="mF1-a6-ZYc">
@@ -565,7 +565,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzZ-zU-3cO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2852.6717557251909" y="-219.01408450704227"/>
+            <point key="canvasLocation" x="2305" y="-219"/>
         </scene>
         <!--Search-->
         <scene sceneID="2rq-Od-ucp">
@@ -1037,7 +1037,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emaigsdgdşl @gmail.com" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRO-kb-3KT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do@gmail.com" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRO-kb-3KT">
                                 <rect key="frame" x="43" y="472" width="307" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="ptL-Ua-32O"/>
@@ -1220,7 +1220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8EL-Eh-7K0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7254" y="-720"/>
+            <point key="canvasLocation" x="7511" y="-238"/>
         </scene>
         <!--Detail Controller-->
         <scene sceneID="nbf-Sb-RaF">
@@ -1297,8 +1297,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeo-Re-ziv">
-                                <rect key="frame" x="16" y="572" width="372" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeo-Re-ziv">
+                                <rect key="frame" x="16" y="569" width="372" height="124"/>
                                 <color key="tintColor" red="0.14901961389999999" green="0.15686275059999999" blue="0.1607843041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1429,7 +1429,8 @@
                             <constraint firstItem="rMc-Mr-CFd" firstAttribute="top" secondItem="uuW-u5-Kgs" secondAttribute="bottom" constant="14" id="Zng-ay-eT8"/>
                             <constraint firstItem="a7O-P1-efD" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vdK-qN-9IU" secondAttribute="trailing" symbolic="YES" id="dSV-RQ-dwI"/>
                             <constraint firstItem="bXy-93-KZj" firstAttribute="leading" secondItem="a7O-P1-efD" secondAttribute="leading" constant="16" id="e18-lh-0il"/>
-                            <constraint firstItem="aeo-Re-ziv" firstAttribute="top" secondItem="Xwf-tw-qdK" secondAttribute="bottom" constant="8" id="kwa-I1-tig"/>
+                            <constraint firstItem="aeo-Re-ziv" firstAttribute="top" secondItem="Xwf-tw-qdK" secondAttribute="bottom" constant="5" id="kwa-I1-tig"/>
+                            <constraint firstItem="oyO-Ir-MAa" firstAttribute="top" secondItem="aeo-Re-ziv" secondAttribute="bottom" constant="4" id="l8k-k7-bhV"/>
                             <constraint firstItem="LC5-vj-9Wd" firstAttribute="trailing" secondItem="a7O-P1-efD" secondAttribute="trailing" id="maP-40-HlE"/>
                             <constraint firstItem="Xwf-tw-qdK" firstAttribute="top" secondItem="rMc-Mr-CFd" secondAttribute="bottom" constant="26.670000000000002" id="nHc-Dk-zC5"/>
                             <constraint firstItem="epd-n1-fJG" firstAttribute="top" secondItem="LC5-vj-9Wd" secondAttribute="bottom" constant="12" id="pJh-fA-wJY"/>
@@ -1514,8 +1515,8 @@
                                     <constraint firstItem="PbJ-ak-6AK" firstAttribute="leading" secondItem="VEc-RB-De5" secondAttribute="leading" constant="21" id="xDe-CQ-dUv"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uXr-dv-8eG">
-                                <rect key="frame" x="0.0" y="103" width="393" height="556"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uXr-dv-8eG">
+                                <rect key="frame" x="0.0" y="103" width="393" height="576.33333333333337"/>
                                 <color key="backgroundColor" name="OrangeColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XTk-Fq-lu2">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1533,6 +1534,7 @@
                         <viewLayoutGuide key="safeArea" id="T8V-vd-JRg"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
+                            <constraint firstItem="VEc-RB-De5" firstAttribute="top" secondItem="uXr-dv-8eG" secondAttribute="bottom" id="4oB-lK-z9I"/>
                             <constraint firstItem="uXr-dv-8eG" firstAttribute="top" secondItem="T8V-vd-JRg" secondAttribute="top" id="4xe-ed-m7m"/>
                             <constraint firstItem="VEc-RB-De5" firstAttribute="leading" secondItem="T8V-vd-JRg" secondAttribute="leading" id="FHm-hz-Uig"/>
                             <constraint firstItem="T8V-vd-JRg" firstAttribute="bottom" secondItem="VEc-RB-De5" secondAttribute="bottom" id="MbD-Qm-jQt"/>
@@ -1697,28 +1699,28 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemMintColor">
-            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

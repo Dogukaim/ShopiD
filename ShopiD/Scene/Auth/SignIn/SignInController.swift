@@ -5,7 +5,7 @@
 //  Created by Dogukaim on 1.09.2023.
 //
 
-import Foundation
+
 import UIKit
 import Firebase
 import GoogleSignIn
@@ -14,11 +14,12 @@ import FirebaseDatabase
 
 
 
+
 class SignInController: UIViewController{
     
  
     //MARK: - Google SignIn Manager
-    private let googleSignInManager = GIDSignIn.sharedInstance
+    private var  googleSignInManager: GIDSignIn!
     
     var passwordSecure = true
     static let signInConfig = GIDConfiguration(clientID: "547955988940-k7qo5pvcsoltfab82ujuj2h0v91ul30b.apps.googleusercontent.com")
@@ -29,13 +30,25 @@ class SignInController: UIViewController{
     @IBOutlet weak var eyesButton: UIButton!
     @IBOutlet weak var registerButt: UIButton!
     
+    
+//    private let signInViewModel = SignInViewModel()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+    
+        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+            if let error = error {
+                print("Error restoring previous sign-in: \(error.localizedDescription)")
+            }
+        }
        
+        GIDSignIn.sharedInstance.signIn(withPresenting: self)
         
+        
+        
+    
     }
     
 
@@ -64,37 +77,54 @@ class SignInController: UIViewController{
     
     
     @IBAction func googleButtonTapped(_ sender: Any) {
+//        googleSignInManager.signIn(withPresenting: self)
+
+//            signInViewModel.credentialHandler = { [weak self] (credential: AuthCredential?, error: Error?) in
+//                if let error = error {
+//                    print("Failed to sign in with Google: \(error.localizedDescription)")
+//                    // Handle the error
+//                } else if let credential = credential {
+//                    // Kullanıcı başarıyla Google ile giriş yaptı
+//                    self?.signInWithCredential(credential)
+//                }
+//            }
+//
+//            signInViewModel.getGoogleCredential(viewController: self)
         
-//        let signInViewModel = SignInViewModel()
-//             signInViewModel.credentialHandler = { [weak self] credential, error in
-//                 if let error = error {
-//                     print("Failed to sign in with Google: \(error.localizedDescription)")
-//                     // Handle the error
-//                 } else if let credential = credential {
-//                     // Kullanıcı başarıyla Google ile giriş yaptı
-//                     self?.signInWithCredential(credential)
-//                 }
-//             }
-//             signInViewModel.getGoogleCredential(self)
         
-     
-    
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+           guard error == nil else { return }
+
+           // If sign in succeeded, display the app's main content View.
+         }
+        
+        
         
     }
     
+    
+    
+    
+    
+    func navigateToHomeScreen() {
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "HomeNNC") as! UITabBarController
+        controller.modalPresentationStyle = .fullScreen
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    
+    
     private func signInWithCredential(_ credential: AuthCredential) {
-            Auth.auth().signIn(with: credential) { [weak self] authResult, error in
-                if let error = error {
-                    print("Failed to sign in with Google credential: \(error.localizedDescription)")
-                    // Handle the error
-                } else {
-                    // Kullanıcı başarıyla giriş yaptı
-                    let controller = self?.storyboard?.instantiateViewController(withIdentifier: "HomeNNC") as! UITabBarController
-                    controller.modalPresentationStyle = .fullScreen
-                    self?.present(controller, animated: true, completion: nil)
-                }
+        Auth.auth().signIn(with: credential) { [weak self] authResult, error in
+            if let error = error {
+                print("Failed to sign in with Google credential: \(error.localizedDescription)")
+                // Handle the error
+            } else {
+                // Kullanıcı başarıyla giriş yaptı
+                self?.navigateToHomeScreen()
             }
         }
+    }
 
     
     
@@ -147,24 +177,30 @@ class SignInController: UIViewController{
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
-            print("Failed to sign in with Google: \(error.localizedDescription)")
-            return
-        }
+                 print("Failed to sign in with Google: \(error.localizedDescription)")
+                 return
+             }
 
-        guard let user = user else {
-            print("No user information received from Google.")
-            return
-        }
+             guard let user = user else {
+                 print("No user information received from Google.")
+                 return
+             }
 
-        let emailAdress = user.profile?.email
-        let userID = user.userID
-        let fullName = user.profile?.name
-        let givenName = user.profile?.givenName
-        let familyName = user.profile?.familyName
-        let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+             let emailAdress = user.profile?.email
+             let userID = user.userID
+             let fullName = user.profile?.name
+             let givenName = user.profile?.givenName
+             let familyName = user.profile?.familyName
+             let profilePicUrl = user.profile?.imageURL(withDimension: 320)
 
-        print("full name \(fullName ?? ""), emailAddress: \(emailAdress ?? "")")
+             print("Full Name: \(fullName ?? ""), Email Address: \(emailAdress ?? "")")
+
+             // Gerekirse kullanıcı bilgilerini kullanabilirsiniz.
+             // Örnek: self.navigateToHomeScreen()
     }
+    
+    
+    
     
 }
     

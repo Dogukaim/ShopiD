@@ -77,6 +77,9 @@ class ProfileController: UIViewController {
         
 
            profileViewModel.signOut()
+        
+        
+        // GIDSignIn.sharedInstance.signOut()
 
     }
     

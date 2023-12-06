@@ -98,24 +98,17 @@ extension ProductController: UICollectionViewDelegate,UICollectionViewDataSource
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailController") as!  DetailController
-//        self.navigationController?.pushViewController(controller, animated: true)
-//        let prodcut = products[indexPath.row]
-//        
-//        performSegue(withIdentifier: DetailController.detailSegue, sender: prodcut)
-//        collectionView.deselectItem(at: indexPath, animated: true)
-//        
-//        let selectedDetail = details[indexPath.row]
         
         
         
+        let selectedProductID = productsviewModel.seeAllProducts[indexPath.item].id
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailController") as! DetailController
+        controller.productID = selectedProductID
+        
+        self.navigationController?.pushViewController(controller, animated: true)
         
         
     }
     
-//    func showDetailViewCont(with productD: Product) {
-//        let productDetailVC = DetailController(product: productD)
-//        self.navigationController?.pushViewController(productDetailVC, animated: true)
-//    }
-//    
+
 }
