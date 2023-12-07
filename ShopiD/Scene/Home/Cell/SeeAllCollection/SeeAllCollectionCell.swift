@@ -72,19 +72,16 @@ class SeeAllCollectionCell: UICollectionViewCell {
         
 
         
-//        guard let productId = productId else { return }
-//            let quantity = addFavButton.isSelected ? 0 : 1
-//            interface?.seeAllCollectionCell(self, productId: productId, quantity: quantity, favButtonTapp: button)
-//            addFavButton.isSelected.toggle()
-        
-        
-        guard let productId = productId else { return }
-        if addFavButton.isSelected == false {
-            interface?.seeAllCollectionCell(self, productId: productId, quantity: 1, favButtonTapp: button)
-        } else {
-            interface?.seeAllCollectionCell(self, productId: productId, quantity: 0, favButtonTapp: button)
-        }
-        addFavButton.isSelected.toggle()
+
+        guard let productId = productId, let interface = interface else { return }
+
+              if !addFavButton.isSelected {
+                  interface.seeAllCollectionCell(self, productId: productId, quantity: 1, favButtonTapp: button)
+              } else {
+                  interface.seeAllCollectionCell(self, productId: productId, quantity: 0, favButtonTapp: button)
+              }
+
+              addFavButton.isSelected.toggle()
     }
     
     

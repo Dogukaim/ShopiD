@@ -149,14 +149,21 @@ final class HomeViewModel {
     }
     
     
-    func fetchFavList() {
-        guard let currentUser = currentUser else { return }
-        
-        let favListRef = database.collection("Users").document(currentUser.uid)
-        favListRef.getDocument(source: .default) { documentData, error in
-            if let documentData = documentData {
-                self.favList = documentData.get("favList") as? [String: Int]
+    func fetchFavList(completion: @escaping () -> Void) {
+        guard let currentUser = currentUser else {
+                   completion()
+                   return
+               }
+
+               let favListRef = database.collection("Users").document(currentUser.uid)
+               favListRef.getDocument(source: .default) { documentData, error in
+                   if let documentData = documentData {
+                       self.favList = documentData.get("favList") as? [String: Int]
+                   }
+                   completion()
             }
         }
-    }
+    
+    
+    
 }

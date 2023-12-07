@@ -33,6 +33,16 @@ class FavoriteController: UIViewController {
     
     
     
+//    var favListProducts: [Product] = [] {
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.favoriteCollection.reloadData()
+//            }
+//        }
+//    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionSetup()
@@ -106,7 +116,8 @@ extension FavoriteController: FavoriteVMDelegate {
     
     func didUpdatedFavlisSuccessful() {
         updateFavoriteCollection(products: favoriteVM.favListProducts)
-        
+//        
+        self.favoriteCollection.reloadData()
         favoriteVM.fetchFavList()
     }
     
@@ -133,11 +144,19 @@ extension FavoriteController: FavoriteVMDelegate {
 
 extension FavoriteController: SeeAllCollectionCellInterface {
     func seeAllCollectionCell(_ view: SeeAllCollectionCell, productId: Int, quantity: Int, favButtonTapp button: UIButton) {
-    
-        let indexPath = favoriteVM.getProductIndexPath(productId: productId)
-        favoriteVM.removeProduct(index: indexPath.item)
-        favoriteCollection.deleteItems(at: [indexPath])
-        favoriteVM.updateFavList(productId: productId, quantity: 0)
+        if quantity == 0 {
+            // Kullanıcı favori ürünü kaldırmak istiyor
+            let indexPath = IndexPath(item: favoriteVM.favListProducts.firstIndex { $0.id == productId } ?? 0, section: 0)
+            favoriteVM.favListProducts.remove(at: indexPath.item)
+            favoriteCollection.deleteItems(at: [indexPath])
+        }
+
+        // Favori listesini güncelle
+        favoriteVM.updateFavList(productId: productId, quantity: quantity)
+
+        // Güncellenmiş favori listesini kullanarak koleksiyonu güncelle
+        updateFavoriteCollection(products: favoriteVM.favListProducts)
+
     }
 }
 

@@ -102,7 +102,7 @@ final class ProfileVM {
     var username: String? { currentUser?.displayName }
     
     func fetchUser() {
-        guard let currentUser = currentUser else { return }
+        guard currentUser != nil else { return }
         self.delegate?.didFetchUserInfo()
     }
     

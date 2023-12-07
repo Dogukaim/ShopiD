@@ -16,7 +16,7 @@ protocol HomeControllerDelegate: AnyObject {
 
 final class HomeController: UIViewController {
     
-    
+        
 
     
     @IBOutlet weak var topCollection: UICollectionView!
@@ -264,7 +264,7 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
 extension HomeController : SeeAllCollectionCellInterface {
     func seeAllCollectionCell(_ view: SeeAllCollectionCell, productId: Int, quantity: Int, favButtonTapp button: UIButton) {
         productsviewModel.updateFavoriList(productId: productId, quantity: quantity)
-//        favoriteController.favoriteDelegate?.didUpdateFavoriteCollection()
+        favoriteController.favoriteDelegate?.didUpdateFavoriteCollection()
     }
     
     
