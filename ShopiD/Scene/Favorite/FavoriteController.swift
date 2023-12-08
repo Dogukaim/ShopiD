@@ -15,7 +15,7 @@ protocol FavoriteCollectionDelegate: AnyObject {
 
 
 class FavoriteController: UIViewController {
-
+    
     @IBOutlet weak var favoriteCollection: UICollectionView!
     
     
@@ -26,20 +26,13 @@ class FavoriteController: UIViewController {
     
     private let favoriteVM = FavoriteVM()
     
-    private let productsVM = HomeViewModel()
+    //    private let productsVM = HomeViewModel()
     
     
     var favoriteDelegate: FavoriteCollectionDelegate?
     
     
     
-//    var favListProducts: [Product] = [] {
-//        didSet {
-//            DispatchQueue.main.async {
-//                self.favoriteCollection.reloadData()
-//            }
-//        }
-//    }
     
     
     
@@ -47,8 +40,10 @@ class FavoriteController: UIViewController {
         super.viewDidLoad()
         collectionSetup()
         
+        
+        
+        favoriteVM.fetchFavList()
         setupDelegate()
-        getData()
     }
     
     private func collectionSetup() {
@@ -56,15 +51,10 @@ class FavoriteController: UIViewController {
     }
     
     
-    private func getData() {
-        favoriteVM.fetchFavList()
-    }
     
     
     private func setupDelegate() {
         favoriteVM.delegate = self
-        
-        
         
         
     }
@@ -72,12 +62,12 @@ class FavoriteController: UIViewController {
     
     func updateFavoriteCollection(products: [Product]) {
         if !products.isEmpty {
-               favoriteVM.favListProducts = products
-               favoriteCollection.reloadData()
-           }
-       }
+            favoriteVM.favListProducts = products
+            favoriteCollection.reloadData()
+        }
+    }
     
-
+    
 }
 
 
@@ -94,31 +84,41 @@ extension FavoriteController: UICollectionViewDelegate,UICollectionViewDataSourc
         cell.configure(data: favoriteVM.favListProducts[indexPath.item])
         
         return cell
-
+        
         
         
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: favoriteCollection.frame.width / 2 - 10, height: favoriteCollection.frame.width / 2)
+        let spacing: CGFloat = 10
+        let itemWidth = (collectionView.frame.width - 3 * spacing) / 2
+        let itemHeight: CGFloat = 177 // İsterseniz farklı bir yükseklik de belirleyebilirsiniz
+        
+        return CGSize(width: itemWidth, height: itemHeight)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+           return 10 // Yatay boşluk (hücreler arasındaki boşluk)
+       }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+           return 10 // Dikey boşluk (satırlar arasındaki boşluk)
+       }
     
 }
 
 
 
 extension FavoriteController: FavoriteVMDelegate {
+    
+    
     func didOccurError(_ error: Error) {
         print(error.localizedDescription)
     }
     
     func didUpdatedFavlisSuccessful() {
-        updateFavoriteCollection(products: favoriteVM.favListProducts)
-//        
-        self.favoriteCollection.reloadData()
-        favoriteVM.fetchFavList()
+        
+        //        favoriteVM.fetchFavList()
     }
     
     func didFetchQuantity() {
@@ -126,15 +126,13 @@ extension FavoriteController: FavoriteVMDelegate {
     }
     
     func didFetchProductsFromFavListSuccessful() {
-//        DispatchQueue.main.async {
-                  self.favoriteCollection.reloadData()
-//            self.favoriteDelegate?.didUpdateFavoriteCollection()
-//              }
+        self.favoriteCollection.reloadData()
     }
     
     func didFetchSingleProduct(_ product: Product) {
-//        <#code#>
+        //        <#code#>
     }
+    
     
     
 }
@@ -144,19 +142,24 @@ extension FavoriteController: FavoriteVMDelegate {
 
 extension FavoriteController: SeeAllCollectionCellInterface {
     func seeAllCollectionCell(_ view: SeeAllCollectionCell, productId: Int, quantity: Int, favButtonTapp button: UIButton) {
-        if quantity == 0 {
-            // Kullanıcı favori ürünü kaldırmak istiyor
-            let indexPath = IndexPath(item: favoriteVM.favListProducts.firstIndex { $0.id == productId } ?? 0, section: 0)
-            favoriteVM.favListProducts.remove(at: indexPath.item)
-            favoriteCollection.deleteItems(at: [indexPath])
-        }
-
-        // Favori listesini güncelle
-        favoriteVM.updateFavList(productId: productId, quantity: quantity)
-
-        // Güncellenmiş favori listesini kullanarak koleksiyonu güncelle
-        updateFavoriteCollection(products: favoriteVM.favListProducts)
-
+        
+        
+        let indexPath = favoriteVM.getProductIndexPath(productId: productId)
+        favoriteVM.removeProduct(index: indexPath.item)
+        favoriteCollection.deleteItems(at: [indexPath])
+        favoriteVM.updateFavList(productId: productId, quantity: 0)
+        
     }
+    
+    
+    func didUpdateFavoriteCollection() {
+            // Favori koleksiyon güncellendiğinde yapılacak işlemler burada gerçekleştirilebilir
+            // Örneğin, koleksiyon görünümünü yenilemek:
+            favoriteCollection.reloadData()
+        
+        print("Favorite collection updated.")
+        }
+    
 }
+
 

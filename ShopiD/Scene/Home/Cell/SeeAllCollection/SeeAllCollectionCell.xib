@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22146" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="177"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Bj-Gm-aT7" userLabel="pro Image View">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Bj-Gm-aT7" userLabel="pro Image View">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="140"/>
                         <color key="tintColor" name="ColorPurple"/>
                         <constraints>
@@ -27,10 +27,10 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xd-TE-hWf">
-                        <rect key="frame" x="5" y="143" width="105" height="34"/>
+                        <rect key="frame" x="5" y="143" width="90" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="8Vp-OB-sGu"/>
-                            <constraint firstAttribute="width" constant="105" id="k9B-eb-lq7"/>
+                            <constraint firstAttribute="width" constant="90" id="k9B-eb-lq7"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <nil key="textColor"/>
@@ -49,7 +49,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRv-m6-SDp">
-                        <rect key="frame" x="118" y="148" width="33" height="24"/>
+                        <rect key="frame" x="112" y="148" width="33" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="OrangeColor"/>
                         <nil key="highlightedColor"/>
@@ -62,10 +62,10 @@
                     <constraint firstItem="4Bj-Gm-aT7" firstAttribute="top" secondItem="cdl-Ld-8Dd" secondAttribute="top" id="Kux-lq-NxK"/>
                     <constraint firstItem="4Bj-Gm-aT7" firstAttribute="leading" secondItem="cdl-Ld-8Dd" secondAttribute="leading" id="TPi-8b-fiB"/>
                     <constraint firstItem="4wS-1w-U2Q" firstAttribute="leading" secondItem="cdl-Ld-8Dd" secondAttribute="leading" constant="122" id="UL7-XF-XBs"/>
+                    <constraint firstAttribute="trailing" secondItem="TRv-m6-SDp" secondAttribute="trailing" constant="5" id="Up1-eH-fPL"/>
                     <constraint firstItem="0Xd-TE-hWf" firstAttribute="top" secondItem="4Bj-Gm-aT7" secondAttribute="bottom" constant="3" id="aQZ-2B-3o6"/>
                     <constraint firstAttribute="bottom" secondItem="0Xd-TE-hWf" secondAttribute="bottom" id="dZc-Ce-vH9"/>
                     <constraint firstItem="TRv-m6-SDp" firstAttribute="top" secondItem="4Bj-Gm-aT7" secondAttribute="bottom" constant="8" id="jql-yv-bee"/>
-                    <constraint firstItem="TRv-m6-SDp" firstAttribute="leading" secondItem="0Xd-TE-hWf" secondAttribute="trailing" constant="8" id="mqk-h2-vPi"/>
                     <constraint firstAttribute="trailing" secondItem="4Bj-Gm-aT7" secondAttribute="trailing" id="q7r-M5-mQ8"/>
                     <constraint firstItem="0Xd-TE-hWf" firstAttribute="leading" secondItem="cdl-Ld-8Dd" secondAttribute="leading" constant="5" id="szM-Ad-RXf"/>
                 </constraints>

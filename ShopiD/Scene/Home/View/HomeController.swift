@@ -16,8 +16,8 @@ protocol HomeControllerDelegate: AnyObject {
 
 final class HomeController: UIViewController {
     
-        
-
+    
+    
     
     @IBOutlet weak var topCollection: UICollectionView!
     @IBOutlet weak var catCollect: UICollectionView!
@@ -39,19 +39,19 @@ final class HomeController: UIViewController {
     
     var productt: Product?
     
-
+    
     
     weak var homeControllerDelegate: HomeControllerDelegate?
     
-
-    lazy var favoriteController: FavoriteController = {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "FavoriteController") as! FavoriteController
-        controller.favoriteDelegate = self
-        return controller
-    }()
-    
-    
+    //
+    //    lazy var favoriteController: FavoriteController = {
+    //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    //        let controller = storyboard.instantiateViewController(withIdentifier: "FavoriteController") as! FavoriteController
+    //        controller.favoriteDelegate = self
+    //        return controller
+    //    }()
+    //
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
@@ -71,10 +71,10 @@ final class HomeController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       
-          
+        
+        
     }
-
+    
     
     
     func isSucced() {
@@ -85,7 +85,7 @@ final class HomeController: UIViewController {
             self?.seeAllCollect.reloadData()
             
         }
-     }   
+    }
     
     
     private func getData() {
@@ -98,7 +98,7 @@ final class HomeController: UIViewController {
     }
     
     
-       
+    
     private func configureNavBar() {
         navigationController?.isNavigationBarHidden = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -125,7 +125,7 @@ final class HomeController: UIViewController {
         productsviewModel.delegate = self
     }
     
-
+    
 }
 
 
@@ -262,23 +262,28 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
 
 
 extension HomeController : SeeAllCollectionCellInterface {
-    func seeAllCollectionCell(_ view: SeeAllCollectionCell, productId: Int, quantity: Int, favButtonTapp button: UIButton) {
-        productsviewModel.updateFavoriList(productId: productId, quantity: quantity)
-        favoriteController.favoriteDelegate?.didUpdateFavoriteCollection()
-    }
-    
-    
-}
-
-
-extension HomeController: FavoriteCollectionDelegate {
     func didUpdateFavoriteCollection() {
-        getData()
+//        <#code#>
+    }
     
+    func seeAllCollectionCell(_ view: SeeAllCollectionCell, productId: Int, quantity: Int, favButtonTapp button: UIButton) {
+        
+        productsviewModel.updateFavoriList(productId: productId, quantity: quantity)
+        homeControllerDelegate?.didUpdateFavoriteCollection(products: productsviewModel.seeAllProducts)
     }
     
     
 }
+
+
+//extension HomeController: FavoriteCollectionDelegate {
+//    func didUpdateFavoriteCollection() {
+////        getData()
+//
+//    }
+
+
+//}
 
 
 extension HomeController: HomeVMDelegate {
@@ -295,7 +300,7 @@ extension HomeController: HomeVMDelegate {
     }
     
     func didFetchAllCategories() {
-            
+        
     }
     
     func didFetchSpecialProductsSuccessful() {
@@ -303,8 +308,9 @@ extension HomeController: HomeVMDelegate {
     }
     
     func didUpdateFavListSuccessful() {
-        favoriteController.favoriteCollection.reloadData()
+        //        favoriteController.favoriteCollection.reloadData()
     }
+    
     
     
     

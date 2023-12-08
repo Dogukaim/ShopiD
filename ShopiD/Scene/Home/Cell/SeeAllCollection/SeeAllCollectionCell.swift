@@ -18,13 +18,14 @@ protocol SeeProtocolViewCell {
 
 protocol SeeAllCollectionCellInterface: AnyObject {
     func seeAllCollectionCell(_ view: SeeAllCollectionCell,productId: Int,quantity: Int, favButtonTapp button: UIButton)
+    func didUpdateFavoriteCollection()
 }
 
 
 
 
 class SeeAllCollectionCell: UICollectionViewCell {
-
+    
     
     
     @IBOutlet weak var proImageView: UIImageView!
@@ -36,7 +37,7 @@ class SeeAllCollectionCell: UICollectionViewCell {
     
     
     
-
+    
     
     weak var interface: SeeAllCollectionCellInterface?
     
@@ -61,7 +62,7 @@ class SeeAllCollectionCell: UICollectionViewCell {
         
         super.awakeFromNib()
         layer.cornerRadius = 12
-
+        
         toggleAddButton()
     }
     
@@ -70,18 +71,14 @@ class SeeAllCollectionCell: UICollectionViewCell {
     
     @IBAction func favButtonTapp(_ button: UIButton) {
         
-
+        guard let productId = productId else { return }
         
-
-        guard let productId = productId, let interface = interface else { return }
-
-              if !addFavButton.isSelected {
-                  interface.seeAllCollectionCell(self, productId: productId, quantity: 1, favButtonTapp: button)
-              } else {
-                  interface.seeAllCollectionCell(self, productId: productId, quantity: 0, favButtonTapp: button)
-              }
-
-              addFavButton.isSelected.toggle()
+        if addFavButton.isSelected == false {
+            interface?.seeAllCollectionCell(self, productId: productId, quantity: 1, favButtonTapp: button)
+        } else {
+            interface?.seeAllCollectionCell(self, productId: productId, quantity: 0, favButtonTapp: button)
+        }
+        addFavButton.isSelected.toggle()
     }
     
     
@@ -98,3 +95,20 @@ class SeeAllCollectionCell: UICollectionViewCell {
     
     
 }
+
+
+extension SeeAllCollectionCell: SeeAllCollectionCellInterface {
+    func seeAllCollectionCell(_ view: SeeAllCollectionCell, productId: Int, quantity: Int, favButtonTapp button: UIButton) {
+        // ... (Önceki kodlar buraya eklenebilir)
+        
+        // Favori koleksiyonu güncellendiğinde, bu güncellemeyi SeeAllCollectionCellInterface'a bildir
+        
+        print("Favorite collection updated.")
+        interface?.didUpdateFavoriteCollection()
+    }
+    
+    func didUpdateFavoriteCollection() {
+        // Bu fonksiyonu eğer gerekirse implement edebilirsiniz
+    }
+}
+
