@@ -29,21 +29,31 @@ class FavoriteController: UIViewController {
     //    private let productsVM = HomeViewModel()
     
     
-    var favoriteDelegate: FavoriteCollectionDelegate?
+    weak var favoriteDelegate: FavoriteCollectionDelegate?
     
     
     
-    
+  
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionSetup()
         
-        
+        let homeController = HomeController()
+        homeController.homeControllerDelegate = self
         
         favoriteVM.fetchFavList()
         setupDelegate()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("View will appear in FavoriteController.")
+        favoriteVM.fetchFavList()
+        
+        favoriteCollection.reloadData()
     }
     
     private func collectionSetup() {
@@ -81,6 +91,7 @@ extension FavoriteController: UICollectionViewDelegate,UICollectionViewDataSourc
         guard let cell = favoriteCollection.dequeueReusableCell(withReuseIdentifier: "\(SeeAllCollectionCell.self)", for: indexPath) as? SeeAllCollectionCell else { return UICollectionViewCell() }
         cell.interface = self
         cell.addFavButton.isSelected = true
+        
         cell.configure(data: favoriteVM.favListProducts[indexPath.item])
         
         return cell
@@ -98,12 +109,12 @@ extension FavoriteController: UICollectionViewDelegate,UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-           return 10 // Yatay boşluk (hücreler arasındaki boşluk)
-       }
+        return 10 // Yatay boşluk (hücreler arasındaki boşluk)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-           return 10 // Dikey boşluk (satırlar arasındaki boşluk)
-       }
+        return 10 // Dikey boşluk (satırlar arasındaki boşluk)
+    }
     
 }
 
@@ -118,7 +129,7 @@ extension FavoriteController: FavoriteVMDelegate {
     
     func didUpdatedFavlisSuccessful() {
         
-        //        favoriteVM.fetchFavList()
+        //                favoriteVM.fetchFavList()
     }
     
     func didFetchQuantity() {
@@ -127,6 +138,8 @@ extension FavoriteController: FavoriteVMDelegate {
     
     func didFetchProductsFromFavListSuccessful() {
         self.favoriteCollection.reloadData()
+        
+        
     }
     
     func didFetchSingleProduct(_ product: Product) {
@@ -153,13 +166,33 @@ extension FavoriteController: SeeAllCollectionCellInterface {
     
     
     func didUpdateFavoriteCollection() {
-            // Favori koleksiyon güncellendiğinde yapılacak işlemler burada gerçekleştirilebilir
-            // Örneğin, koleksiyon görünümünü yenilemek:
-            favoriteCollection.reloadData()
         
+        favoriteCollection.reloadData()
+        
+        favoriteDelegate?.didUpdateFavoriteCollection()
+
         print("Favorite collection updated.")
-        }
+    }
+    
+
+    
     
 }
 
 
+extension FavoriteController: HomeControllerDelegate {
+    func didUpdateFavoriteCollection(products: [Product]) {
+        
+    }
+    
+    func didUpdateHomeBadge() {
+        print("didUpdateHomeBadge fonksiyonu çağrıldı.")
+        if let tabBarController = self.tabBarController {
+                   let homeTabIndex = 2  // Home tab'ının sıra numarasını belirtin
+                   let homeTabBarItem = tabBarController.tabBar.items?[homeTabIndex]
+                   homeTabBarItem?.badgeValue = nil
+               }
+    }
+    
+    
+}

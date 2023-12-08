@@ -78,7 +78,14 @@ class SeeAllCollectionCell: UICollectionViewCell {
         } else {
             interface?.seeAllCollectionCell(self, productId: productId, quantity: 0, favButtonTapp: button)
         }
+        
         addFavButton.isSelected.toggle()
+        
+        if let interface = interface {
+            interface.didUpdateFavoriteCollection()
+        } else {
+            print("Warning: Interface is nil.")
+        }
     }
     
     
@@ -105,10 +112,13 @@ extension SeeAllCollectionCell: SeeAllCollectionCellInterface {
         
         print("Favorite collection updated.")
         interface?.didUpdateFavoriteCollection()
+        
     }
     
     func didUpdateFavoriteCollection() {
-        // Bu fonksiyonu eğer gerekirse implement edebilirsiniz
+        print("Favorite collection updated in SeeAllCollectionCell.")
+        let favorite = FavoriteController()
+        favorite.favoriteCollection.reloadData()
     }
 }
 

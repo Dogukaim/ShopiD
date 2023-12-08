@@ -10,6 +10,7 @@ import UIKit
 
 protocol HomeControllerDelegate: AnyObject {
     func didUpdateFavoriteCollection(products: [Product])
+    func didUpdateHomeBadge()
 }
 
 
@@ -31,7 +32,7 @@ final class HomeController: UIViewController {
     
     private let searchVM = SearchViewModel()
     
-    
+    private let favoriteVM = FavoriteVM()
     
     
     private var products = [Product]()
@@ -43,15 +44,7 @@ final class HomeController: UIViewController {
     
     weak var homeControllerDelegate: HomeControllerDelegate?
     
-    //
-    //    lazy var favoriteController: FavoriteController = {
-    //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //        let controller = storyboard.instantiateViewController(withIdentifier: "FavoriteController") as! FavoriteController
-    //        controller.favoriteDelegate = self
-    //        return controller
-    //    }()
-    //
-    //
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
@@ -123,6 +116,8 @@ final class HomeController: UIViewController {
         searchs.delegate = self
         
         productsviewModel.delegate = self
+        
+        
     }
     
     
@@ -188,6 +183,7 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
             guard let cell = seeAllCollect.dequeueReusableCell(withReuseIdentifier: "\(SeeAllCollectionCell.self)", for: indexPath) as? SeeAllCollectionCell else { return UICollectionViewCell() }
             cell.configure(data: productsviewModel.seeAllProducts[indexPath.item])
             cell.interface = self
+            
             return cell
         default:
             return UICollectionViewCell()
@@ -261,29 +257,41 @@ extension HomeController: UICollectionViewDelegate,UICollectionViewDataSource,UI
 
 
 
-extension HomeController : SeeAllCollectionCellInterface {
+extension HomeController: SeeAllCollectionCellInterface {
     func didUpdateFavoriteCollection() {
-//        <#code#>
+        
+        
+        updateTabBarBadge()
     }
     
     func seeAllCollectionCell(_ view: SeeAllCollectionCell, productId: Int, quantity: Int, favButtonTapp button: UIButton) {
-        
         productsviewModel.updateFavoriList(productId: productId, quantity: quantity)
         homeControllerDelegate?.didUpdateFavoriteCollection(products: productsviewModel.seeAllProducts)
     }
     
     
+    
+    
+    func updateTabBarBadge() {
+        if let tabBarController = self.tabBarController {
+            let favoriteTabIndex = 1
+            let favoriteTabBarItem = tabBarController.tabBar.items?[favoriteTabIndex]
+            
+            if !favoriteVM.favListProducts.isEmpty {
+                favoriteTabBarItem?.badgeValue = "\(favoriteVM.favListProducts.count)"
+            } else {
+                favoriteTabBarItem?.badgeValue = "1"
+            }
+        }
+        
+        homeControllerDelegate?.didUpdateHomeBadge()
+    }
+    
+    
+    
 }
 
 
-//extension HomeController: FavoriteCollectionDelegate {
-//    func didUpdateFavoriteCollection() {
-////        getData()
-//
-//    }
-
-
-//}
 
 
 extension HomeController: HomeVMDelegate {
@@ -308,7 +316,7 @@ extension HomeController: HomeVMDelegate {
     }
     
     func didUpdateFavListSuccessful() {
-        //        favoriteController.favoriteCollection.reloadData()
+        
     }
     
     
