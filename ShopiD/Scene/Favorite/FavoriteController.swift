@@ -40,6 +40,9 @@ class FavoriteController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionSetup()
+        favoriteVM.fetchFavList()
+        setupDelegate()
+        hideFavoriteBadge()
         
         // homeController'ı favori listesi ekranına geçerken parametre olarak alın
         if let homeController = homeController {
@@ -47,11 +50,6 @@ class FavoriteController: UIViewController {
             homeController.updateTabBarBadge()
         }
         
-        
-        
-        favoriteVM.fetchFavList()
-        setupDelegate()
-        hideFavoriteBadge()
     }
     
     
@@ -105,6 +103,25 @@ extension FavoriteController: UICollectionViewDelegate,UICollectionViewDataSourc
         return favoriteVM.favListProducts.count
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        guard let productId = favoriteVM.favListProducts[indexPath.item].id else { return }
+        
+        
+        guard let detailController = storyboard?.instantiateViewController(withIdentifier: "DetailController") as? DetailController else {
+            print("Error: Couldn't instantiate DetailController from storyboard.")
+            return
+        }
+        
+        
+        detailController.productID = productId
+        
+        
+        navigationController?.pushViewController(detailController, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = favoriteCollection.dequeueReusableCell(withReuseIdentifier: "\(SeeAllCollectionCell.self)", for: indexPath) as? SeeAllCollectionCell else { return UICollectionViewCell() }
         cell.interface = self
@@ -134,6 +151,9 @@ extension FavoriteController: UICollectionViewDelegate,UICollectionViewDataSourc
         return 10 // Dikey boşluk (satırlar arasındaki boşluk)
     }
     
+    
+    
+    
 }
 
 
@@ -161,7 +181,9 @@ extension FavoriteController: FavoriteVMDelegate {
     }
     
     func didFetchSingleProduct(_ product: Product) {
-        //        <#code#>
+
+        
+        
     }
     
     

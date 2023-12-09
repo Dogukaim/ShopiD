@@ -973,8 +973,8 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                                 <connections>
-                                    <outlet property="dataSource" destination="X5F-Kw-k8s" id="1Mu-Rp-gu6"/>
-                                    <outlet property="delegate" destination="X5F-Kw-k8s" id="9Ff-cR-cWJ"/>
+                                    <outlet property="dataSource" destination="X5F-Kw-k8s" id="rCN-3X-5E6"/>
+                                    <outlet property="delegate" destination="X5F-Kw-k8s" id="EH3-pc-zmi"/>
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whR-ft-yKD">
