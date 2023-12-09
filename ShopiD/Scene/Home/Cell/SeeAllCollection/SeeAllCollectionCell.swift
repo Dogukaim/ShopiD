@@ -81,21 +81,37 @@ class SeeAllCollectionCell: UICollectionViewCell {
         
         addFavButton.isSelected.toggle()
         
+        
+        
         if let interface = interface {
             interface.didUpdateFavoriteCollection()
+            
         } else {
             print("Warning: Interface is nil.")
         }
     }
     
-    
-    
     func toggleAddButton() {
         let image = UIImage(systemName: "heart")
         let imageFilled = UIImage(systemName: "heart.fill")
+        
         addFavButton.setImage(image, for: .normal)
         addFavButton.setImage(imageFilled, for: .selected)
+        
+        // Configuration Update Handler
+        addFavButton.configurationUpdateHandler = { [weak self] button in
+            guard let self = self else { return }
+            
+            var newConfig = button.configuration
+            
+            button.configuration = newConfig
+        }
     }
+
+
+
+    
+
     
     
     

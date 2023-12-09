@@ -11,6 +11,7 @@ import UIKit
 
 protocol FavoriteCollectionDelegate: AnyObject {
     func didUpdateFavoriteCollection()
+    func hideFavoriteBadge()
 }
 
 
@@ -32,19 +33,25 @@ class FavoriteController: UIViewController {
     weak var favoriteDelegate: FavoriteCollectionDelegate?
     
     
+    var homeController: HomeController?
     
-  
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionSetup()
         
-        let homeController = HomeController()
-        homeController.homeControllerDelegate = self
+        // homeController'ı favori listesi ekranına geçerken parametre olarak alın
+        if let homeController = homeController {
+            homeController.homeControllerDelegate = self
+            homeController.updateTabBarBadge()
+        }
+        
+        
         
         favoriteVM.fetchFavList()
         setupDelegate()
+        hideFavoriteBadge()
     }
     
     
@@ -52,9 +59,11 @@ class FavoriteController: UIViewController {
         super.viewWillAppear(animated)
         print("View will appear in FavoriteController.")
         favoriteVM.fetchFavList()
-        
+        hideFavoriteBadge()
         favoriteCollection.reloadData()
+        
     }
+    
     
     private func collectionSetup() {
         favoriteCollection.register(UINib(nibName: "\(SeeAllCollectionCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(SeeAllCollectionCell.self)")
@@ -77,6 +86,15 @@ class FavoriteController: UIViewController {
         }
     }
     
+    
+    func hideFavoriteBadge() {
+        // FavoriteController'daki badge'i kapatmak için gerekli işlemleri gerçekleştirin
+        if let tabBarController = self.tabBarController {
+            let favoriteTabIndex = 1  // Favorite tab'ının sıra numarasını belirtin
+            let favoriteTabBarItem = tabBarController.tabBar.items?[favoriteTabIndex]
+            favoriteTabBarItem?.badgeValue = nil
+        }
+    }
     
 }
 
@@ -129,7 +147,7 @@ extension FavoriteController: FavoriteVMDelegate {
     
     func didUpdatedFavlisSuccessful() {
         
-        //                favoriteVM.fetchFavList()
+        
     }
     
     func didFetchQuantity() {
@@ -161,7 +179,7 @@ extension FavoriteController: SeeAllCollectionCellInterface {
         favoriteVM.removeProduct(index: indexPath.item)
         favoriteCollection.deleteItems(at: [indexPath])
         favoriteVM.updateFavList(productId: productId, quantity: 0)
-        
+        hideHomeBadge()
     }
     
     
@@ -170,29 +188,59 @@ extension FavoriteController: SeeAllCollectionCellInterface {
         favoriteCollection.reloadData()
         
         favoriteDelegate?.didUpdateFavoriteCollection()
-
         print("Favorite collection updated.")
     }
     
-
+    
     
     
 }
 
 
 extension FavoriteController: HomeControllerDelegate {
+    
+    
+    
+    func didUpdateHomeBadge() {
+        // HomeController'daki badge'i kapatmak için gerekli işlemleri burada gerçekleştirin
+        if let tabBarController = self.tabBarController {
+            let homeTabIndex = 2  // Home tab'ının sıra numarasını belirtin
+            let homeTabBarItem = tabBarController.tabBar.items?[homeTabIndex]
+            homeTabBarItem?.badgeValue = nil
+        }
+    }
+    
+    func didUpdateFavoriteCollectionAndShowBadge() {
+        if let tabBarController = self.tabBarController {
+            let homeTabIndex = 2
+            let homeTabBarItem = tabBarController.tabBar.items?[homeTabIndex]
+            
+            if !favoriteVM.favListProducts.isEmpty {
+                homeTabBarItem?.badgeValue = "\(favoriteVM.favListProducts.count)"
+            } else {
+                homeTabBarItem?.badgeValue = "1"
+            }
+        }
+    }
+    
+    
+    
+    
     func didUpdateFavoriteCollection(products: [Product]) {
         
     }
     
-    func didUpdateHomeBadge() {
-        print("didUpdateHomeBadge fonksiyonu çağrıldı.")
-        if let tabBarController = self.tabBarController {
-                   let homeTabIndex = 2  // Home tab'ının sıra numarasını belirtin
-                   let homeTabBarItem = tabBarController.tabBar.items?[homeTabIndex]
-                   homeTabBarItem?.badgeValue = nil
-               }
+    func hideHomeBadge() {
+        if let homeTabIndex = self.tabBarController?.selectedIndex {
+            let homeTabBarItem = tabBarController?.tabBar.items?[homeTabIndex]
+            homeTabBarItem?.badgeValue = nil
+            
+        }
     }
     
     
+    
 }
+
+
+

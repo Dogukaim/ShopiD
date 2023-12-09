@@ -11,6 +11,7 @@ import UIKit
 protocol HomeControllerDelegate: AnyObject {
     func didUpdateFavoriteCollection(products: [Product])
     func didUpdateHomeBadge()
+    func hideHomeBadge()
 }
 
 
@@ -119,6 +120,8 @@ final class HomeController: UIViewController {
         
         
     }
+    
+    
     
     
 }
@@ -267,6 +270,7 @@ extension HomeController: SeeAllCollectionCellInterface {
     func seeAllCollectionCell(_ view: SeeAllCollectionCell, productId: Int, quantity: Int, favButtonTapp button: UIButton) {
         productsviewModel.updateFavoriList(productId: productId, quantity: quantity)
         homeControllerDelegate?.didUpdateFavoriteCollection(products: productsviewModel.seeAllProducts)
+        
     }
     
     
@@ -286,6 +290,7 @@ extension HomeController: SeeAllCollectionCellInterface {
         
         homeControllerDelegate?.didUpdateHomeBadge()
     }
+    
     
     
     
@@ -327,3 +332,22 @@ extension HomeController: HomeVMDelegate {
 }
 
 
+extension HomeController: HomeControllerDelegate {
+    func hideHomeBadge() {
+        if let homeTabIndex = self.tabBarController?.selectedIndex {
+            let homeTabBarItem = tabBarController?.tabBar.items?[homeTabIndex]
+            homeTabBarItem?.badgeValue = nil
+        }
+    }
+    
+    func didUpdateFavoriteCollection(products: [Product]) {
+        let favoriteController = FavoriteController()
+        favoriteController.favoriteDelegate?.hideFavoriteBadge()
+    }
+    
+    func didUpdateHomeBadge() {
+        
+    }
+    
+    
+}
