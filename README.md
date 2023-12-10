@@ -69,6 +69,6 @@
 
 <img width="406" alt="Screenshot 2023-12-10 at 19 34 03" src="https://github.com/Dogukaim/ShopiD/assets/122300536/1717d141-38ec-4f67-8a9a-fafac6a3f6ac">
 
-<img width="420" alt="Screenshot 2023-12-10 at 20 13 59" src="https://github.com/Dogukaim/ShopiD/assets/122300536/6d755601-2d16-4e2d-82e2-690df0347ce7">
+<img width="416" alt="Screenshot 2023-12-10 at 20 13 59" src="https://github.com/Dogukaim/ShopiD/assets/122300536/6d755601-2d16-4e2d-82e2-690df0347ce7">
 
 
