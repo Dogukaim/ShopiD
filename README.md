@@ -37,9 +37,9 @@
 
 <img width="406" alt="Screenshot 2023-12-10 at 19 09 15" src="https://github.com/Dogukaim/ShopiD/assets/122300536/b0702e0d-e2d8-44c4-a677-7ed0fced210b">   
 
-<img width="394" alt="Screenshot 2023-12-10 at 19 09 30" src="https://github.com/Dogukaim/ShopiD/assets/122300536/462666a2-1c3b-4d00-a829-b18f359bbf08">
+<img width="406" alt="Screenshot 2023-12-10 at 19 09 30" src="https://github.com/Dogukaim/ShopiD/assets/122300536/462666a2-1c3b-4d00-a829-b18f359bbf08">
 
-<img width="403" alt="Screenshot 2023-12-10 at 19 09 40" src="https://github.com/Dogukaim/ShopiD/assets/122300536/1b21a16e-51b3-472e-ba3d-05c12f204208">
+<img width="406" alt="Screenshot 2023-12-10 at 19 09 40" src="https://github.com/Dogukaim/ShopiD/assets/122300536/1b21a16e-51b3-472e-ba3d-05c12f204208">
 
 <img width="425" alt="Screenshot 2023-12-10 at 19 38 36" src="https://github.com/Dogukaim/ShopiD/assets/122300536/dcbaacc7-5068-4d0c-8a5a-cf381e018929">
 
