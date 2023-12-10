@@ -48,8 +48,8 @@
                                                     <rect key="frame" x="10" y="372" width="373" height="134"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Onboarding cell size try sadfa " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OA-5B-i2C">
-                                                            <rect key="frame" x="10" y="0.0" width="353.33333333333331" height="70"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
+                                                            <rect key="frame" x="48.666666666666657" y="0.0" width="276" height="70"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -1054,7 +1054,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dogukaim" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6E6-Gp-dVm">
-                                <rect key="frame" x="93" y="332" width="206" height="46"/>
+                                <rect key="frame" x="92.999999999999986" y="332" width="130.66666666666663" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="9oq-cy-kG5"/>
                                 </constraints>
@@ -1063,7 +1063,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do@gmail.com" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRO-kb-3KT">
-                                <rect key="frame" x="43" y="472" width="307" height="49"/>
+                                <rect key="frame" x="43" y="472" width="150.66666666666666" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="ptL-Ua-32O"/>
                                 </constraints>
@@ -1148,7 +1148,6 @@
                             <constraint firstItem="yIc-YT-l36" firstAttribute="top" secondItem="So8-Hg-bsd" secondAttribute="top" constant="84" id="OPx-7s-uap"/>
                             <constraint firstItem="ghP-QE-PIs" firstAttribute="top" secondItem="Wyr-1W-MvO" secondAttribute="bottom" constant="8.3300000000000001" id="OUl-N6-igV"/>
                             <constraint firstItem="So8-Hg-bsd" firstAttribute="trailing" secondItem="ghP-QE-PIs" secondAttribute="trailing" constant="88" id="UhE-f3-ihH"/>
-                            <constraint firstItem="So8-Hg-bsd" firstAttribute="trailing" secondItem="oRO-kb-3KT" secondAttribute="trailing" constant="43" id="W9t-oc-yjk"/>
                             <constraint firstItem="By5-VJ-nvc" firstAttribute="leading" secondItem="So8-Hg-bsd" secondAttribute="leading" constant="77" id="Y69-jJ-5fp"/>
                             <constraint firstItem="So8-Hg-bsd" firstAttribute="trailing" secondItem="By5-VJ-nvc" secondAttribute="trailing" constant="77" id="Yji-zd-8B8"/>
                             <constraint firstItem="bbm-77-czd" firstAttribute="leading" secondItem="So8-Hg-bsd" secondAttribute="leading" constant="121" id="ZYe-ct-Jib"/>
@@ -1159,7 +1158,6 @@
                             <constraint firstItem="ghP-QE-PIs" firstAttribute="leading" secondItem="So8-Hg-bsd" secondAttribute="leading" constant="87" id="gyY-N8-gid"/>
                             <constraint firstItem="oRO-kb-3KT" firstAttribute="top" secondItem="alB-Gr-TsZ" secondAttribute="bottom" constant="15" id="tFY-Ra-SoZ"/>
                             <constraint firstItem="oRO-kb-3KT" firstAttribute="top" secondItem="6E6-Gp-dVm" secondAttribute="bottom" constant="94" id="zIw-rm-HDW"/>
-                            <constraint firstItem="So8-Hg-bsd" firstAttribute="trailing" secondItem="6E6-Gp-dVm" secondAttribute="trailing" constant="94" id="zZN-TW-UkX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="TCH-Ut-7mi"/>
@@ -1387,8 +1385,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIO-cZ-uFO">
-                                        <rect key="frame" x="29" y="0.0" width="47" height="21"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIO-cZ-uFO">
+                                        <rect key="frame" x="29" y="0.0" width="58" height="21"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -1400,8 +1398,8 @@
                                             <action selector="stepperPlusButTap:" destination="e9X-mj-2oc" eventType="touchUpInside" id="UD1-h2-8sj"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHU-pL-TIr">
-                                        <rect key="frame" x="82" y="0.0" width="19.333333333333329" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" ambiguous="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHU-pL-TIr">
+                                        <rect key="frame" x="93" y="0.0" width="8.3333333333333286" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Gi9-Q6-Y3v"/>
                                         </constraints>
@@ -1409,7 +1407,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1X-qo-uD4">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1X-qo-uD4">
                                         <rect key="frame" x="107.33333333333331" y="0.0" width="47" height="21"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

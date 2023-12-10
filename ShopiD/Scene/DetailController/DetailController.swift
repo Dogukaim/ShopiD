@@ -81,7 +81,7 @@ final class DetailController: UIViewController  {
             viewModel.fetchSingleProduct(productId: productID)
         }
         
-        
+//        toggleAddToWishListButton()
         
         
     }

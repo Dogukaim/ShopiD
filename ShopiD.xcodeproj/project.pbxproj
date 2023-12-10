@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A0AD2FA2B25C91D00873CC4 /* CartCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0AD2F82B25C91C00873CC4 /* CartCollectionCell.swift */; };
+		9A0AD2FB2B25C91D00873CC4 /* CartCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0AD2F92B25C91D00873CC4 /* CartCollectionCell.xib */; };
 		9A0E33752AC047F8002AACD2 /* ProductsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E33732AC047F8002AACD2 /* ProductsCollectionCell.swift */; };
 		9A0E33762AC047F8002AACD2 /* ProductsCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0E33742AC047F8002AACD2 /* ProductsCollectionCell.xib */; };
 		9A0E33792AC08041002AACD2 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E33772AC08041002AACD2 /* CategoryCell.swift */; };
@@ -75,6 +77,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A0AD2F82B25C91C00873CC4 /* CartCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCollectionCell.swift; sourceTree = "<group>"; };
+		9A0AD2F92B25C91D00873CC4 /* CartCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartCollectionCell.xib; sourceTree = "<group>"; };
 		9A0E33732AC047F8002AACD2 /* ProductsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionCell.swift; sourceTree = "<group>"; };
 		9A0E33742AC047F8002AACD2 /* ProductsCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductsCollectionCell.xib; sourceTree = "<group>"; };
 		9A0E33772AC08041002AACD2 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -467,6 +471,8 @@
 		9AF468E12AAB3D64006FE0B9 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				9A0AD2F82B25C91C00873CC4 /* CartCollectionCell.swift */,
+				9A0AD2F92B25C91D00873CC4 /* CartCollectionCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -761,6 +767,7 @@
 				9A2C0F082AA201B00064FF77 /* LaunchScreen.storyboard in Resources */,
 				9A0E33762AC047F8002AACD2 /* ProductsCollectionCell.xib in Resources */,
 				9AF469072AAB3F4F006FE0B9 /* MidCollectionCell.xib in Resources */,
+				9A0AD2FB2B25C91D00873CC4 /* CartCollectionCell.xib in Resources */,
 				9A7F9B8E2AA618AF0036FD89 /* GoogleService-Info.plist in Resources */,
 				9A2C0F052AA201B00064FF77 /* Assets.xcassets in Resources */,
 				9AF469022AAB3F03006FE0B9 /* TopCollectionCell.xib in Resources */,
@@ -822,6 +829,7 @@
 				9AF469062AAB3F4F006FE0B9 /* MidCollectionCell.swift in Sources */,
 				9AB6C64D2B0CFA20001D863F /* FilterCategory.swift in Sources */,
 				9A66C1E42AB48B0C008358AF /* UIImageView+DownloadImage.swift in Sources */,
+				9A0AD2FA2B25C91D00873CC4 /* CartCollectionCell.swift in Sources */,
 				9A2C0F1B2AA204990064FF77 /* CollectionViewCell.swift in Sources */,
 				9A2C0EFE2AA201AF0064FF77 /* SceneDelegate.swift in Sources */,
 				9A679B6C2AC191D6004EF8CB /* ProductDetailViewModel.swift in Sources */,
