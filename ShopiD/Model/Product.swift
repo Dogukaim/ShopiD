@@ -19,6 +19,8 @@ struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolVie
     
     
     
+    
+    
     let id: Int?
     let title: String?
     let price: Double?
@@ -240,6 +242,11 @@ struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolVie
         }
         return ""
     }
+    
+   
+
+    
+    
     
     
     

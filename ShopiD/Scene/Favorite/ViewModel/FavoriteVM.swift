@@ -62,18 +62,18 @@ final class FavoriteVM {
     
     func createUsersCollectilonIfNeeded() {
         guard let currentUser = currentUser else { return }
-                let userRef = database.collection("Users").document(currentUser.uid)
-
-                userRef.getDocument { document, error in
-                    if let document = document, !document.exists {
-                        // Kullanıcının belirli bir belgesi yoksa, Users koleksiyonunu oluşturun
-                        userRef.setData(["dummy": "data"]) { error in
-                            if let error = error {
-                                self.delegate?.didOccurError(error)
-                            }
-                        }
+        let userRef = database.collection("Users").document(currentUser.uid)
+        
+        userRef.getDocument { document, error in
+            if let document = document, !document.exists {
+                
+                userRef.setData(["dummy": "data"]) { error in
+                    if let error = error {
+                        self.delegate?.didOccurError(error)
                     }
                 }
+            }
+        }
     }
     
     //MARK: - Update Favlisr in FireStore
@@ -100,7 +100,7 @@ final class FavoriteVM {
             }
         }
     }
-
+    
     
     
     
@@ -110,14 +110,14 @@ final class FavoriteVM {
     func fetchFavList() {
         
         guard let currentUser = currentUser else { return }
-            
-            let favlistRef = database.collection("Users").document(currentUser.uid)
-            favlistRef.getDocument(source: .default) { documentData, error in
-                if let documentData = documentData {
-                    self.favlist = documentData.get("favList") as? [String: Int]
-                    print(documentData.get("favList"))
-                    
-                    
+        
+        let favlistRef = database.collection("Users").document(currentUser.uid)
+        favlistRef.getDocument(source: .default) { documentData, error in
+            if let documentData = documentData {
+                self.favlist = documentData.get("favList") as? [String: Int]
+                print(documentData.get("favList"))
+                
+                
             }
         }
     }
@@ -145,23 +145,23 @@ final class FavoriteVM {
     
     func fetchProductFromFireStoreCollection(favlist: [String: Int]) {
         let productsRef = database.collection("products")
-          
-          for (id, _) in favlist {
-              let product = productsRef.document(id)
-              product.getDocument(as: Product.self) { result in
-                  switch result {
-                  case .failure(let error):
-                      self.delegate?.didOccurError(error)
-                      
-                  case .success(let product):
-                      guard let productId = product.id else { return }
-                      if !self.favListProducts.contains(where: { $0.id == productId }) {
-                          self.favListProducts.append(product)
-                      }
-                      self.delegate?.didFetchProductsFromFavListSuccessful()
-                  }
-              }
-          }
+        
+        for (id, _) in favlist {
+            let product = productsRef.document(id)
+            product.getDocument(as: Product.self) { result in
+                switch result {
+                case .failure(let error):
+                    self.delegate?.didOccurError(error)
+                    
+                case .success(let product):
+                    guard let productId = product.id else { return }
+                    if !self.favListProducts.contains(where: { $0.id == productId }) {
+                        self.favListProducts.append(product)
+                    }
+                    self.delegate?.didFetchProductsFromFavListSuccessful()
+                }
+            }
+        }
     }
     
     
@@ -176,7 +176,7 @@ final class FavoriteVM {
         } onError: { error in
             self.delegate?.didOccurError(error)
         }
-
+        
     }
     
     
@@ -196,6 +196,24 @@ final class FavoriteVM {
     func removeProduct(index: Int) {
         favListProducts.remove(at: index)
     }
+    
+    
+    
+    func addProductToFavoritesDetail(productId: Int, quantity: Int) {
+        guard let currentUser = currentUser else { return }
+        let userRef = database.collection("Users").document(currentUser.uid)
+        
+        userRef.updateData(["favList.\(productId)" : quantity]) { error in
+            if let error = error {
+                self.delegate?.didOccurError(error)
+            } else {
+                self.delegate?.didUpdatedFavlisSuccessful()
+            }
+        }
+    }
+
+    
+    
 }
 
 

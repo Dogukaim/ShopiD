@@ -29,11 +29,11 @@ protocol DetailViewInterface: AnyObject {
 }
 
 
-   
+
 
 final class DetailController: UIViewController  {
     
-
+    
     @IBOutlet weak var detaDescr: UILabel!
     @IBOutlet weak var detaImage: UIImageView!
     @IBOutlet weak var detaName: UILabel!
@@ -47,17 +47,17 @@ final class DetailController: UIViewController  {
     @IBOutlet weak var stepperMinusBut: UIButton!
     @IBOutlet weak var stepperStackView: UIStackView!
     @IBOutlet weak var favButDeta: UIButton!
-     
-
     
-
+    
+    
+    
     private let viewModel = DetailViewModel()
     
-    
+    private let favoriteVM = FavoriteVM()
     
     var productID: Int?
     
-    
+    var originalPrice: Double = 0.0
     
     
     var quantity = 1 {
@@ -69,6 +69,7 @@ final class DetailController: UIViewController  {
                 quantity = 10
             }
             stepperLabel.text = String(quantity)
+            updatePrice()
         }
     }
     
@@ -81,10 +82,16 @@ final class DetailController: UIViewController  {
             viewModel.fetchSingleProduct(productId: productID)
         }
         
-//        toggleAddToWishListButton()
         
         
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        toggleStepperElements()
+    }
+    
     
     
     
@@ -94,43 +101,68 @@ final class DetailController: UIViewController  {
         
     }
     
-    func toggleAddToWishListButton() {
+    func toggleAddToFavListButton() {
         let image = UIImage(systemName: "heart")
-        let imageFilled = UIImage(systemName: "heart.fill")
-        favButDeta.setImage(image, for: .normal)
-        favButDeta.setImage(imageFilled, for: .selected)
+         let imageFilled = UIImage(systemName: "heart.fill")
+         
+         
+         if !favButDeta.isSelected {
+             favButDeta.setImage(imageFilled, for: .normal)
+         } else {
+             favButDeta.setImage(image, for: .normal)
+         }
+         
+         
+         favButDeta.isSelected.toggle()
     }
     
-
-      
-     @IBAction func addToCartButTapp(_ sender: Any) {
-         
-         if quantity <= 0 {
-             quantity = 1
-             stepperStackView.isHidden = false
-             
-         }
-         stepperStackView.isHidden = false
-         
-     }
-     
-     @IBAction func stepperPlusButTap(_ sender: Any) {
-
-     }
-     
-     
-     @IBAction func stepperMinusButTap(_ sender: Any) {
-
-         
-     }
-     
+    
+    
+    @IBAction func addToCartButTapp(_ sender: Any) {
+        
+        if quantity <= 0 {
+            quantity = 1
+        }
+        
+        toggleStepperElements()
+    }
+    
+    @IBAction func stepperPlusButTap(_ sender: Any) {
+        quantity += 1
+        updatePrice()
+    }
+    
+    
+    private func updatePrice() {
+        let totalPrice = originalPrice * Double(quantity)
+        detaPrice.text = String(format: "%.2f", totalPrice)
+        
+    }
     
     
     
-     @IBAction func addToFavButTap(_ sender: Any) {
-
-     }
-
+    
+    
+    @IBAction func stepperMinusButTap(_ sender: Any) {
+        
+        quantity -= 1
+        updatePrice()
+    }
+    
+    
+    
+    
+    @IBAction func addToFavButTap(_ sender: Any) {
+        toggleAddToFavListButton()
+        // Call the function to add the product to favorites
+           if let productId = productID {
+               favoriteVM.addProductToFavoritesDetail(productId: productId, quantity: 1)
+           }
+       
+        
+           
+    }
+    
 }
 
 //MARK: - DetailViewInterface
@@ -141,15 +173,34 @@ extension DetailController: DetailViewInterface {
     
     
     func configure(with data: DetailProtocol) {
-       detaImage.downloadSetImage(url: data.detailImagee)
-       detaName.text = data.detailName
-       detaRating.text = data.detailRati
-       detaSold.text = "\(data.detailSold)"
-       detaDescr.text = data.detailDescription
-       detaPrice.text = data.detailPrice
-   }
-
+        
+        
+        let priceString = data.detailPrice.replacingOccurrences(of: "$", with: "")
+        
+        if let price = Double(priceString) {
+            
+            originalPrice = price
+            updatePrice()
+            
+        } else {
+            
+            print("Error: transformation \(data.detailPrice)")
+            
+            return
+        }
+        
+        
+        detaImage.downloadSetImage(url: data.detailImagee)
+        detaName.text = data.detailName
+        detaRating.text = data.detailRati
+        detaSold.text = "\(data.detailSold)"
+        detaDescr.text = data.detailDescription
+        detaPrice.text = "\(data.detailPrice)"
+        
+        
+    }
+    
     
     
 }
- 
+

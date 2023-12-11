@@ -31,8 +31,40 @@ final class DetailViewModel {
     
     var cart: [String: Int]? = [:]
     
+    
+    
 
     
+    
+    
+    
+}
+
+extension DetailViewModel: DetailViewModelInterface {
+   
+    
+    
+    func fetchSingleProduct(productId id: Int) {
+        manager.fetchSingleProduct(type: .fetchSingleProducts(id: id)) { [weak self] product in
+                    guard let self = self else { return }
+                    
+                    if let product = product {
+                        // remove loading
+                        self.view?.configure(with: product)
+                        
+                    }
+                    
+                } onError: { [weak self] error in
+                    guard let self = self else { return }
+                    // show error
+                    self.view?.didOccurError(errorMsg: error.localizedDescription)
+                }
+        
+    }
+    
+
+    
+}
 //    func fetchCart(productId: Int) {
 //        guard let currentUser = currentUser else { return }
 //            let cartRef = database.collection("Users").document(currentUser.uid)
@@ -43,36 +75,3 @@ final class DetailViewModel {
 //            }
 //        }
 //    }
-    
-    
-    
-    
-}
-
-extension DetailViewModel: DetailViewModelInterface {
-    
-    func fetchSingleProduct(productId id: Int) {
-        // add loading
-        
-        manager.fetchSingleProduct(type: .fetchSingleProducts(id: id)) { [weak self] product in
-            guard let self else { return }
-            
-            if let product = product {
-                // remove loading
-                view?.configure(with: product)
-            }
-            
-        } onError: { [weak self] error in
-            guard let self else { return }
-            // show error
-            view?.didOccurError(errorMsg: error.localizedDescription)
-        }
-        
-    }
-    
-    
-    
-    
-    
-    
-}
