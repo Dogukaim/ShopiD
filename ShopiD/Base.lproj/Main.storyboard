@@ -1570,6 +1570,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Cart" id="GEr-Xa-f05"/>
+                    <connections>
+                        <outlet property="cartCollection" destination="uXr-dv-8eG" id="QyU-aA-hng"/>
+                        <outlet property="priceCartLabel" destination="MhR-Ew-GA2" id="C71-Cd-f0L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1sh-Le-9yt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

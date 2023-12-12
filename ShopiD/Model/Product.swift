@@ -12,7 +12,8 @@ import Foundation
 
 //MARK: Product
 
-struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolViewCell,ProductsProtocolCell,CategorysProtocolCell,DetailProtocol {
+struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolViewCell,ProductsProtocolCell,CategorysProtocolCell,DetailProtocol,CartProtocolViewCell {
+ 
     
     
     
@@ -249,38 +250,30 @@ struct Product: Codable,TopProtocolViewCell,ThirdProtocolViewCell,SeeProtocolVie
     
     
     
+    //MARK: CartProtocolViewCell
     
+    var orderİmage: String {
+        if let image = image {
+            return image
+        }
+        return ""
+    }
     
-    //MARK: FavProtocolViewCell
+    var orderName: String {
+        if let title = title {
+            return title
+        }
+        return ""
+    }
     
+    var orderPrice: String {
+        if let price = price {
+            return "$\(price)"
+        }
+        return ""
+    }
     
-//    var favProİmage: String {
-//        if let image = image {
-//            return image
-//        }
-//        return ""
-//    }
-//    
-//    var favProName: String {
-//        if let title = title {
-//            return title
-//        }
-//        return ""
-//    }
-//    
-//    var favProPrice: String {
-//        if let price = price {
-//            return "$\(price)"
-//        }
-//        return ""
-//    }
-//    
-//    var productId: Int {
-//        if let id = id {
-//            return id
-//        }
-//        return 0
-//    }
+    var orderCategoryLbl: String
     
 }
     

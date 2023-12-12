@@ -55,10 +55,13 @@ final class DetailController: UIViewController  {
     
     private let favoriteVM = FavoriteVM()
     
+    private let favoriteController = FavoriteController()
+    
     var productID: Int?
     
     var originalPrice: Double = 0.0
     
+    private var isFavoriteButtonTapped = false
     
     var quantity = 1 {
         didSet {
@@ -72,6 +75,11 @@ final class DetailController: UIViewController  {
             updatePrice()
         }
     }
+    
+    
+    
+    
+    
     
     
     
@@ -94,6 +102,15 @@ final class DetailController: UIViewController  {
     
     
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Her açılışta isFavoriteButtonTapped durumunu sıfırla
+        isFavoriteButtonTapped = false
+    }
+    
+    
+    
     
     private func toggleStepperElements() {
         stepperStackView.isHidden = !stepperStackView.isHidden
@@ -103,17 +120,17 @@ final class DetailController: UIViewController  {
     
     func toggleAddToFavListButton() {
         let image = UIImage(systemName: "heart")
-         let imageFilled = UIImage(systemName: "heart.fill")
-         
-         
-         if !favButDeta.isSelected {
-             favButDeta.setImage(imageFilled, for: .normal)
-         } else {
-             favButDeta.setImage(image, for: .normal)
-         }
-         
-         
-         favButDeta.isSelected.toggle()
+        let imageFilled = UIImage(systemName: "heart.fill")
+        
+        
+        if !favButDeta.isSelected {
+            favButDeta.setImage(imageFilled, for: .normal)
+        } else {
+            favButDeta.setImage(image, for: .normal)
+        }
+        
+        
+        favButDeta.isSelected.toggle()
     }
     
     
@@ -155,12 +172,24 @@ final class DetailController: UIViewController  {
     @IBAction func addToFavButTap(_ sender: Any) {
         toggleAddToFavListButton()
         // Call the function to add the product to favorites
-           if let productId = productID {
-               favoriteVM.addProductToFavoritesDetail(productId: productId, quantity: 1)
-           }
-       
+        if let productId = productID {
+            favoriteVM.addProductToFavoritesDetail(productId: productId, quantity: 1)
+        }
         
-           
+        
+        
+        isFavoriteButtonTapped = true
+        
+        
+        if isFavoriteButtonTapped && favoriteController.favoriteBadgeCount == 0 {
+            if let tabBarController = self.tabBarController,
+               let viewControllers = tabBarController.viewControllers,
+               viewControllers.count > 1,
+               let favoriteController = viewControllers[1] as? FavoriteController {
+                favoriteController.favoriteBadgeCount += 1
+            }
+        }
+        
     }
     
 }

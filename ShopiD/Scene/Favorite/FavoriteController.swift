@@ -35,6 +35,16 @@ class FavoriteController: UIViewController {
     
     var homeController: HomeController?
     
+    var favoriteBadgeCount: Int = 0 {
+        didSet {
+            // FavoriController'da kullanılacak badge güncellendiğinde yapılacak işlemler
+            // Örneğin:
+            if let tabBarController = self.tabBarController {
+                let favoriteTabBarItem = tabBarController.tabBar.items?[1] // 1, FavoriController'ın sırasına bağlı olarak değişebilir
+                favoriteTabBarItem?.badgeValue = favoriteBadgeCount > 0 ? "\(favoriteBadgeCount)" : nil
+            }
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -181,7 +191,7 @@ extension FavoriteController: FavoriteVMDelegate {
     }
     
     func didFetchSingleProduct(_ product: Product) {
-
+        
         
         
     }
@@ -208,7 +218,7 @@ extension FavoriteController: SeeAllCollectionCellInterface {
     func didUpdateFavoriteCollection() {
         
         favoriteCollection.reloadData()
-        
+        favoriteBadgeCount = 0
         favoriteDelegate?.didUpdateFavoriteCollection()
         print("Favorite collection updated.")
     }
